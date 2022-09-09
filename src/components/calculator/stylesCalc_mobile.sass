@@ -1,0 +1,99 @@
+@media (max-width: 960px)    
+  .calc
+    //Navigation bar
+    &_block
+      padding: 30px 10px !important
+      display: flex
+      flex-flow: row wrap !important
+
+      input.additionalLine::placeholder
+        margin: 0
+        white-space: pre-line
+        transform: unset
+
+    &_leftBlock
+      flex: 1 0 500px
+      width: 100%
+
+    &_rightBlock
+      flex: 1 0 30%
+    //display: none
+    &_block_inputContainer
+      flex-direction: column
+      align-items: flex-start
+
+      input
+        margin-top: 10px
+        margin-left: 0
+
+      input[placeholder]
+        width: 100%
+
+    &_block_inlineContainer
+      flex-flow: row wrap
+      justify-content: space-between
+
+      input
+        order: 0
+        width: 50px
+        flex: 1
+
+      .calc_section
+        &_title
+          flex: 1 1 90%
+          margin-bottom: 10px
+          order: -2
+
+      .close
+        margin-bottom: 10px
+        order: -1
+
+    &_block_inputResult
+      display: flex
+      width: unset
+      box-sizing: content-box
+  .calc_block_result,
+  .calc_block
+    display: block
+    flex-flow: wrap
+    box-sizing: content-box !important
+    padding-left: 10px !important
+    padding-right: 10px !important
+
+    .calc_blockButtonContainer
+      display: flex
+
+      .calc_blockButton:nth-child(1)
+        margin-right: 10px
+
+    .calc_blockButton
+      flex: 1 0 auto
+      padding: 13px 0
+      margin: 0
+      font-size: 12px
+
+    .calc_block
+    .calc_contact
+      flex: 1 1 auto
+      margin: 0 auto
+      margin-top: 64px
+
+      img
+        width: 100%
+
+@media (max-width: 500px)
+  .calc
+    &_title
+      display: none
+
+    &_block
+      border: unset!important
+    &_leftBlock
+      flex: unset
+  .calc_rightBlock
+    margin-top: 30px
+    justify-content: center
+    align-items: center
+    &_Image
+      height: 160px
+      width: auto

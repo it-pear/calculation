@@ -1,0 +1,167 @@
+//img
+//  display: none!important
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button
+  -webkit-appearance: none
+  margin: 0
+
+@import "stylesCalc_mobile"
+
+input.additionalLine
+  &::placeholder
+    margin: -15px
+    white-space: pre-line
+    transform: translateY(-25%)
+
+.calc__select
+  border: none
+  background: rgba(0,0,0,0)
+  outline: none
+  font-weight: 600
+  font-size: 16px
+  line-height: 19px
+  color: #2B2B2B
+
+.calc_leftBlock
+  display: flex
+  flex-direction: column
+
+.calc_rightBlock
+  flex: 0 1 auto
+  display: flex
+  flex-flow: column
+  margin: auto
+
+  &_Image
+    flex: 0 1 100px
+    height: auto
+    width: 100%
+
+.calc_block
+  display: flex
+  flex-flow: row nowrap
+  margin-bottom: 30px
+  @import "stylesCalc_mobile"
+  &_title
+    margin: 0 0 22px 0
+    font-style: normal
+    font-weight: 600
+    font-size: 20px
+    line-height: 24px
+    display: flex
+    flex-wrap: nowrap
+    align-items: flex-end
+    
+  &_tip
+    color: #FFA92E
+    padding-left: 22px
+    font-style: normal
+    font-weight: 600
+    font-size: 13px
+    line-height: 16px
+    text-decoration-line: underline
+    text-transform: uppercase
+
+  &_addField
+    display: flex
+    align-items: center
+    font-size: 16px
+    line-height: 19px
+    color: #7A7A7A
+    margin-bottom: 26px
+
+    > span
+      transform: translateY(-2px)
+
+    > img
+      margin-right: 12px
+      display: block
+      height: 30px
+      width: 30px
+
+  &_inline
+    margin-bottom: 10px
+
+  &_inlineContainer
+    display: flex
+    //justify-content: space-between
+    //align-items: center
+    margin-bottom: 16px
+    white-space: nowrap
+    & > span.calc_section_title
+      align-self: center
+      margin: auto 8px auto 0
+    & > span.calc_section_spread
+      font-size: 19px
+      line-height: 1em
+      color: #C5C5C5
+      margin: auto 8px auto 8px
+    & > span.close
+      margin: auto 8px auto 8px
+      align-self: center
+      color: black
+      cursor: pointer
+    & > span.description
+
+      font-size: 16px
+      line-height: 19px
+      color: black
+      margin: unset
+      width: 100%
+      //margin-right: auto
+      padding-right: 30px
+
+
+    & > input:nth-child(1)
+      margin-left: 30px
+
+    & > input
+      border: 1px solid #DADADA
+      box-sizing: border-box
+      border-radius: 2px
+      width: 122px
+      font-style: normal
+      font-weight: 500
+      font-size: 16px
+      padding: 9px 14px
+
+  &_inputContainer
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-bottom: 16px
+    white-space: nowrap
+    &:nth-last-child(1)
+      margin-bottom: 26px
+
+    > input
+      border: 1px solid #DADADA
+      box-sizing: border-box
+      margin-left: 30px
+      width: 200px
+      font-size: 16px
+      padding: 9px 14px
+
+      &:after
+        content: "m"
+
+  &_inputResult
+    max-width: 373px
+    width: 100%
+    display: flex
+    flex-wrap: nowrap
+    justify-content: space-between
+    background: #F5F5F5
+    padding: 14px 11px 15px 14px
+    border-radius: 2px
+    white-space: nowrap
+    overflow: hidden
+
+    > span
+      padding-left: 10px
+
+      &:after
+        content: " м\00B3"
+
+
+
