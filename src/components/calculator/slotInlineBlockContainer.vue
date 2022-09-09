@@ -185,6 +185,9 @@ export default defineComponent({
 </script>
 
 <style lang="sass">
+.calc_block
+  position: relative
+  z-index: 2
 .calc_block_tip
   cursor: help
 
@@ -225,6 +228,7 @@ export default defineComponent({
     border-radius: 2px
     position: relative
     top: -30px
+    z-index: 1
     .calc_block_inline
       display: flex
       .calc_leftBlock
