@@ -64,8 +64,7 @@
             <ul>
                <li>
                 <span>Общий объем:</span>
-                <!-- <span> {{totalData.toFixed()}} м³</span>  -->
-                <span v-if="!typeBeton">Не выбрано</span>
+                <span>{{concrete}}</span>
               </li> 
               <li>
                 <span>Вид бетона:</span>
@@ -78,9 +77,14 @@
                 <span v-else>{{markaBeton.title}}</span>
               </li>
             </ul>
-            <p class="calc_result__title" style="margin-top: 32px;">Стоимость бетона: {{markaBeton == '' ? 0 : totalModalPrice}} руб.</p>
+            <p class="calc_result__title">Стоимость бетона: {{markaBeton == '' ? 0 : totalModalPrice}} руб.</p>
           </div>
-
+          <div class="calc_result-btn">
+            <div class="calc_blockButtonContainer">
+              <div class="calc_blockButton">сохранить </div>
+              <div class="calc_blockButton Orange">Оформить заказ</div>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -96,7 +100,7 @@ export default defineComponent({
   props: {
     title: String,
     tip: [String, undefined],
-    concrete: [Boolean, undefined]
+    concrete: [null]
   },
   data() {
     return {
@@ -219,61 +223,106 @@ export default defineComponent({
     line-height: 130%
 
 .calc_concreteCalculation
-    padding-right: 46px
+  padding-right: 46px
+  margin-bottom: 0
+  padding-left: 33px
+  padding-right: 6px
+  background: #EEEEEE
+  border: 1px solid #E8E8E8
+  border-radius: 2px
+  position: relative
+  top: -30px
+  z-index: 1
+  @media (max-width: 960px)
+    padding-left: 0
+  .calc_block_inline
+    display: flex
     margin-bottom: 0
-    padding-left: 33px
-    padding-right: 26px
-    background: #EEEEEE
-    border: 1px solid #E8E8E8
-    border-radius: 2px
-    position: relative
-    top: -30px
-    z-index: 1
-    .calc_block_inline
-      display: flex
-      .calc_leftBlock
-        flex: 1 1 400px
-        max-width: 400px
-        padding-top: 11px
-        .calc_leftBlock__info
-          font-weight: 600
-          font-size: 20px
-          line-height: 140%
-          color: #FFA92E
-          margin-left: 10px
-          margin-top: 11px
-      .calc_rightBlock
-        
-    .calc_block_inputResult
-      margin: 10px
-      position: relative
-      display: flex
-      justify-content: space-between
-      background: white
-      border: 1px solid #E7E7E7;
-      border-radius: 2px;
-      .calc__select 
-        margin-left: auto
-        position: relative
-        z-index: 1
-        text-align: right
-        position: absolute
+    padding-bottom: 5px
+    padding-top: 5px
+    .calc_leftBlock
+      flex: 0 0 411px
+      max-width: 411px
+      padding-top: 5px
+      @media (max-width: 960px)
+        flex: 0 0 360px
+        max-width: 360px
+      .calc_leftBlock__info
+        font-weight: 600
+        font-size: 20px
+        line-height: 140%
+        color: #FFA92E
+        margin-left: 10px
+        img
+          margin-left: 8px
+    .calc_rightBlock
+      flex: 1 1 100%
+      .calc_row
         width: 100%
-        right: 4px
-        left: 0
-      .placholder 
-        position: absolute
-        right: 32px
-        top: 0px
-        font-weight: bold
-        font-size: 16px
-        line-height: 19px
-        z-index: 0
-        color: #2B2B2B
-        @media (max-width: 552px)
-          right: auto
+        justify-content: flex-end
+        .calc_result
+          .calc_result__title
+            margin-top: 12px
+          ul
+            min-width: 270px
+            li
+              margin-bottom: 7px
+        .calc_result-btn
+          display: flex
+          align-items: flex-end
+          .calc_blockButtonContainer
+            flex-direction: column
+            padding-left: 24px
+            margin: 0
+            padding-bottom: 25px
+            @media (max-width: 960px)
+              align-items: flex-end
+            .calc_blockButton 
+              border: 2px solid #AFAFAF
+              box-sizing: border-box
+              border-radius: 2px
+              background: rgba(0, 0, 0, 0) 
+              width: 184px
+              padding: 12px 10px
+              @media (max-width: 960px)
+                margin-right: 0
+              &.Orange
+                background: #FFA92E 
+                border: 2px solid #FFA92E
+                margin-top: 17px
+  .calc_block_inputResult
+    margin: 10px
+    position: relative
+    display: flex
+    justify-content: space-between
+    background: white
+    border: 1px solid #E7E7E7;
+    border-radius: 2px;
+    display: flex
+    align-items: center
+    .calc__select 
+      margin-left: auto
+      position: relative
+      z-index: 1
+      text-align: right
+      position: absolute
+      width: 100%
+      right: 4px
+      left: 0
+      
+    .placholder 
+      position: absolute
+      right: 32px
+      top: 0px
+      font-weight: bold
+      font-size: 16px
+      line-height: 19px
+      z-index: 0
+      color: #2B2B2B
+      @media (max-width: 552px)
+        right: auto
 
-      @media (max-width: 1100px)
-        width: unset
-        flex: 1 1 100%
+    @media (max-width: 1100px)
+      width: unset
+      flex: 1 1 100%
 </style>

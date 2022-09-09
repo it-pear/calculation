@@ -231,6 +231,7 @@
     display: none;
     align-content: center;
     justify-content: center;
+    z-index: 100;
     .modal-bcg {
       position: fixed;
       width: 100%;
@@ -246,6 +247,10 @@
       bottom: 0;
       right: 0;
       margin: auto;
+      .calc_contact {
+        width: 255px;
+        height: 388px;
+      }
       .calc_block {
         display: none;
       }

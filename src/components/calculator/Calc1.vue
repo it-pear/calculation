@@ -27,7 +27,7 @@
     <slotInlineBlockContainer
       title="Сложная плита"
       tip="Рассчитать объем сложных монолитных плит можно, разделив конструкцию на сектора. Таким образом можно узнать совокупный объем с помощью суммы объемов отдельных участков"
-      :concrete="true"
+      :concrete="complex.result"
       v-if="true"
     >
       <template v-slot:inlineBlock>
@@ -56,7 +56,12 @@
     </slotInlineBlockContainer>
 
 
-    <slotInlineBlockContainer title="Добавить треугольный сектор" tip="Если стороны опалубки не перпендикулярны друг другу, то лучшим решением будет разделить весь объем на треугольные и прямоугольный участки. С помощью суммы таких участков легко получить требуемый объем " v-if="true">
+    <slotInlineBlockContainer
+      title="Добавить треугольный сектор"
+      tip="Если стороны опалубки не перпендикулярны друг другу, то лучшим решением будет разделить весь объем на треугольные и прямоугольный участки. С помощью суммы таких участков легко получить требуемый объем "
+      v-if="true"
+      :concrete="triangle.result"
+    >
       <template v-slot:inlineBlock>
         <div class="calc_block_inlineContainer calc_block_triangle" v-for="(undefined_, index) in triangle.values" :key="index">
 
@@ -139,6 +144,8 @@
       <template v-slot:image><img src="./tempContact.png" alt=""></template>
     </slotResultBlock>
     
+    <HelpBetter />
+
     <readme />
 
     <modal
@@ -169,6 +176,7 @@ import {IComplex, IRad, ITriangle} from "./types";
 import {printResultBlock, printResult, removeField} from "./methods"
 import slotInlineBlockContainer from "./slotInlineBlockContainer.vue"
 import slotResultBlock from "./slotResultBlock.vue";
+import HelpBetter from "../newComponents/HelpBetter.vue";
 import readme from "./readme.vue";
 import modal from "./modal.vue";
 import axios from 'axios'
@@ -338,6 +346,7 @@ export default defineComponent({
     "slotResultBlock": slotResultBlock,
     "readme": readme,
     "modal": modal,
+    HelpBetter
   }
 
 })
