@@ -7,9 +7,8 @@
           Оставьте заявку и мы перезвоним вам в течении 15 минут
         </p>
         <input
-          class="inp"
+          class="inp field-mask"
           type="tel"
-          id="test-field"
           required
           v-model="form_input"
           placeholder="+7 (___) ___-__-__"
@@ -56,7 +55,7 @@ export default defineComponent({
   },
   mounted () {
     var im = new Inputmask("+7 (999) 999-99-99");
-    im.mask(document.getElementById('test-field'));
+    im.mask(document.querySelector('.field-mask'));
   }
 })
 </script>

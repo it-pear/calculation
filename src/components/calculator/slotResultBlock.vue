@@ -101,7 +101,7 @@
 
     </div>
     <div class="calc_block_result_sidebar">
-      <FormQuetions />
+      <FormQuetions :titlePage="titlePage" />
       <QrCode />
     </div>
     
@@ -237,8 +237,8 @@ export default defineComponent({
 @import "mixins"
 .calc_block_result_sidebar
   flex: 0 0 auto
-  max-width: 255px
-  width: 255px
+  max-width: 286px
+  width: 286px
   disply: flex
   align-items: center
   justify-content: center
@@ -250,6 +250,7 @@ export default defineComponent({
     padding-left: 0
     .calc_contact
       margin-top: 17px !important
+      display: block
   .qr-code
     margin-top: 36px
     @media (max-width: 780px)
@@ -330,6 +331,7 @@ export default defineComponent({
       max-width: calc(74.3%)
     .calc_block_title
       padding-right: 60px
+      text-transform: capitalize
     .calc_leftBlock
       flex: 1 1 100%
 
@@ -340,8 +342,11 @@ export default defineComponent({
         @media (max-width: 780px)
           display: block
           max-width: 100%
+          .calc_block_inline
+            left: 0
           .calc_block_inputResult
             overflow: visible !important
+            margin-right: 0
       .calc__right
         .calc_block_inputResult 
           @media (max-width: 552px)
@@ -374,10 +379,14 @@ export default defineComponent({
         position: absolute
         right: 32px
         top: 0px
+        bottom: 0
         font-weight: bold
         font-size: 16px
         line-height: 19px
         z-index: 0
+        bottom: 0
+        display: flex
+        align-items: center
         color: #2B2B2B
         @media (max-width: 552px)
           right: auto

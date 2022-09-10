@@ -155,6 +155,7 @@
       </template>
       <template v-slot:image><img src="./tempContact.png" alt=""></template>
     </slotResultBlock>
+    <HelpBetter />
     <readme />
     <modal
       :modal="modal"
@@ -183,6 +184,7 @@ import {IComplexSPF, IComplexUSHP, IPile, IPile2, ISimpleSPF, ISimpleUSHP} from 
 import {printResult, printResultBlock} from "./methods"
 import slotInlineBlockContainer from "./slotInlineBlockContainer.vue"
 import slotResultBlock from "./slotResultBlock.vue";
+import HelpBetter from "../newComponents/HelpBetter.vue";
 import modal from "./modal.vue"
 import readme from "./readme.vue";
 import axios from 'axios'
@@ -377,7 +379,8 @@ export default defineComponent({
     "slotInlineBlockContainer": slotInlineBlockContainer,
     "slotResultBlock": slotResultBlock,
     "modal": modal,
-    "readme": readme
+    "readme": readme,
+    HelpBetter
   }
 
 })
