@@ -4,6 +4,9 @@
       {{ title }}
       <span class="block-section_tip">подсказка <div v-if="tip">{{ tip }}</div></span>
     </h3>
+    <div class="column">
+      <slot name="inputFields"/>
+    </div>
   </div>
 </template>
 
@@ -113,6 +116,40 @@ export default defineComponent({
             line-height: 130%;
           }
         } 
+      }
+    }
+    .fields {
+      .field-section {
+        display: flex;
+        align-items: center;
+        .field-section__title {
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 19px;
+          color: #696969;
+          max-width: 178px;
+          width: 100%;
+          b {
+            color: #3C3C3C;
+          }
+        }
+        .field {
+          margin-left: 50px;
+          .inp {
+            border: 1px solid #E8E8E8;
+            border-radius: 4px;
+            padding: 10.5px 12px 10.5px 15px;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+          }
+          .meas {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            color: #404040;
+          }
+        }
       }
     }
   }
