@@ -51,7 +51,8 @@
   }
 }
 
-.calculation_blockButtonContainer {
+.calculation_blockButtonContainer,
+.calculation_blockButtonMiniContainer {
   display: flex;
   .calculation_blockButton {
     padding: 20.5px 30px;
@@ -71,5 +72,17 @@
     &.m-40 {
       margin-right: 40px;
     }
+    &.mt-10 {
+      margin-top: 10px;
+    }
+  }
+}
+
+.calculation_blockButtonMiniContainer {
+  .calculation_blockButton {
+    padding: 15px 20px;
+    color: #2B2B2B;
+    text-transform: uppercase;
+    background: rgba(0,0,0,0);
   }
 }

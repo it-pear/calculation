@@ -1,180 +1,321 @@
 <template>
-  <BlockSection
-    title="Размеры"
-    titlePage="БЕТОН ДЛЯ ПЛИТ"
-    tip="sdfsfsdfsdfsdfs"
-  >
-    <template v-slot:inputFields>
-      <div class="field-section">
-        <div class="field-section__title">Периметр дома, <b>М:</b></div>
-        <div class="field">
-          <input type="number" placeholder="Периметр" class="inp" />
-          <span class="meas">м</span>
-        </div>
-      </div>
-      <div class="field-section">
-        <div class="field-section__title">Ширина отмостки, <b>М:</b></div>
-        <div class="field">
-          <input type="number" placeholder="Ширина" class="inp" />
-          <span class="meas">м</span>
-        </div>
-      </div>
-      <div class="field-section">
-        <div class="field-section__title">Внешние углы A, <b>ШТ:</b></div>
-        <div class="field">
-          <input type="number" placeholder="Углы" class="inp" />
-          <span class="meas">шт</span>
-        </div>
-      </div>
-      <div class="field-section">
-        <div class="field-section__title">Внутренние углы a, <b>ШТ:</b></div>
-        <div class="field">
-          <input type="number" placeholder="Углы" class="inp" />
-          <span class="meas">шт</span>
-        </div>
-      </div>
-    </template>
-
-    <template v-slot:fieldItog>
-      <div class="field-section-itog">
-        <div class="title">Размер отмостки:</div>
-        <div class="inp-itog">0 м<sup>3</sup></div>
-        <div class="inp-itog">0 шт</div>
-      </div>
-    </template>
-
-    <template v-slot:image>
-      <img src="/images/house.jpg" />
-    </template>
-  </BlockSection>
-
-  <BlockSection
-    title="Материалы"
-    titlePage="БЕТОН ДЛЯ ПЛИТ"
-    tip="sdfsfsdfsdfsdfs"
-  >
-    <template v-slot:inputFields>
-      <div class="field-section">
-        <div class="field-section__title">Брусчатка P, <b>М:</b></div>
-        <div class="field">
-          <input type="number" placeholder="Брусчатка" class="inp" />
-          <span class="meas">м</span>
-        </div>
-      </div>
-      <div class="field-section">
-        <div class="field-section__title">Бетон B, <b>М:</b></div>
-        <div class="field">
-          <input type="number" placeholder="Бетон" class="inp" />
-          <span class="meas">м</span>
-        </div>
-      </div>
-      <div class="field-section">
-        <div class="field-section__title">Утеплитель U, <b>М:</b></div>
-        <div class="field">
-          <input type="number" placeholder="Утеплитель" class="inp" />
-          <span class="meas">м</span>
-        </div>
-      </div>
-      <div class="field-section">
-        <div class="field-section__title">Щебень G, <b>М:</b></div>
-        <div class="field">
-          <input type="number" placeholder="Щебень" class="inp" />
-          <span class="meas">м</span>
-        </div>
-      </div>
-      <div class="field-section">
-        <div class="field-section__title">Песок S, <b>М:</b></div>
-        <div class="field">
-          <input type="number" placeholder="Песок" class="inp" />
-          <span class="meas">м</span>
-        </div>
-      </div>
-    </template>
-
-    <template v-slot:fieldItog>
-      <div class="field-section-itog">
-        <div class="title">Общий размер материалов:</div>
-        <div class="inp-itog">0 м<sup>3</sup></div>
-      </div>
-    </template>
-
-    <template v-slot:image>
-      <img src="/images/material.jpg" />
-    </template>
-  </BlockSection>
-
-  <BlockSection
-    title="Материалы"
-    titlePage="БЕТОН ДЛЯ ПЛИТ"
-    tip="sdfsfsdfsdfsdfs"
-  >
-    <template v-slot:inputFields>
-      <div class="field-section">
-        <div class="field-section__title">Геотекстиль:</div>
-        <div class="field">
-          <label class="custom-checkbox">
-            <input type="checkbox" value="value-1" />
-            <span></span>
-          </label>
-        </div>
-      </div>
-      <div class="field-section">
-        <div class="field-section__title">Арматурная сетка:</div>
-        <div class="field">
-          <label class="custom-checkbox">
-            <input type="checkbox" value="value-1" />
-            <span></span>
-          </label>
-        </div>
-      </div>
-      <div class="field-section">
-        <div class="field-section__title">Бордюр</div>
-        <div class="field">
-          <label class="custom-checkbox">
-            <input type="checkbox" value="value-1" />
-            <span></span>
-          </label>
-        </div>
-      </div>
-      <div class="field-section">
-        <div class="field-section__title">Опалубка</div>
-        <div class="field">
-          <label class="custom-checkbox">
-            <input type="checkbox" value="value-1" />
-            <span></span>
-          </label>
-        </div>
-      </div>
-      <div class="field-section">
-        <div class="field-section__title">Гидроизоляция</div>
-        <div class="field">
-          <label class="custom-checkbox">
-            <input type="checkbox" value="value-1" />
-            <span></span>
-          </label>
-        </div>
-      </div>
-    </template>
-
-    <template v-slot:fieldItog>
-      <div class="field-section-itog">
-        <div class="title">Общий размер материалов:</div>
-        <div class="inp-itog">0 м<sup>3</sup></div>
-      </div>
-    </template>
-
-    <template v-slot:image>
-      <img src="/images/raschet.jpg" />
-    </template>
-  </BlockSection>
-
-  <div class="calculation_blockButtonContainer">
-    <button
-      class="calculation_blockButton Orange m-40"
+  <div class="page-calc-materials">
+    <BlockSection
+      title="Размеры"
+      titlePage="БЕТОН ДЛЯ ПЛИТ"
+      tip="sdfsfsdfsdfsdfs"
     >
-      ПОКАЗАТЬ РЕЗУЛЬТАТ
-    </button>
-    <button class="calculation_blockButton">СКАЧАТЬ ФАЙЛ</button>
+      <template v-slot:inputFields>
+        <div class="field-section">
+          <div class="field-section__title">Периметр дома, <b>М:</b></div>
+          <div class="field">
+            <input type="number" placeholder="Периметр" class="inp" />
+            <span class="meas">м</span>
+          </div>
+        </div>
+        <div class="field-section">
+          <div class="field-section__title">Ширина отмостки, <b>М:</b></div>
+          <div class="field">
+            <input type="number" placeholder="Ширина" class="inp" />
+            <span class="meas">м</span>
+          </div>
+        </div>
+        <div class="field-section">
+          <div class="field-section__title">Внешние углы A, <b>ШТ:</b></div>
+          <div class="field">
+            <input type="number" placeholder="Углы" class="inp" />
+            <span class="meas">шт</span>
+          </div>
+        </div>
+        <div class="field-section">
+          <div class="field-section__title">Внутренние углы a, <b>ШТ:</b></div>
+          <div class="field">
+            <input type="number" placeholder="Углы" class="inp" />
+            <span class="meas">шт</span>
+          </div>
+        </div>
+      </template>
+
+      <template v-slot:fieldItog>
+        <div class="field-section-itog">
+          <div class="title">Размер отмостки:</div>
+          <div class="inp-itog">0 м<sup>3</sup></div>
+          <div class="inp-itog">0 шт</div>
+        </div>
+      </template>
+
+      <template v-slot:image>
+        <img src="/images/house.jpg" />
+      </template>
+    </BlockSection>
+
+    <BlockSection
+      title="Материалы"
+      titlePage="БЕТОН ДЛЯ ПЛИТ"
+      tip="sdfsfsdfsdfsdfs"
+    >
+      <template v-slot:inputFields>
+        <div class="field-section">
+          <div class="field-section__title">Брусчатка P, <b>М:</b></div>
+          <div class="field">
+            <input type="number" placeholder="Брусчатка" class="inp" />
+            <span class="meas">м</span>
+          </div>
+        </div>
+        <div class="field-section">
+          <div class="field-section__title">Бетон B, <b>М:</b></div>
+          <div class="field">
+            <input type="number" placeholder="Бетон" class="inp" />
+            <span class="meas">м</span>
+          </div>
+        </div>
+        <div class="field-section">
+          <div class="field-section__title">Утеплитель U, <b>М:</b></div>
+          <div class="field">
+            <input type="number" placeholder="Утеплитель" class="inp" />
+            <span class="meas">м</span>
+          </div>
+        </div>
+        <div class="field-section">
+          <div class="field-section__title">Щебень G, <b>М:</b></div>
+          <div class="field">
+            <input type="number" placeholder="Щебень" class="inp" />
+            <span class="meas">м</span>
+          </div>
+        </div>
+        <div class="field-section">
+          <div class="field-section__title">Песок S, <b>М:</b></div>
+          <div class="field">
+            <input type="number" placeholder="Песок" class="inp" />
+            <span class="meas">м</span>
+          </div>
+        </div>
+      </template>
+
+      <template v-slot:fieldItog>
+        <div class="field-section-itog">
+          <div class="title">Общий размер материалов:</div>
+          <div class="inp-itog">0 м<sup>3</sup></div>
+        </div>
+      </template>
+
+      <template v-slot:image>
+        <img src="/images/material.jpg" />
+      </template>
+    </BlockSection>
+
+    <BlockSection
+      title="Материалы"
+      titlePage="БЕТОН ДЛЯ ПЛИТ"
+      tip="sdfsfsdfsdfsdfs"
+    >
+      <template v-slot:inputFields>
+        <div class="field-section">
+          <div class="field-section__title">Геотекстиль:</div>
+          <div class="field">
+            <label class="custom-checkbox">
+              <input type="checkbox" value="value-1" />
+              <span></span>
+            </label>
+          </div>
+        </div>
+        <div class="field-section">
+          <div class="field-section__title">Арматурная сетка:</div>
+          <div class="field">
+            <label class="custom-checkbox">
+              <input type="checkbox" value="value-1" />
+              <span></span>
+            </label>
+          </div>
+        </div>
+        <div class="field-section">
+          <div class="field-section__title">Бордюр</div>
+          <div class="field">
+            <label class="custom-checkbox">
+              <input type="checkbox" value="value-1" />
+              <span></span>
+            </label>
+          </div>
+        </div>
+        <div class="field-section">
+          <div class="field-section__title">Опалубка</div>
+          <div class="field">
+            <label class="custom-checkbox">
+              <input type="checkbox" value="value-1" />
+              <span></span>
+            </label>
+          </div>
+        </div>
+        <div class="field-section">
+          <div class="field-section__title">Гидроизоляция</div>
+          <div class="field">
+            <label class="custom-checkbox">
+              <input type="checkbox" value="value-1" />
+              <span></span>
+            </label>
+          </div>
+        </div>
+      </template>
+
+      <template v-slot:fieldItog>
+        <div class="field-section-itog">
+          <div class="title">Общий размер материалов:</div>
+          <div class="inp-itog">0 м<sup>3</sup></div>
+        </div>
+      </template>
+
+      <template v-slot:image>
+        <img src="/images/raschet.jpg" />
+      </template>
+    </BlockSection>
+
+    <div class="calculation_blockButtonContainer">
+      <button
+        class="calculation_blockButton Orange m-40"
+      >
+        ПОКАЗАТЬ РЕЗУЛЬТАТ
+      </button>
+      <button class="calculation_blockButton">СКАЧАТЬ ФАЙЛ</button>
+    </div>
+
+    <BlockSectionResult>
+      <template v-slot:head>
+        <div class="column col-4">
+          <div class="title">Общий  рассчет отмостки</div>
+          <div class="field mb-20">
+            <div class="text">Общий размер отмостки:</div>
+            <div class="itog">0 м<sup>3</sup></div>
+          </div>
+          <div class="field mb-20">
+            <div class="text">Общее количество углов:</div>
+            <div class="itog">0 м<sup>3</sup></div>
+          </div>
+          <div class="field mb-20">
+            <div class="text opacity">Периметр дома:</div>
+            <div class="itog">0 м<sup>3</sup></div>
+          </div>
+          <div class="field mb-20">
+            <div class="text opacity">Ширина отмостки:</div>
+            <div class="itog">0 м<sup>3</sup></div>
+          </div>
+          <div class="field mb-20">
+            <div class="text opacity">Внешние углы А:</div>
+            <div class="itog">0 шт</div>
+          </div>
+          <div class="field mb-20">
+            <div class="text opacity">Внешние углы а:</div>
+            <div class="itog">0 шт</div>
+          </div>
+        </div>
+
+        <div class="column col-4">
+          <div class="title">Общий  рассчет отмостки</div>
+          <div class="field mb-20">
+            <div class="text">Общий рассчет материалов:</div>
+            <div class="itog">0 м<sup>3</sup></div>
+          </div>
+          <div class="field mb-20">
+            <div class="text opacity">Объем брусчатки Р:</div>
+            <div class="itog">0 м<sup>3</sup></div>
+          </div>
+          <div class="field mb-20">
+            <div class="text opacity">Объем бетона В:</div>
+            <div class="itog">0 м<sup>3</sup></div>
+          </div>
+          <div class="field mb-20">
+            <div class="text opacity">Объем утеплителя U:</div>
+            <div class="itog">0 м<sup>3</sup></div>
+          </div>
+          <div class="field mb-20">
+            <div class="text opacity">Объем щебеня G:</div>
+            <div class="itog">0 м<sup>3</sup></div>
+          </div>
+          <div class="field mb-20">
+            <div class="text opacity">Объем песка S:</div>
+            <div class="itog">0 м<sup>3</sup></div>
+          </div>
+        </div>
+
+        <div class="column col-4">
+          <div class="title">Общий размер материалов:</div>
+          <div class="field mb-20">
+            <div class="text">Общий рассчет материалов:</div>
+            <div class="itog">0 м<sup>3</sup></div>
+          </div>
+          <div class="field mb-20">
+            <div class="text opacity">Объем брусчатки Р:</div>
+            <div class="itog">0 м<sup>3</sup></div>
+          </div>
+          <div class="field mb-20">
+            <div class="text opacity">Объем бетона В:</div>
+            <div class="itog">0 м<sup>3</sup></div>
+          </div>
+          <div class="field mb-20">
+            <div class="text opacity">Объем утеплителя U:</div>
+            <div class="itog">0 м<sup>3</sup></div>
+          </div>
+          <div class="field mb-20">
+            <div class="text opacity">Объем щебеня G:</div>
+            <div class="itog">0 м<sup>3</sup></div>
+          </div>
+          <div class="field mb-20">
+            <div class="text opacity">Объем песка S:</div>
+            <div class="itog">0 м<sup>3</sup></div>
+          </div>
+        </div>
+      </template>
+      <template v-slot:btnSection>
+        <button class="calculation_blockButton Orange mt-10">
+          Рассчитать стоимость
+        </button>
+      </template>
+      <template v-slot:result>
+        <div class="field">
+          <div class="text">Размер отмостки:</div>
+          <div class="info mt-10">0 м<sup>3</sup></div>
+        </div>
+        <div class="field">
+          <div class="text">Количество углов:</div>
+          <div class="info">0 шт</div>
+        </div>
+        <div class="field">
+          <div class="text">Рассчет материалов:</div>
+          <div class="info mt-10">0 м<sup>3</sup></div>
+        </div>
+        <div class="field">
+          <div class="text">Рассчет материалов:</div>
+          <div class="info mt-10">0 м<sup>3</sup></div>
+        </div>
+        <div class="field-total">
+          <div class="text">Размер отмостки:</div>
+          <div class="info">0 руб.</div>
+        </div>
+      </template>
+      <template v-slot:resultInfo>
+        <div class="result-info pl-30 max-410">
+          <div class="title">
+            ВАЖНО! 
+          </div>
+          <div class="text">
+            Если основание опалубкии имеет уклон, или перепады высот, требуется расчет с учетом медианных значений высотных отметок. Для таких расчетов советуем вызвать специалиста нашего завода на объект. Он произведет необходиммый объем измерений и определит требуемый объем наиболее близко к реальному значению!
+          </div>
+          <div class="calculation_blockButtonMiniContainer pl-0 mt-37">
+            <button class="calculation_blockButton m-40">
+              сохранить ФАЙЛ
+            </button>
+            <button class="calculation_blockButton Orange">
+              Оформить заказ
+            </button>
+          </div>
+        </div>
+      </template>
+    </BlockSectionResult>
+    <div class="calc_block_result_sidebar">
+      <FormQuetions :titlePage="titlePage" />
+      <QrCode />
+    </div>
+    <HelpBetter />
+    <readme />
   </div>
 </template>
 
@@ -182,8 +323,10 @@
 import { defineComponent } from "vue";
 import HelpBetter from "../newComponents/HelpBetter.vue";
 import BlockSection from "../newComponents/BlockSection.vue";
+import BlockSectionResult from "../newComponents/BlockSectionResult.vue";
 import readme from "./readme.vue";
-import modal from "./modal.vue";
+import FormQuetions from '../newComponents/FormQuetions.vue';
+import QrCode from '../newComponents/QrCode.vue';
 
 export default defineComponent({
   data() {
@@ -193,6 +336,11 @@ export default defineComponent({
   },
   components: {
     BlockSection,
+    BlockSectionResult,
+    HelpBetter,
+    readme,
+    FormQuetions,
+    QrCode
     // "readme": readme,
     // "modal": modal,
     // HelpBetter
@@ -201,4 +349,12 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+  .page-calc-materials {
+    .help-better {
+      margin-top: 63px;
+    }
+    .calc_readme {
+      margin-top: 63px;
+    }
+  }
 </style>

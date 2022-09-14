@@ -93,7 +93,6 @@
                 </div>
               </div>
             </div>
-            
           </div>
         </div>
         
@@ -104,7 +103,6 @@
       <FormQuetions :titlePage="titlePage" />
       <QrCode />
     </div>
-    
 
   </div>
 </template>
