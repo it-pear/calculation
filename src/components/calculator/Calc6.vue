@@ -3,7 +3,7 @@
     <BlockSection
       title="Размеры"
       titlePage="БЕТОН ДЛЯ ПЛИТ"
-      tip="sdfsfsdfsdfsdfs"
+      tip="Расчитать объем сложных монолитных плит удобней всего, разделив общий объем на сектора. Таким образом..."
     >
       <template v-slot:inputFields>
         <div class="field-section">
@@ -52,7 +52,7 @@
     <BlockSection
       title="Материалы"
       titlePage="БЕТОН ДЛЯ ПЛИТ"
-      tip="sdfsfsdfsdfsdfs"
+      tip="Расчитать объем сложных монолитных плит удобней всего, разделив общий объем на сектора. Таким образом..."
     >
       <template v-slot:inputFields>
         <div class="field-section">
@@ -107,10 +107,10 @@
     <BlockSection
       title="Материалы"
       titlePage="БЕТОН ДЛЯ ПЛИТ"
-      tip="sdfsfsdfsdfsdfs"
+      tip="Расчитать объем сложных монолитных плит удобней всего, разделив общий объем на сектора. Таким образом..."
     >
       <template v-slot:inputFields>
-        <div class="field-section">
+        <div class="field-section field-section-checkbox">
           <div class="field-section__title">Геотекстиль:</div>
           <div class="field">
             <label class="custom-checkbox">
@@ -119,7 +119,7 @@
             </label>
           </div>
         </div>
-        <div class="field-section">
+        <div class="field-section field-section-checkbox">
           <div class="field-section__title">Арматурная сетка:</div>
           <div class="field">
             <label class="custom-checkbox">
@@ -128,7 +128,7 @@
             </label>
           </div>
         </div>
-        <div class="field-section">
+        <div class="field-section field-section-checkbox">
           <div class="field-section__title">Бордюр</div>
           <div class="field">
             <label class="custom-checkbox">
@@ -137,7 +137,7 @@
             </label>
           </div>
         </div>
-        <div class="field-section">
+        <div class="field-section field-section-checkbox">
           <div class="field-section__title">Опалубка</div>
           <div class="field">
             <label class="custom-checkbox">
@@ -146,7 +146,7 @@
             </label>
           </div>
         </div>
-        <div class="field-section">
+        <div class="field-section field-section-checkbox">
           <div class="field-section__title">Гидроизоляция</div>
           <div class="field">
             <label class="custom-checkbox">
@@ -310,7 +310,7 @@
         </div>
       </template>
     </BlockSectionResult>
-    <div class="calc_block_result_sidebar">
+    <div class="calc_block_result_sidebar gorisontal">
       <FormQuetions :titlePage="titlePage" />
       <QrCode />
     </div>

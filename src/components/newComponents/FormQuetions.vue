@@ -16,7 +16,7 @@
         <button @click="onSubmit">заказать звонок</button>
         <div class="calc_contact_check">
           <input type="checkbox" value="check" checked>
-          <label for="">Я согласен с политикой конфиденциальности</label>
+          <label for="">Я согласен с <a href="">политикой конфиденциальности</a></label>
         </div>
       </div>
     </slot>
@@ -116,6 +116,12 @@ export default defineComponent({
     margin-top: 12px
     line-height: 17px
     color: #2B2B2B
+  .calc_contact_check
+    label 
+      a
+        color: white
+        @media (max-width: 772px)
+          color: #696969
   .calc_contact_social_title 
     margin-top: 18px
   ul

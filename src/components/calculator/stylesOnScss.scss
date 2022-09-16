@@ -76,6 +76,22 @@
       margin-top: 10px;
     }
   }
+  @media (max-width: 772px) {
+    flex-direction: column;
+    align-items: center;
+    .calculation_blockButton {
+      min-width: 225px;
+      &.m-40 {
+        margin-right: 0;
+      }
+      &.mt-10 {
+        margin-top: 10px;
+      }
+      &:last-child {
+        margin-top: 20px;
+      }
+    }
+  }
 }
 
 .calculation_blockButtonMiniContainer {
@@ -85,4 +101,78 @@
     text-transform: uppercase;
     background: rgba(0,0,0,0);
   }
+}
+
+.calc_block_result_sidebar {
+  &.gorisontal {
+    @media (min-width: 772px) {
+      padding-top: 64px;
+      padding-left: 0;
+      flex: 0 0 100%;
+      max-width: 100%;
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      
+      .calc_contact {
+        max-width: 457px;
+        text-align: left;
+        border-radius: 2px;
+        height: 224px;
+        background-image: url(/images/fon_form_calc-2.jpg);
+        background-size: cover;
+        background-position: center;
+        
+        .title {
+          padding-left: 24px;
+          margin-bottom: 9px;
+        }
+        .pdd {
+          padding-left: 24px;
+          .subtitle {
+            margin-top: 9px;
+          }
+          .inp,
+          button {
+            margin-top: 8px;
+          }
+          .field-mask {
+            margin-right: 21px;
+          }
+          .calc_contact_check {
+            margin-top: 24px;
+          }
+        }
+      }
+      .qr-code {
+        display: flex;
+        margin-top: 0;
+        margin-left: auto;
+        .subtitle {
+          max-width: 255px;
+          margin-right: 23px;
+        }
+        img {
+          max-height: 224px;
+          max-width: 224px;
+        }
+      }
+      
+    }
+  }
+}
+
+.row-section-sidebar {
+  @media (min-width: 772px) {
+    display: flex;
+    flex-direction: row;
+    .block-section-result {
+      flex: 1 1 100%;
+    }
+    .calc_block_result_sidebar {
+      margin-top: 60px;
+    }
+  }
+  
 }

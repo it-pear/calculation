@@ -3,7 +3,7 @@
     <div class="column">
       <h3 class="block-section_title">
         <span>{{ title }}</span>
-        <span class="block-section_tip">подсказка <div v-if="tip">{{ tip }}</div></span>
+        <span class="block-section_tip"><span>подсказка</span> <div v-if="tip">{{ tip }}</div></span>
       </h3>
       <slot name="inputFields"/>
       <slot name="fieldItog"/>
@@ -171,9 +171,33 @@ export default defineComponent({
             display: flex;
             align-items: center;
           }
-          
         }
-        
+        &-select {
+          .field {
+            max-width: 465px;
+            width: 100%;
+            select {
+              border: 1px solid #E8E8E8;
+              border-radius: 4px;
+              padding: 10.5px 15px;
+              box-sizing: border-box;
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 19px;
+              color: #000000;
+              width: 100%;
+              -moz-appearance: none;
+              -webkit-appearance: none;
+              overflow: hidden;
+            }
+            .meas {
+              background: white;
+              height: calc(100% - 4px);
+              padding-left: 10px;
+            }
+          }
+        }
+
       }
 
       .field-section-itog {
@@ -223,6 +247,186 @@ export default defineComponent({
       flex: 1 1 100%;
     }
     
-    
+    @media (max-width: 772px) {
+      border: none;
+      box-shadow: none;
+      background: #FFFFFF;
+      padding: 20px 10px 10px 10px;
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+
+      .column {
+        flex: 0 0 100%;
+        .block-section_title {
+          display: flex;
+          flex-flow: row wrap;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 24px;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: flex-end;
+          padding-bottom: 10px;
+          position: relative;    
+          span {
+            min-width: 195px;
+          }    
+          .block-section_tip {
+            color: #FFA92E;
+            padding-left: 0;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 16px;
+            text-transform: uppercase;
+            max-width: calc(100% - 10px);
+            width: calc(100% - 10px);
+            margin-top: 15px;
+            text-decoration: none;
+
+            cursor: help;
+            & > span {
+              display: none;
+            }
+            
+            & > div,
+            &:hover > div {
+              visibility: visible;
+              transition: .2s;
+              height: unset;
+              width: 100%;
+              text-transform: none;
+              position: relative;
+              max-width: 100%;
+              background: #F8F8F8;
+              box-shadow: 0px 4px 13px rgba(112, 111, 111, 0.1);
+              border-radius: 2px;
+              padding: 8px;
+              border-radius: 2px;
+              transform: translate(0);
+              font-size: 14px;
+              line-height: 130%;
+              max-width: 100%;
+              border: none;
+            }
+            
+          }
+          .block-section_tip {
+            .calc_block_tip {
+              cursor: help;
+            }
+            .calc_block_tip > div {
+              visibility: hidden;
+              height: 0;
+              width: 0;
+              color: #696969;
+            }
+
+            .calc_block_tip:hover {
+              position: relative;
+              & > div {
+                visibility: visible;
+                transition: .2s;
+                height: unset;
+                width: max-content;
+                text-transform: none;
+                position: absolute;
+                max-width: 372px;
+                background: #F8F8F8;
+                bottom: 100%;
+                box-shadow: 0 4px 13px rgba(112, 111, 111, 0.1);
+                padding: 10px 16px;
+                border-radius: 2px;
+                transform: translate(20px, -10px);
+                font-size: 14px;
+                line-height: 130%;
+              }
+            } 
+          }
+        }     
+        .field-section {
+          align-items: flex-start;
+          margin-bottom: 15px;
+          flex-wrap: wrap;
+          .field-section__title {
+            flex: 0 0 100%;
+            max-width: 100%;
+            margin-bottom: 10px;
+          }
+          .field {
+            margin-left: 0px;
+            flex: 0 0 100%;
+            max-width: 100%;
+            .inp {
+              padding: 11.5px 12px 11.5px 15px;
+              font-size: 14px;
+              line-height: 17px;
+              width: 100%;
+            } 
+          }
+          &-checkbox {
+            flex-wrap: nowrap;
+            flex-direction: row;
+            .field-section__title {
+              flex: 0 0 150px;
+              max-width: 150px;
+            }
+            .field {
+              margin-left: 0px;
+              flex: 0 0 24px;
+              max-width: 24px;
+            }
+          }
+        }
+
+        .field-section-itog {
+          display: flex;
+          align-items: center;
+          background: #F5F5F5;
+          border-radius: 2px;
+          padding: 5px 10px 5px 14px;
+          max-width: 426px;
+          margin-top: 30px;
+          .title {
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 19px;
+            color: #696969;
+            margin-right: auto;
+          }
+          .inp-itog {
+            background: #FFFFFF;
+            border: 1px solid #E8E8E8;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 22px;
+            color: #2B2B2B;
+            padding: 8px 0;
+            text-align: center;
+            margin-left: 10px;
+            min-width: 68px;
+            height: 38px;
+            box-sizing: border-box;
+            position: relative;
+            sup {
+              position: absolute;
+              font-size: 10px;
+              top: 0;
+              margin-left: 1px;
+            }
+          }
+        }
+
+      }
+      .block-section-image {
+        padding-top: 36px;
+        img {
+          max-width: 100%;
+        }
+      }
+    }
   }
 </style>

@@ -1,0 +1,293 @@
+<template>
+  <div class="page-calc-freezing">
+    <BlockSection
+      title="Расчет"
+      titlePage="БЕТОН ДЛЯ ПЛИТ"
+      tip="Расчитать объем сложных монолитных плит удобней всего, разделив общий объем на сектора. Таким образом..."
+    >
+      <template v-slot:inputFields>
+        <div class="field-section field-section-select">
+          <div class="field-section__title">Страна:</div>
+          <div class="field">
+            <select name="" id="">
+              <option value="">Российская Федерация</option>
+            </select>
+            <span class="meas">
+              <img src="/images/arrow-select.svg" alt="">
+            </span>
+          </div>
+        </div>
+        <div class="field-section field-section-select">
+          <div class="field-section__title">Регион:</div>
+          <div class="field">
+            <select name="" id="">
+              <option value="">Московская обл</option>
+            </select>
+            <span class="meas">
+              <img src="/images/arrow-select.svg" alt="">
+            </span>
+          </div>
+        </div>
+        <div class="field-section field-section-select">
+          <div class="field-section__title">Город:</div>
+          <div class="field">
+            <select name="" id="">
+              <option value="">Москва</option>
+            </select>
+            <span class="meas">
+              <img src="/images/arrow-select.svg" alt="">
+            </span>
+          </div>
+        </div>
+        <div class="field-section field-section-select">
+          <div class="field-section__title">Тип сооружения:</div>
+          <div class="field">
+            <select name="" id="">
+              <option value="">Здание, устраиваемое на лагах по грунту, без подвала, </option>
+            </select>
+            <span class="meas">
+              <img src="/images/arrow-select.svg" alt="">
+            </span>
+          </div>
+        </div>
+      </template>
+
+      <template v-slot:image>
+        <img src="/images/freezing-image.svg" />
+      </template>
+    </BlockSection>
+
+    <div class="calculation_blockButtonContainer">
+      <button
+        class="calculation_blockButton Orange m-40"
+      >
+        ПОКАЗАТЬ РЕЗУЛЬТАТ
+      </button>
+      <button class="calculation_blockButton">СКАЧАТЬ ФАЙЛ</button>
+    </div>
+
+    <BlockSectionResult :gorisontalResult="true">
+      <template v-slot:head>
+        <div class="column column-fields-00100 col-50">
+          <div class="title">Общий расчет глубины промерзания грунта</div>
+          <div class="field mb-20">
+            <div class="text">Страна:</div>
+            <div class="itog">Российская Федерация</div>
+          </div>
+          <div class="field mb-20">
+            <div class="text">Регион:</div>
+            <div class="itog">Московская обл</div>
+          </div>
+          <div class="field mb-20">
+            <div class="text">Город:</div>
+            <div class="itog">Москва</div>
+          </div>
+          <div class="field mb-20">
+            <div class="text">Тип сооружения:</div>
+            <div class="itog">Здание, устраиваемое на лагах по грунту, без подвала, с полами</div>
+          </div>
+        </div>
+      </template>
+      
+      <template v-slot:btnSection>
+        <button class="calculation_blockButton Orange mt-10">
+          Рассчитать стоимость
+        </button>
+      </template>
+
+      <template v-slot:information>
+        <div class="sec-1">
+          <div class="title">Результат расчетной глубины промерзания для города Москва:</div>
+          <table cols="6">
+            <thead>
+              <tr>
+                <th rowspan="2" colspan="1">Вид грунта (который промерзает)</th>
+                <th colspan="5"><span class="opacity">Глубина промерзания грунта при суточной температуре воздуха в помещении —</span> df, м</th>
+              </tr>
+              <tr>
+                <th>0⁰C</th>
+                <th>5⁰C</th>
+                <th>10⁰C</th>
+                <th>15⁰C</th>
+                <th>20⁰C</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Глина и суглинок</td>
+
+                <td class="td-mobile">0⁰C</td>
+                <td class="td-mobile">5⁰C</td>
+                <td class="td-mobile">10⁰C</td>
+                <td class="td-mobile">15⁰C</td>
+                <td class="td-mobile">20⁰C</td>
+
+                <td>1,12</td>
+                <td>1</td>
+                <td>0,89</td>
+                <td>0,78</td>
+                <td>0,67</td>
+              </tr>
+
+              <tr>
+                <td>Супесь, песок пылеватый и мелкий</td>
+
+                <td class="td-mobile">0⁰C</td>
+                <td class="td-mobile">5⁰C</td>
+                <td class="td-mobile">10⁰C</td>
+                <td class="td-mobile">15⁰C</td>
+                <td class="td-mobile">20⁰C</td>
+
+                <td>1,34</td>
+                <td>1,21</td>
+                <td>1,08</td>
+                <td>0,94</td>
+                <td>0,81</td>
+              </tr>
+
+              <tr>
+                <td>Песок средней крупности, крупной или гравелистый</td>
+
+                <td class="td-mobile">0⁰C</td>
+                <td class="td-mobile">5⁰C</td>
+                <td class="td-mobile">10⁰C</td>
+                <td class="td-mobile">15⁰C</td>
+                <td class="td-mobile">20⁰C</td>
+
+                <td>1,44</td>
+                <td>1,3</td>
+                <td>1,16</td>
+                <td>1,01</td>
+                <td>0,87</td>
+              </tr>
+
+              <tr>
+                <td>Крупнообломочные грунты</td>
+                
+                <td class="td-mobile">0⁰C</td>
+                <td class="td-mobile">5⁰C</td>
+                <td class="td-mobile">10⁰C</td>
+                <td class="td-mobile">15⁰C</td>
+                <td class="td-mobile">20⁰C</td>
+
+                <td>1,63</td>
+                <td>1,47</td>
+                <td>1,31</td>
+                <td>1,15</td>
+                <td>0,98</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="sec-2">
+          <div class="title">Результат нормативная глубины промерзания для города Москва:</div>
+          <table>
+            <thead>
+              <tr>
+                <th>Вид грунта (который промерзает)</th>
+                <th><span class="opacity">Промерзания — </span>dn, м</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Глина и суглинок</td>
+                <td>1,11</td>
+              </tr>
+              <tr>
+                <td>Супесь, песок пылеватый и мелкий</td>
+                <td>1,34</td>
+              </tr>
+              <tr>
+                <td>Песок средней крупности,  или гравелистый</td>
+                <td>1,44</td>
+              </tr>
+              <tr>
+                <td>Крупнообломочные грунты</td>
+                <td>1,63</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </template>
+
+      <template v-slot:result>
+        <div class="field-total">
+          <div class="text">Стоимость рассчета:</div>
+          <div class="info">0 руб.</div>
+          <div class="calculation_blockButtonMiniContainer pl-0 mt-37 lg-visible">
+            <button class="calculation_blockButton m-40">
+              сохранить ФАЙЛ
+            </button>
+            <button class="calculation_blockButton Orange">
+              Оформить заказ
+            </button>
+          </div>
+        </div>
+      </template>
+      <template v-slot:resultInfo>
+        <div class="result-info">
+          <div class="title">
+            ВАЖНО! 
+          </div>
+          <div class="text">
+            Если основание опалубкии имеет уклон, или перепады высот, требуется расчет с учетом медианных значений высотных отметок. Для таких расчетов советуем вызвать специалиста нашего завода на объект. Он произведет необходиммый объем измерений и определит требуемый объем наиболее близко к реальному значению!
+          </div>
+        </div>
+        <div class="calculation_blockButtonMiniContainer pl-0 mt-37 mb-visible">
+          <button class="calculation_blockButton m-40">
+            сохранить ФАЙЛ
+          </button>
+          <button class="calculation_blockButton Orange">
+            Оформить заказ
+          </button>
+        </div>
+      </template>
+    </BlockSectionResult>
+    <div class="calc_block_result_sidebar gorisontal">
+      <FormQuetions :titlePage="titlePage" />
+      <QrCode />
+    </div>
+    <HelpBetter />
+    <readme />
+  </div>
+</template>
+
+<script>
+import { defineComponent } from "vue";
+import HelpBetter from "../newComponents/HelpBetter.vue";
+import BlockSection from "../newComponents/BlockSection.vue";
+import BlockSectionResult from "../newComponents/BlockSectionResult.vue";
+import readme from "./readme.vue";
+import FormQuetions from '../newComponents/FormQuetions.vue';
+import QrCode from '../newComponents/QrCode.vue';
+
+export default defineComponent({
+  data() {
+    return {
+      modal: false,
+    };
+  },
+  components: {
+    BlockSection,
+    BlockSectionResult,
+    HelpBetter,
+    readme,
+    FormQuetions,
+    QrCode
+    // "readme": readme,
+    // "modal": modal,
+    // HelpBetter
+  },
+});
+</script>
+
+<style lang="scss">
+  .page-calc-freezing {
+    .help-better {
+      margin-top: 63px;
+    }
+    .calc_readme {
+      margin-top: 63px;
+    }
+  }
+</style> 
