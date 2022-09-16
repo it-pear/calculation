@@ -9,7 +9,10 @@
     <div class="information">
       <slot name="information"></slot>
     </div>
-    <div class="result" :class="{'result-gorisontal': gorisontalResult}">
+    <div
+      class="result" 
+      :class="{'result-gorisontal': gorisontalResult, 'result-gorisontal2': gorisontalResult2}"
+    >
       <div class="total">
         <div class="title">Результат</div>
         <slot name="result"></slot>
@@ -24,7 +27,8 @@ import {defineComponent} from 'vue'
 
 export default defineComponent({
   props: {
-    gorisontalResult: Boolean
+    gorisontalResult: Boolean,
+    gorisontalResult2: Boolean,
   },
   data() {
     return {
@@ -102,6 +106,15 @@ export default defineComponent({
               top: -5px;
               margin-left: 1px;
               font-size: 10px;
+            }
+          }
+        }
+        .field-limitation {
+          @media (min-width: 772px) {
+            .text {
+              min-width: 167px;
+              width: 100%;
+              white-space: pre-wrap;
             }
           }
         }
@@ -205,6 +218,17 @@ export default defineComponent({
           min-height: 365px;
         }
       }
+      .sec-2.sec-3 {
+        flex: 1 1 487px;
+        max-width: 487px;
+        tbody {
+          tr {
+            td {
+              text-align: center;
+            }
+          }
+        }
+      }
       .title {
         font-weight: 600;
         font-size: 20px;
@@ -223,6 +247,11 @@ export default defineComponent({
       .total {
         max-width: 340px;
         width: 100%;
+        .fields-sections {
+          .col-50 {
+
+          }
+        }
         .title {
           font-weight: 600;
           font-size: 20px;
@@ -257,6 +286,7 @@ export default defineComponent({
               font-size: 10px;
             }
           }
+          
         }
         .field-total {
           display: flex;
@@ -274,6 +304,15 @@ export default defineComponent({
             display: flex;
             flex-wrap: nowrap;
             white-space: nowrap;
+          }
+        }
+      }
+      .total-gorisontal {
+        max-width: 100%;
+        flex: 0 0 100%;
+        .fields-sections {
+          .col-50 {
+
           }
         }
       }
@@ -334,6 +373,63 @@ export default defineComponent({
         }
       }
     }
+    .result-gorisontal2 {
+      @media (min-width: 772px) {
+        flex-wrap: wrap;
+        .total {
+          flex: 0 0 100%;
+          max-width: 100%;
+          .title {
+            margin-bottom: 15px;
+          }
+          .fields-sections {
+            display: flex;
+            .col-50 {
+              flex: 1 1 50%;
+              max-width: 50%;
+              &:first-child {
+                padding-right: 25px;
+              }
+              &:last-child {
+                padding-left: 25px;
+                padding-top: 41px;
+                padding-right: 50px;
+              }
+              .field-total {
+                display: none;
+              }
+            }
+          }
+        }
+        .result-info {
+          padding-top: 23px;
+          &.max-410 {
+            max-width: 518px;
+          }
+          &.pl-30 {
+            padding-left: 0;
+          }
+        }
+        .field-total {
+          flex: 0 0 100%;
+          display: flex;
+          align-items: center;
+          padding-top: 25px;
+          .text,
+          .info {
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 140%;
+            color: #2B2B2B;
+          }
+          .info {
+            margin-left: 62px;
+          }
+        }
+      }
+    }
+
+
     @media(max-width: 772px) {
       box-shadow: 5px 8px 18px rgba(98, 94, 88, 0.12);
       padding-bottom: 31px;
@@ -564,7 +660,25 @@ export default defineComponent({
         .lg-visible {
           display: none;
         }
-      }      
+      }    
+      .result-gorisontal2 {
+        & > .field-total {
+          padding-top: 25px;
+          width: 100%;
+          .text,
+          .info {
+            display: none !important;
+          }
+          .calculation_blockButtonMiniContainer {
+            padding-left: 0;
+            padding-top: 0;
+          }
+        }  
+        .result-info {
+          
+        }
+      }
+
     }
   }
 </style>

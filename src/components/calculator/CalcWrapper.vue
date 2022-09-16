@@ -10,6 +10,8 @@
       <p6 v-if="currentPage === 5"></p6>
       <p7 v-if="currentPage === 6"></p7>
       <p8 v-if="currentPage === 7"></p8>
+      <p9 v-if="currentPage === 8"></p9>
+      <p10 v-if="currentPage === 9"></p10>
     </div>
     
   </div>
@@ -27,8 +29,9 @@ import page5 from './Calc5.vue'
 import page6 from './Calc6.vue'
 import page7 from './Calc7.vue'
 import page8 from './Calc8.vue'
+import page9 from './Calc9.vue'
+import page10 from './Calc10.vue'
 import {TPages} from "./types";
-
 
 export default defineComponent({
   props: {
@@ -44,6 +47,8 @@ export default defineComponent({
     "p6": page6,
     "p7": page7,
     "p8": page8,
+    "p9": page9,
+    "p10": page10,
   },
   template: {}
 })

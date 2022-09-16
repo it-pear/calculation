@@ -137,6 +137,7 @@ export default defineComponent({
           line-height: 19px;
           color: #696969;
           min-width: 178px;
+          width: 178px;
           b {
             color: #3C3C3C;
           }
@@ -158,6 +159,7 @@ export default defineComponent({
               color: #C5C5C5;
             }
           }
+          
           .meas {
             font-weight: 400;
             font-size: 14px;
@@ -172,10 +174,22 @@ export default defineComponent({
             align-items: center;
           }
         }
-        &-select {
+        &-select,
+        &-select-2 {
           .field {
             max-width: 465px;
             width: 100%;
+            
+            .inp {
+              border: 1px solid #E8E8E8;
+              border-radius: 4px;
+              padding: 10.5px 12px 10.5px 15px;
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 19px;
+              width: 100%;
+              margin-left: 0;
+            }
             select {
               border: 1px solid #E8E8E8;
               border-radius: 4px;
@@ -186,6 +200,7 @@ export default defineComponent({
               line-height: 19px;
               color: #000000;
               width: 100%;
+              max-width: 100%;
               -moz-appearance: none;
               -webkit-appearance: none;
               overflow: hidden;
@@ -197,7 +212,11 @@ export default defineComponent({
             }
           }
         }
-
+        &-select-2 {
+          .field {
+            max-width: 256px;
+          }
+        }
       }
 
       .field-section-itog {
