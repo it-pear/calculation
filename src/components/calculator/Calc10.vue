@@ -200,12 +200,16 @@ export default defineComponent({
         flex-wrap: wrap !important;
         .title {
           margin-bottom: 10px !important;
+          flex: 0 0 100%;
         }
-        .inp-itog {
-          &:first-child {
-            margin-left: 0 !important;
+        .field-section-itog {
+          .inp-itog {
+            &:first-child {
+              margin-left: 0 !important;
+            }
           }
         }
+        
       }
     }
   }
