@@ -350,6 +350,9 @@ export default defineComponent({
 
 <style lang="scss">
   .page-calc-materials {
+    .block-section-result .information {
+      display: none;
+    }
     .help-better {
       margin-top: 63px;
     }

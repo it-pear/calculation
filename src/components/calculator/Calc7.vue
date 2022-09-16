@@ -139,6 +139,9 @@ export default defineComponent({
     .help-better {
       margin-top: 63px;
     }
+    .block-section-result .information {
+      display: none;
+    }
     .calc_readme {
       margin-top: 63px;
     }

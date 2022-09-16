@@ -195,5 +195,18 @@ export default defineComponent({
         margin-top: 0;
       }
     }
+    .block-section .column .field-section-itog {
+      @media (max-width: 772px) {
+        flex-wrap: wrap !important;
+        .title {
+          margin-bottom: 10px !important;
+        }
+        .inp-itog {
+          &:first-child {
+            margin-left: 0 !important;
+          }
+        }
+      }
+    }
   }
 </style>
