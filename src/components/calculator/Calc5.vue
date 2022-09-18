@@ -99,7 +99,7 @@ export default defineComponent({
       typeBeton: '',
       markaBeton: '',
       podvigBeton: '',
-      totalModalPrice: 0
+      totalModalPrice: 0 
     }
   },
   computed: {

@@ -1,6 +1,6 @@
 <template>
   <div class="calс">
-    <h1 class="calc_title">{{ pages.title }}</h1>
+    <h2 class="calc_title" style="text-align: left;">{{ pages.title }}</h2>
     <div class="calc_container">
       <p1 v-if="currentPage === 0"></p1>
       <p2 v-if="currentPage === 1"></p2>

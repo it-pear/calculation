@@ -3,13 +3,13 @@
     <!--    Простая-->
     <div class="calc_block">
       <div class="calc_leftBlock">
-        <h2 class="calc_block_title">
+        <h3 class="calc_block_title">
           Простая плита
           <span class="calc_block_tip">
             подсказка 
             <div>Данные калькулятора будут верны только в том случае, если высота не меняется на участках опалубки и не нарушена геометрия самой опалубочной системы</div>
           </span>
-        </h2>
+        </h3>
         <div class="calc_block_inputContainer">Общая длина, L:
           <input type="number" placeholder="Длина" v-model.number="simple.l"><span class="metr">м</span>
         </div>
@@ -66,13 +66,13 @@
         <div class="calc_block_inlineContainer calc_block_triangle" v-for="(undefined_, index) in triangle.values" :key="index">
 
           <span class="calc_section_title">Треугольный сектор {{ index + 1 }}:</span>
-          <input type="number" style="width: 100px; padding: 9px 8px; margin-top: 6px;" v-model.number="triangle.values[index].a" placeholder="Сторона a"><span class="metr">м</span>
+          <input type="number" style="width: 100px; padding: 9px 8px; margin-top: 6px;" v-model.number="triangle.values[index].a" data-before-placeholder="Сторона" placeholder="Сторона a"><span class="metr">м</span>
           <span class="calc_section_spread">&#215;</span>
-          <input type="number" style="width: 100px; padding: 9px 8px; margin-top: 6px;" v-model.number="triangle.values[index].b" placeholder="Сторона b"><span class="metr">м</span>
+          <input type="number" style="width: 100px; padding: 9px 8px; margin-top: 6px;" v-model.number="triangle.values[index].b" data-before-placeholder="Сторона" placeholder="Сторона b"><span class="metr">м</span>
           <span class="calc_section_spread">&#215;</span>
-          <input type="number" style="width: 100px; padding: 9px 8px; margin-top: 6px;" v-model.number="triangle.values[index].с" placeholder="Сторона с"><span class="metr">м</span>
+          <input type="number" style="width: 100px; padding: 9px 8px; margin-top: 6px;" v-model.number="triangle.values[index].с" data-before-placeholder="Сторона" placeholder="Сторона с"><span class="metr">м</span>
           <span class="calc_section_spread">&#215;</span>
-          <input type="number" style="width: 147px; padding: 9px 8px; margin-top: 6px;" v-model.number="triangle.values[index].h" placeholder="Высота&#x00A; опалубки"><span class="metr">м</span>
+          <input type="number" style="width: 147px; padding: 9px 8px; margin-top: 6px;" v-model.number="triangle.values[index].h" data-after-placeholder="опалубки" placeholder="Высота&#x00A; опалубки"><span class="metr">м</span>
           <span class="close" @click="removeField(index, triangle)">&#215;</span>
         </div>
       </template>

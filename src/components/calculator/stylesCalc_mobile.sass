@@ -32,22 +32,30 @@
     &_block_inlineContainer
       flex-flow: row wrap
       justify-content: space-between
+      position: relative
 
       input
         order: 0
         width: 50px
         flex: 1
+        padding-left: 10px
+        font-size: 15px
 
       .calc_section
         &_title
           flex: 1 1 90%
           margin-bottom: 10px
           order: -2
-
+      .calc_section_spread
+        margin: auto 4px
       .close
-        margin-bottom: 10px
+        margin-bottom: 0
         order: -1
-
+        position: absolute
+        right: 0
+        top: 0
+        margin: 0
+        font-size: 20px
     &_block_inputResult
       display: flex
       width: unset
@@ -57,8 +65,8 @@
     display: block
     flex-flow: wrap
     box-sizing: content-box !important
-    padding-left: 10px !important
-    padding-right: 10px !important
+    padding-left: 0 !important
+    padding-right: 0 !important
 
     .calc_blockButtonContainer
       display: flex
@@ -80,6 +88,8 @@
 
       img
         width: 100%
+  .mb-none
+    display: none !important
 
 @media (max-width: 500px)
   .calc
@@ -97,3 +107,4 @@
     &_Image
       height: 160px
       width: auto
+      max-width: 100%

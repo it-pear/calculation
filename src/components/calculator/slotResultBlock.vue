@@ -4,17 +4,17 @@
       <div class="calc_leftBlock">
         <div class="calc_row">
           <div class="calc__left">
-            <h2 class="calc_block_title">
+            <p class="calc_block_title">
               {{ title }}
-            </h2>
+            </p>
             <div class="calc_block_inline">
               <slot name="total"></slot>
             </div>
           </div>
           <div class="calc__right">
-            <h2 class="calc_block_title">
+            <p class="calc_block_title">
               Поссчитать стоимость бетона для вашей конструкции
-            </h2>
+            </p>
             <div class="calc_block_inline">
               <div class="calc_block_inputResult">
                 <div class="calc_block_inputResult__title">Выбрать Вид бетона</div>  
@@ -352,6 +352,7 @@ export default defineComponent({
     .calc_block_inline
       display: flex
       flex-flow: wrap row
+      left: 0
 
     .calc_block_inputResult
       margin: 10px
@@ -378,13 +379,12 @@ export default defineComponent({
         right: 32px
         top: 0px
         bottom: 0
+        align-items: center
+        display: flex
         font-weight: bold
         font-size: 16px
         line-height: 19px
         z-index: 0
-        bottom: 0
-        display: flex
-        align-items: center
         color: #2B2B2B
         @media (max-width: 552px)
           right: auto
@@ -403,6 +403,20 @@ export default defineComponent({
     &.Orange
       margin-right: 22px
       background-color: #FFA92E
+
+.calc_concreteCalculation .calc_block_inputResult .placholder 
+  position: absolute
+  right: 32px
+  top: 0
+  bottom: 0
+  align-items: center
+  display: flex
+  font-weight: 700
+  font-size: 16px
+  line-height: 19px
+  z-index: 0
+  color: #2b2b2b
+
 </style>
 
 // <style lang="scss">

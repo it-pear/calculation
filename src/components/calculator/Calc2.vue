@@ -3,13 +3,13 @@
     <!--    Простая-->
     <div class="calc_block" v-if="true">
       <div class="calc_leftBlock">
-        <h2 class="calc_block_title">
+        <h3 class="calc_block_title">
           Простая лента
           <span class="calc_block_tip">
             подсказка 
             <div>Данные калькулятора будут верны только в том случае, если высота не меняется на участках опалубки и не нарушена геометрия самой опалубочной системы</div>
           </span>
-        </h2>
+        </h3>
         <div class="calc_block_inputContainer">Общая длина, L:
           <input type="number" placeholder="Длина" v-model.number="simple.l"><span class="metr">м</span>
         </div>
