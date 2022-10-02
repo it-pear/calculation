@@ -9,14 +9,14 @@
         <div class="field-section">
           <div class="field-section__title">Возраст бетона, дней:</div>
           <div class="field">
-            <input type="number" placeholder="Возраст" class="inp" />
+            <input type="number" placeholder="Возраст" v-model="time" class="inp" />
             <span class="meas">дн</span>
           </div>
         </div>
         <div class="field-section">
           <div class="field-section__title">Температура, градусов:</div>
           <div class="field">
-            <input type="number" placeholder="Температура" class="inp" />
+            <input type="number" placeholder="Температура" v-model="temp" class="inp" />
             <span class="meas">гр</span>
           </div>
         </div>
@@ -58,6 +58,7 @@
               <div class="itog">30 гр</div>
             </div>
           </div>
+          {{result}}
         </template>
 
         <template v-slot:btnSection>
@@ -120,6 +121,25 @@ export default defineComponent({
   data() {
     return {
       modal: false,
+      time: null,
+      temp: null,
+      // coeff: {
+      //   1: 15,
+      //   2: 15
+      //   3: 16
+      //   4: 17
+      //   5: 18
+      //   6: 19
+      //   7: 20
+      //   8: 21
+      //   9: 22
+      //   10: 23
+      //   11: 24
+      //   12: 25
+      //   13: 26
+      //   14: 27
+      //   15: 28
+      // }
     };
   },
   components: {
@@ -129,10 +149,17 @@ export default defineComponent({
     readme,
     FormQuetions,
     QrCode
-    // "readme": readme,
-    // "modal": modal,
-    // HelpBetter
   },
+  computed: {
+    result() {
+      if (this.time < 0 || this.temp > 70) {
+        return 'Невозможно произвести расчет, данные неправильные'
+      } else {
+        return this.time 
+      }
+      // return 'asdasd'
+    },
+  }
 });
 </script>
 
