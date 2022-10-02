@@ -74,7 +74,7 @@
       </template>
     </BlockSection>
 
-    <div class="calculation_blockButtonContainer">
+    <div class="calculation_blockButtonContainer"> 
       <button
         class="calculation_blockButton Orange m-40"
       >
@@ -228,7 +228,7 @@ export default defineComponent({
     // "readme": readme,
     // "modal": modal,
     // HelpBetter
-  },
+  }
 });
 </script>
 

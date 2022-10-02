@@ -24,7 +24,7 @@
 
       <template v-slot:fieldItog>
         <div class="field-section-itog">
-          <div class="title">Размер отмостки:</div>
+          <div class="title">Твердение бетона:</div>
           <div class="inp-itog">0 дн</div>
           <div class="inp-itog">0 гр</div>
         </div>

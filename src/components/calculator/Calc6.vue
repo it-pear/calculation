@@ -38,7 +38,7 @@
 
       <template v-slot:fieldItog>
         <div class="field-section-itog">
-          <div class="title">Размер отмостки:</div>
+          <div class="title">Стоимость отмостки:</div>
           <div class="inp-itog">0 м<sup>3</sup></div>
           <div class="inp-itog">0 шт</div>
         </div>
