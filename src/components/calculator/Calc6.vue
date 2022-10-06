@@ -9,28 +9,47 @@
         <div class="field-section">
           <div class="field-section__title">Периметр дома, <b>М:</b></div>
           <div class="field">
-            <input type="number" placeholder="Периметр" class="inp" />
+            <input
+              type="number"
+              placeholder="Периметр"
+              class="inp"
+              v-model="perimeter"
+            />
             <span class="meas">м</span>
           </div>
         </div>
         <div class="field-section">
           <div class="field-section__title">Ширина отмостки, <b>М:</b></div>
           <div class="field">
-            <input type="number" placeholder="Ширина" class="inp" />
+            <input
+              type="number"
+              placeholder="Ширина"
+              class="inp"
+              v-model="width"
+            />
             <span class="meas">м</span>
           </div>
         </div>
         <div class="field-section">
           <div class="field-section__title">Внешние углы A, <b>ШТ:</b></div>
           <div class="field">
-            <input type="number" placeholder="Углы" class="inp" />
+            <input type="number"
+              placeholder="Углы"
+              class="inp"
+              v-model="external"
+            />
             <span class="meas">шт</span>
           </div>
         </div>
         <div class="field-section">
           <div class="field-section__title">Внутренние углы a, <b>ШТ:</b></div>
           <div class="field">
-            <input type="number" placeholder="Углы" class="inp" />
+            <input
+              type="number"
+              placeholder="Углы"
+              class="inp"
+              v-model="internal"
+            />
             <span class="meas">шт</span>
           </div>
         </div>
@@ -38,9 +57,9 @@
 
       <template v-slot:fieldItog>
         <div class="field-section-itog">
-          <div class="title">Стоимость отмостки:</div>
-          <div class="inp-itog">0 м<sup>3</sup></div>
-          <div class="inp-itog">0 шт</div>
+          <div class="title">Площадь отмостки:</div>
+          <div class="inp-itog">{{result}} м<sup>3</sup></div>
+          <div class="inp-itog">1 шт</div>
         </div>
       </template>
 
@@ -184,27 +203,27 @@
           <div class="title">Общий  рассчет отмостки</div>
           <div class="field mb-20">
             <div class="text">Общий размер отмостки:</div>
-            <div class="itog">0 м<sup>3</sup></div>
+            <div class="itog">{{result}} м<sup>3</sup></div>
           </div>
           <div class="field mb-20">
             <div class="text">Общее количество углов:</div>
-            <div class="itog">0 м<sup>3</sup></div>
+            <div class="itog">{{external + internal}} шт</div>
           </div>
           <div class="field mb-20">
             <div class="text opacity">Периметр дома:</div>
-            <div class="itog">0 м<sup>3</sup></div>
+            <div class="itog">{{perimeter || 0}} м<sup>3</sup></div>
           </div>
           <div class="field mb-20">
             <div class="text opacity">Ширина отмостки:</div>
-            <div class="itog">0 м<sup>3</sup></div>
+            <div class="itog">{{width || 0}} м<sup>3</sup></div>
           </div>
           <div class="field mb-20">
             <div class="text opacity">Внешние углы А:</div>
-            <div class="itog">0 шт</div>
+            <div class="itog">{{external || 0}} шт</div>
           </div>
           <div class="field mb-20">
             <div class="text opacity">Внешние углы а:</div>
-            <div class="itog">0 шт</div>
+            <div class="itog">{{internal || 0}} шт</div>
           </div>
         </div>
 
@@ -288,7 +307,7 @@
         </div>
         <div class="field-total">
           <div class="text">Размер отмостки:</div>
-          <div class="info">0 руб.</div>
+          <div class="info">{{result || 0}} м<sup>3</sup></div>
         </div>
       </template>
       <template v-slot:resultInfo>
@@ -334,7 +353,21 @@ export default defineComponent({
   data() {
     return {
       modal: false,
+      perimeter: null,
+      width: null,
+      external: null,
+      internal: null
     };
+  },
+  computed: {
+    result() {
+      if (this.external < 4) {
+        return 'null'
+      } else {
+        return this.perimeter * this.width + (this.width * this.width * 2 * 2) * 1
+      }
+      
+    },
   },
   components: {
     BlockSection,
