@@ -77,35 +77,35 @@
         <div class="field-section">
           <div class="field-section__title">Брусчатка P, <b>М:</b></div>
           <div class="field">
-            <input type="number" placeholder="Брусчатка" class="inp" />
+            <input type="number" placeholder="Брусчатка" v-model="paving" class="inp" />
             <span class="meas">м</span>
           </div>
         </div>
         <div class="field-section">
           <div class="field-section__title">Бетон B, <b>М:</b></div>
           <div class="field">
-            <input type="number" placeholder="Бетон" class="inp" />
+            <input type="number" placeholder="Бетон" v-model="concrete" class="inp" />
             <span class="meas">м</span>
           </div>
         </div>
         <div class="field-section">
           <div class="field-section__title">Утеплитель U, <b>М:</b></div>
           <div class="field">
-            <input type="number" placeholder="Утеплитель" class="inp" />
+            <input type="number" placeholder="Утеплитель" v-model="insulation" class="inp" />
             <span class="meas">м</span>
           </div>
         </div>
         <div class="field-section">
           <div class="field-section__title">Щебень G, <b>М:</b></div>
           <div class="field">
-            <input type="number" placeholder="Щебень" class="inp" />
+            <input type="number" placeholder="Щебень" v-model="rubble" class="inp" />
             <span class="meas">м</span>
           </div>
         </div>
         <div class="field-section">
           <div class="field-section__title">Песок S, <b>М:</b></div>
           <div class="field">
-            <input type="number" placeholder="Песок" class="inp" />
+            <input type="number" placeholder="Песок" v-model="sand" class="inp" />
             <span class="meas">м</span>
           </div>
         </div>
@@ -170,7 +170,7 @@
           <div class="field">
             <label class="custom-checkbox">
               <input type="checkbox" value="value-1" />
-              <span></span>
+              <span>Выступ (20мм)</span>
             </label>
           </div>
         </div>
@@ -231,27 +231,27 @@
           <div class="title">Общий  рассчет отмостки</div>
           <div class="field mb-20">
             <div class="text">Общий рассчет материалов:</div>
-            <div class="itog">0 м<sup>3</sup></div>
+            <div class="itog">{{pcirsResult}} м<sup>3</sup></div>
           </div>
           <div class="field mb-20">
             <div class="text opacity">Объем брусчатки Р:</div>
-            <div class="itog">0 м<sup>3</sup></div>
+            <div class="itog">{{resultPaving}} м<sup>3</sup></div>
           </div>
           <div class="field mb-20">
             <div class="text opacity">Объем бетона В:</div>
-            <div class="itog">0 м<sup>3</sup></div>
+            <div class="itog">{{resultConcrete}} м<sup>3</sup></div>
           </div>
           <div class="field mb-20">
             <div class="text opacity">Объем утеплителя U:</div>
-            <div class="itog">0 м<sup>3</sup></div>
+            <div class="itog">{{resultInsulation}} м<sup>3</sup></div>
           </div>
           <div class="field mb-20">
             <div class="text opacity">Объем щебеня G:</div>
-            <div class="itog">0 м<sup>3</sup></div>
+            <div class="itog">{{resultRubble}} м<sup>3</sup></div>
           </div>
           <div class="field mb-20">
             <div class="text opacity">Объем песка S:</div>
-            <div class="itog">0 м<sup>3</sup></div>
+            <div class="itog">{{resultSand}} м<sup>3</sup></div>
           </div>
         </div>
 
@@ -262,24 +262,24 @@
             <div class="itog">0 м<sup>3</sup></div>
           </div>
           <div class="field mb-20">
-            <div class="text opacity">Объем брусчатки Р:</div>
-            <div class="itog">0 м<sup>3</sup></div>
+            <div class="text opacity">Геотекстиль:</div>
+            <div class="itog">{{result}} м<sup>3</sup></div>
           </div>
           <div class="field mb-20">
-            <div class="text opacity">Объем бетона В:</div>
-            <div class="itog">0 м<sup>3</sup></div>
+            <div class="text opacity">Арматурная сетка:</div>
+            <div class="itog">{{result}} м<sup>3</sup></div>
           </div>
           <div class="field mb-20">
-            <div class="text opacity">Объем утеплителя U:</div>
-            <div class="itog">0 м<sup>3</sup></div>
+            <div class="text opacity">Бордюр:</div>
+            <div class="itog">{{border}} м.п.</div>
           </div>
           <div class="field mb-20">
-            <div class="text opacity">Объем щебеня G:</div>
-            <div class="itog">0 м<sup>3</sup></div>
+            <div class="text opacity">Опалубка:</div>
+            <div class="itog"> м<sup>3</sup></div>
           </div>
           <div class="field mb-20">
-            <div class="text opacity">Объем песка S:</div>
-            <div class="itog">0 м<sup>3</sup></div>
+            <div class="text opacity">Гидроизоляция:</div>
+            <div class="itog">{{waterproofing}} м<sup>2</sup></div>
           </div>
         </div>
       </template>
@@ -295,11 +295,11 @@
         </div>
         <div class="field">
           <div class="text">Количество углов:</div>
-          <div class="info">0 шт</div>
+          <div class="info">{{external + internal}} шт</div>
         </div>
         <div class="field">
           <div class="text">Рассчет материалов:</div>
-          <div class="info mt-10">0 м<sup>3</sup></div>
+          <div class="info mt-10">{{pcirsResult}} м<sup>3</sup></div>
         </div>
         <div class="field">
           <div class="text">Рассчет материалов:</div>
@@ -353,10 +353,16 @@ export default defineComponent({
   data() {
     return {
       modal: false,
-      perimeter: null,
-      width: null,
-      external: null,
-      internal: null
+      perimeter: 40,
+      width: 1,
+      external: 4,
+      internal: 0,
+
+      paving: 0.06,
+      concrete: 0.1,
+      insulation: 0.05,
+      rubble: 0.3,
+      sand: 0.2
     };
   },
   computed: {
@@ -364,10 +370,33 @@ export default defineComponent({
       if (this.external < 4) {
         return 'null'
       } else {
-        return this.perimeter * this.width + (this.width * this.width * 2 * 2) * 1
+        return this.perimeter * this.width + (this.width * this.width * 2 * 2) - (this.external - 4) + this.internal
       }
-      
     },
+    resultPaving() {
+      return (this.result * this.paving).toFixed(2)
+    },
+    resultConcrete() {
+      return (this.result * this.concrete).toFixed(2)
+    },
+    resultInsulation() {
+      return (this.result * this.insulation).toFixed(2)
+    },
+    resultRubble() {
+      return (this.result * this.rubble).toFixed(2)
+    },
+    resultSand() {
+      return (this.result * this.sand).toFixed(2)
+    },
+    pcirsResult() {
+      return (Number(this.resultPaving) + Number(this.resultConcrete) + Number(this.resultInsulation) + Number(this.resultRubble) + Number(this.resultSand)).toFixed(2)
+    },
+    border() {
+      return this.perimeter + (this.width * 8) + ((this.external - 4) * 2) + (this.internal* 2)
+    },
+    waterproofing() {
+      return (this.perimeter / 100 * 73).toFixed(2)
+    }
   },
   components: {
     BlockSection,
