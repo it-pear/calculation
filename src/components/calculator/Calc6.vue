@@ -396,6 +396,9 @@ export default defineComponent({
     },
     waterproofing() {
       return (this.perimeter / 100 * 73).toFixed(2)
+    },
+    formwork() {
+      return ''
     }
   },
   components: {
