@@ -133,7 +133,7 @@
           <div class="field-section__title">Геотекстиль:</div>
           <div class="field">
             <label class="custom-checkbox">
-              <input type="checkbox" value="value-1" />
+              <input type="checkbox" v-model="checKgeotextile" />
               <span></span>
             </label>
           </div>
@@ -142,7 +142,7 @@
           <div class="field-section__title">Арматурная сетка:</div>
           <div class="field">
             <label class="custom-checkbox">
-              <input type="checkbox" value="value-1" />
+              <input type="checkbox" v-model="checKreinforcing" />
               <span></span>
             </label>
           </div>
@@ -151,7 +151,7 @@
           <div class="field-section__title">Бордюр</div>
           <div class="field">
             <label class="custom-checkbox">
-              <input type="checkbox" value="value-1" />
+              <input type="checkbox" v-model="checKborder" />
               <span></span>
             </label>
           </div>
@@ -160,7 +160,7 @@
           <div class="field-section__title">Опалубка</div>
           <div class="field">
             <label class="custom-checkbox">
-              <input type="checkbox" value="value-1" />
+              <input type="checkbox" v-model="checKformwork" />
               <span></span>
             </label>
           </div>
@@ -169,7 +169,7 @@
           <div class="field-section__title">Гидроизоляция</div>
           <div class="field">
             <label class="custom-checkbox">
-              <input type="checkbox" value="value-1" />
+              <input type="checkbox" v-model="checKwaterproofing" />
               <span>Выступ (20мм)</span>
             </label>
           </div>
@@ -263,23 +263,28 @@
           </div>
           <div class="field mb-20">
             <div class="text opacity">Геотекстиль:</div>
-            <div class="itog">{{result}} м<sup>3</sup></div>
+            <div class="itog" v-if="checKgeotextile">{{result}} м<sup>3</sup></div>
+            <div class="itog" v-if="!checKgeotextile">не выбрано</div>
           </div>
           <div class="field mb-20">
             <div class="text opacity">Арматурная сетка:</div>
-            <div class="itog">{{result}} м<sup>3</sup></div>
+            <div class="itog" v-if="checKreinforcing">{{result}} м<sup>3</sup></div>
+            <div class="itog" v-if="!checKreinforcing">не выбрано</div>
           </div>
           <div class="field mb-20">
             <div class="text opacity">Бордюр:</div>
-            <div class="itog">{{border}} м.п.</div>
+            <div class="itog" v-if="checKborder">{{border}} м.п.</div>
+            <div class="itog" v-if="!checKborder">не выбрано</div>
           </div>
           <div class="field mb-20">
             <div class="text opacity">Опалубка:</div>
-            <div class="itog"> м<sup>3</sup></div>
+            <div class="itog" v-if="checKformwork"> м<sup>3</sup></div>
+            <div class="itog" v-if="!checKformwork">не выбрано</div>
           </div>
           <div class="field mb-20">
             <div class="text opacity">Гидроизоляция:</div>
-            <div class="itog">{{waterproofing}} м<sup>2</sup></div>
+            <div class="itog" v-if="checKwaterproofing">{{waterproofing}} м<sup>2</sup></div>
+            <div class="itog" v-if="!checKwaterproofing">не выбрано</div>
           </div>
         </div>
       </template>
@@ -291,23 +296,33 @@
       <template v-slot:result>
         <div class="field">
           <div class="text">Размер отмостки:</div>
-          <div class="info mt-10">0 м<sup>3</sup></div>
+          <div class="info mt-10">
+            {{result || 0}} м<sup>3</sup>
+          </div>
         </div>
         <div class="field">
           <div class="text">Количество углов:</div>
-          <div class="info">{{external + internal}} шт</div>
+          <div class="info">
+            {{external + internal}} шт
+          </div>
         </div>
         <div class="field">
           <div class="text">Рассчет материалов:</div>
-          <div class="info mt-10">{{pcirsResult}} м<sup>3</sup></div>
+          <div class="info mt-10">
+            {{pcirsResult}} м<sup>3</sup>
+          </div>
         </div>
         <div class="field">
           <div class="text">Рассчет материалов:</div>
-          <div class="info mt-10">0 м<sup>3</sup></div>
+          <div class="info mt-10">
+            0 м<sup>3</sup>
+          </div>
         </div>
         <div class="field-total">
           <div class="text">Размер отмостки:</div>
-          <div class="info">{{result || 0}} м<sup>3</sup></div>
+          <div class="info">
+            {{result || 0}} м<sup>3</sup>
+          </div>
         </div>
       </template>
       <template v-slot:resultInfo>
@@ -362,7 +377,13 @@ export default defineComponent({
       concrete: 0.1,
       insulation: 0.05,
       rubble: 0.3,
-      sand: 0.2
+      sand: 0.2,
+
+      checKgeotextile: false,
+      checKreinforcing: false,
+      checKborder: false,
+      checKformwork: false,
+      checKwaterproofing: false
     };
   },
   computed: {
