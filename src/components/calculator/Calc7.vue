@@ -25,8 +25,8 @@
       <template v-slot:fieldItog>
         <div class="field-section-itog">
           <div class="title">Твердение бетона:</div>
-          <div class="inp-itog">0 дн</div>
-          <div class="inp-itog">0 гр</div>
+          <div class="inp-itog">{{time}} дн</div>
+          <div class="inp-itog">{{temp}} гр</div>
         </div>
       </template>
 
@@ -51,14 +51,13 @@
             <div class="title">Общая  характеристика твердения бетона</div>
             <div class="field mb-20">
               <div class="text">Возраст бетона:</div>
-              <div class="itog">5 дн</div>
+              <div class="itog">{{time}} дн</div>
             </div>
             <div class="field mb-20">
               <div class="text">Температура бетона:</div>
-              <div class="itog">30 гр</div>
+              <div class="itog">{{temp}} гр</div>
             </div>
           </div>
-          {{result}}
         </template>
 
         <template v-slot:btnSection>
@@ -68,7 +67,7 @@
         </template>
         <template v-slot:result>
           <div class="field">
-            <div class="text">По прошествию 5 дней, при температуре 30 градусов, процент прочности бетона будет равен:</div>
+            <div class="text">По прошествию {{time}} дней, при температуре {{temp}} градусов, процент прочности бетона будет равен:</div>
             <div class="info mt-10">81%</div>
           </div>
           <div class="field-total">
@@ -121,25 +120,80 @@ export default defineComponent({
   data() {
     return {
       modal: false,
-      time: null,
-      temp: null,
-      // coeff: {
-      //   1: 15,
-      //   2: 15
-      //   3: 16
-      //   4: 17
-      //   5: 18
-      //   6: 19
-      //   7: 20
-      //   8: 21
-      //   9: 22
-      //   10: 23
-      //   11: 24
-      //   12: 25
-      //   13: 26
-      //   14: 27
-      //   15: 28
-      // }
+      time: 5,
+      temp: 30,
+      coeff: {
+        1: 15,
+        2: 15,
+        3: 15.4,
+        4: 16,
+        5: 16.6,
+        6: 17,
+        7: 17,
+        8: 18,
+        9: 18,
+        10: 18.7,
+        11: 19,
+        12: 19,
+        13: 19.3,
+        14: 20,
+        15: 20,
+        16: 20,
+        17: 20,
+        18: 20.5,
+        19: 21,
+        20: 21,
+        21: 22,
+        22: 23,
+        23: 24,
+        24: 25,
+        25: 26,
+        26: 27,
+        27: 28,
+        28: 29,
+        29: 30,
+        30: 31,
+        31: 32,
+        32: 32,
+        33: 33,
+        34: 34,
+        35: 34,
+        36: 35,
+        37: 36,
+        38: 36,
+        39: 37,
+        40: 37,
+        41: 38,
+        42: 39,
+        43: 39,
+        44: 40,
+        45: 41,
+        46: 41,
+        47: 42,
+        48: 42,
+        49: 43,
+        50: 44,
+        51: 45,
+        52: 45,
+        53: 46,
+        54: 47,
+        55: 48,
+        56: 49,
+        57: 50,
+        58: 50,
+        59: 51,
+        60: 52,
+        61: 53,
+        62: 54,
+        63: 54,
+        64: 55,
+        65: 56,
+        66: 57,
+        67: 58,
+        68: 59,
+        69: 59.5,
+        70: 60,
+      }
     };
   },
   components: {
