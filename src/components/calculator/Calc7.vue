@@ -72,7 +72,7 @@
           </div>
           <div class="field-total">
             <div class="text">Стоимость твердения бетона:</div>
-            <div class="info">0 руб.</div>
+            <div class="info">{{result}}</div>
           </div>
         </template>
         <template v-slot:resultInfo>
@@ -122,78 +122,292 @@ export default defineComponent({
       modal: false,
       time: 5,
       temp: 30,
-      coeff: {
-        1: 15,
-        2: 15,
-        3: 15.4,
-        4: 16,
-        5: 16.6,
-        6: 17,
-        7: 17,
-        8: 18,
-        9: 18,
-        10: 18.7,
-        11: 19,
-        12: 19,
-        13: 19.3,
-        14: 20,
-        15: 20,
-        16: 20,
-        17: 20,
-        18: 20.5,
-        19: 21,
-        20: 21,
-        21: 22,
-        22: 23,
-        23: 24,
-        24: 25,
-        25: 26,
-        26: 27,
-        27: 28,
-        28: 29,
-        29: 30,
-        30: 31,
-        31: 32,
-        32: 32,
-        33: 33,
-        34: 34,
-        35: 34,
-        36: 35,
-        37: 36,
-        38: 36,
-        39: 37,
-        40: 37,
-        41: 38,
-        42: 39,
-        43: 39,
-        44: 40,
-        45: 41,
-        46: 41,
-        47: 42,
-        48: 42,
-        49: 43,
-        50: 44,
-        51: 45,
-        52: 45,
-        53: 46,
-        54: 47,
-        55: 48,
-        56: 49,
-        57: 50,
-        58: 50,
-        59: 51,
-        60: 52,
-        61: 53,
-        62: 54,
-        63: 54,
-        64: 55,
-        65: 56,
-        66: 57,
-        67: 58,
-        68: 59,
-        69: 59.5,
-        70: 60,
-      }
+      coeffInfo: [
+        {
+          procent: 15,
+          coeff: 9
+        },
+        {
+          procent: 15,
+          coeff: 8.7
+        },
+        {
+          procent: 15.4,
+          coeff: 9
+        },
+        {
+          procent: 16,
+          coeff: 9.2
+        },
+        {
+          procent: 16.6,
+          coeff: 9.5
+        },
+        {
+          procent: 17,
+          coeff: 9.8
+        },
+        {
+          procent: 17,
+          coeff: 10
+        },
+        {
+          procent: 18,
+          coeff: 10.2
+        },
+        {
+          procent: 18,
+          coeff: 10.5
+        },
+        {
+          procent: 18.7,
+          coeff: 10.7
+        },
+        {
+          procent: 19,
+          coeff: 11
+        },
+        {
+          procent: 19,
+          coeff: 11.2
+        },
+        {
+          procent: 19.3,
+          coeff: 11.3
+        },
+        {
+          procent: 20,
+          coeff: 11.4
+        },
+        {
+          procent: 20,
+          coeff: 11.5
+        },
+        {
+          procent: 20,
+          coeff: 11.5
+        },
+        { // 15
+          procent: 20,
+          coeff: 11.5
+        },
+        {
+          procent: 20.5,
+          coeff: 11.7
+        },
+        { // 17
+          procent: 21,
+          coeff: 11.8
+        },
+        {
+          procent: 21,
+          coeff: 11.9
+        },
+        {
+          procent: 22,
+          coeff: 12
+        },
+        {
+          procent: 23,
+          coeff: 12.8
+        },
+        {
+          procent: 24,
+          coeff: 12.8
+        },
+        { // 22
+          procent: 25,
+          coeff: 13.4
+        },
+        {
+          procent: 26,
+          coeff: 14
+        },
+        {
+          procent: 27,
+          coeff: 14.6
+        },
+        {
+          procent: 28,
+          coeff: 15.2
+        },
+        {
+          procent: 29,
+          coeff: 15.9
+        },
+        { // 27
+          procent: 30,
+          coeff: 16.4
+        },
+        {
+          procent: 31,
+          coeff: 17.1
+        },
+        {
+          procent: 32,
+          coeff: 17.6
+        },
+        {
+          procent: 32,
+          coeff: 18.3
+        },
+        {
+          procent: 33,
+          coeff: 18.6
+        },
+        { // 32
+          procent: 34,
+          coeff: 18.9
+        },
+        {
+          procent: 34,
+          coeff: 19.3
+        },
+        {
+          procent: 35,
+          coeff: 19.7
+        },
+        {
+          procent: 36,
+          coeff: 20.1
+        },
+        {
+          procent: 36,
+          coeff: 20.5
+        },
+        {
+          procent: 37,
+          coeff: 20.5
+        },
+        { // 37
+          procent: 37,
+          coeff: 20.8
+        },
+        {
+          procent: 38,
+          coeff: 21.2
+        },
+        {
+          procent: 39,
+          coeff: 21.6
+        },
+        { // 40
+          procent: 39,
+          coeff: 21.9
+        },
+        {
+          procent: 40,
+          coeff: 22.2
+        },
+        {
+          procent: 41,
+          coeff: 22.6
+        },
+        {
+          procent: 41,
+          coeff: 23
+        },
+        { // 44
+          procent: 42,
+          coeff: 23.4
+        },
+        { // 45
+          procent: 42,
+          coeff: 23.7
+        },
+        {
+          procent: 43,
+          coeff: 24.1
+        },
+        {
+          procent: 44,
+          coeff: 24.5
+        },
+        {
+          procent: 45,
+          coeff: 24.9
+        },
+        {
+          procent: 45,
+          coeff: 25.1
+        },
+        {
+          procent: 46,
+          coeff: 25.5
+        },
+        {
+          procent: 47,
+          coeff: 26.1
+        },
+        {
+          procent: 48,
+          coeff: 26.6
+        },
+        {
+          procent: 49,
+          coeff: 27
+        },
+        {
+          procent: 50,
+          coeff: 27.5
+        },
+        {
+          procent: 50,
+          coeff: 28
+        },
+        { // 56
+          procent: 51,
+          coeff: 28.4
+        },
+        {
+          procent: 52,
+          coeff: 29
+        },
+        {
+          procent: 53,
+          coeff: 28
+        },
+        {
+          procent: 54,
+          coeff: 29.9
+        },
+        {
+          procent: 54,
+          coeff: 30.4
+        },
+        { // 61
+          procent: 55,
+          coeff: 30.9
+        },
+        {
+          procent: 56,
+          coeff: 31.4
+        },
+        {
+          procent: 57,
+          coeff: 31.9
+        },
+        {
+          procent: 58,
+          coeff: 33.4
+        },
+        {
+          procent: 59,
+          coeff: 34.8
+        },
+        {
+          procent: 59.5,
+          coeff: 35.3
+        },
+        {
+          procent: 60,
+          coeff: 35.3
+        },
+        {
+          procent: 61,
+          coeff: 37.3
+        },
+      ]
     };
   },
   components: {
@@ -206,12 +420,22 @@ export default defineComponent({
   },
   computed: {
     result() {
-      if (this.time < 0 || this.temp > 70) {
-        return 'Невозможно произвести расчет, данные неправильные'
+      if (this.time < 0 || this.temp > 70 || this.temp < 0) {
+        return 'null'
+      } else if (this.time === 1) {
+        return this.coeffInfo[this.temp].procent
+      } else if (this.time === 2) { 
+        return this.coeffInfo[this.temp].procent + this.coeffInfo[this.temp].coeff
       } else {
-        return this.time 
+        let i = this.coeffInfo[this.temp].procent - this.coeffInfo[this.temp].coeff
+        let arr = []
+        while (i <= 150) {
+          let result = i / 100 * 33.333
+          i += this.coeffInfo[this.temp].procent + result
+          arr.push(i)
+        }
+        return console.log(arr)
       }
-      // return 'asdasd'
     },
   }
 });
