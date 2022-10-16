@@ -68,11 +68,15 @@
         <template v-slot:result>
           <div class="field">
             <div class="text">По прошествию {{time}} дней, при температуре {{temp}} градусов, процент прочности бетона будет равен:</div>
-            <div class="info mt-10">81%</div>
+            <div class="info mt-10" v-if="time === 0">Null</div>
+            <div class="info mt-10" v-else-if="result > 100">100%</div>
+            <div class="info mt-10" v-else>{{result}}%</div>
           </div>
           <div class="field-total">
             <div class="text">Стоимость твердения бетона:</div>
-            <div class="info">{{result}}</div>
+            <div class="info" v-if="time === 0">Null</div>
+            <div class="info" v-else-if="result > 100">100%</div>
+            <div class="info" v-else>{{result}}%</div>
           </div>
         </template>
         <template v-slot:resultInfo>
@@ -120,8 +124,8 @@ export default defineComponent({
   data() {
     return {
       modal: false,
-      time: 5,
-      temp: 30,
+      time: 1,
+      temp: 0,
       coeffInfo: [
         {
           procent: 15,
@@ -231,11 +235,11 @@ export default defineComponent({
           procent: 28,
           coeff: 15.2
         },
-        {
+        { // 25
           procent: 29,
           coeff: 15.9
         },
-        { // 27
+        { // 26
           procent: 30,
           coeff: 16.4
         },
@@ -427,14 +431,34 @@ export default defineComponent({
       } else if (this.time === 2) { 
         return this.coeffInfo[this.temp].procent + this.coeffInfo[this.temp].coeff
       } else {
-        let i = this.coeffInfo[this.temp].procent - this.coeffInfo[this.temp].coeff
+        let i = Math.ceil(this.coeffInfo[this.temp].procent - this.coeffInfo[this.temp].coeff)
+        let i2 = Math.ceil(this.coeffInfo[this.temp].procent + this.coeffInfo[this.temp].coeff)
+        let iterration = 0
+        let result = 0
         let arr = []
-        while (i <= 150) {
-          let result = i / 100 * 33.333
-          i += this.coeffInfo[this.temp].procent + result
-          arr.push(i)
+        while (result <= 100) {
+          if (iterration === 0) {
+            let one = i / 100 * 83
+            let subtitle = one + i2
+            result += subtitle
+          } else if (iterration === 1) {
+            let one = result - i2
+            let subtitle = one / 100 * 83
+            result += subtitle
+          } else if (iterration > 14) {
+            result += 1
+          } else {
+            let one = arr[arr.length - 1] / 100 * 83
+            let two = arr[arr.length - 2] / 100 * 83
+            let subReult = one - two
+            result += subReult
+          }  
+          if (result > 100) 100
+          arr.push(result)
+          iterration++
         }
-        return console.log(arr)
+        console.log(arr)
+        return Math.round(arr[this.time - 3] > 100 ? 100 : arr[this.time - 3])
       }
     },
   }
