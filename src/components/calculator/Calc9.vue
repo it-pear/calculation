@@ -8,8 +8,14 @@
         <div class="field-section field-section-select">
           <div class="field-section__title">Страна:</div>
           <div class="field">
-            <select name="" id="">
-              <option value="">Российская Федерация</option>
+            <select v-model="country">
+              <option
+                v-for="option in countryOptions"
+                :value="option"
+                :key="option"
+              >
+                {{ option.text }}
+              </option>
             </select>
             <span class="meas">
               <img src="/images/arrow-select.svg" alt="">
@@ -19,8 +25,14 @@
         <div class="field-section field-section-select">
           <div class="field-section__title">Регион:</div>
           <div class="field">
-            <select name="" id="">
-              <option value="">Московская обл</option>
+            <select v-model="region">
+              <option
+                v-for="option in country.region"
+                :value="option"
+                :key="option"
+              >
+                {{ option.text }}
+              </option>
             </select>
             <span class="meas">
               <img src="/images/arrow-select.svg" alt="">
@@ -30,8 +42,14 @@
         <div class="field-section field-section-select">
           <div class="field-section__title">Город:</div>
           <div class="field">
-            <select name="" id="">
-              <option value="">Москва</option>
+            <select v-model="city">
+              <option
+                v-for="option in region.city"
+                :value="option"
+                :key="option"
+              >
+                {{ option.text }}
+              </option>
             </select>
             <span class="meas">
               <img src="/images/arrow-select.svg" alt="">
@@ -41,26 +59,38 @@
         <div class="field-section field-section-select">
           <div class="field-section__title">Тип сооружения:</div>
           <div class="field">
-            <select name="" id="">
-              <option value="">Здание, устраиваемое на лагах по грунту, без подвала, </option>
+            <select v-model="building">
+              <option
+                v-for="option in options2"
+                :value="option"
+                :key="option"
+              >
+                {{ option.text }}
+              </option>
             </select>
             <span class="meas">
               <img src="/images/arrow-select.svg" alt="">
             </span>
           </div>
-        </div>
+        </div> 
         <div class="field-section field-section-select">
           <div class="field-section__title">Глубина залегания подземных вод, М:</div>
           <div class="field">
-            <input type="number" placeholder="Возраст" class="inp" value="5" />
+            <input type="number" placeholder="Возраст" class="inp"  v-model="depth" />
             <span class="meas">м</span>
           </div>
         </div>
         <div class="field-section field-section-select">
           <div class="field-section__title">Грунты под подошвой фундамента:</div>
           <div class="field">
-            <select name="" id="">
-              <option value="">Суглинки, глины, а также крупнообломочные грунты с глинистым заполнителем при показателе текучести грунта или заполнителя при IL меньше 0,25</option>
+            <select v-model="soils">
+              <option
+                v-for="option in options"
+                :value="option"
+                :key="option"
+              >
+                {{ option.text }}
+              </option>
             </select>
             <span class="meas">
               <img src="/images/arrow-select.svg" alt="">
@@ -101,18 +131,18 @@
           </div>
           <div class="field mb-20">
             <div class="text">Тип сооружения:</div>
-            <div class="itog">Здание, устраиваемое на лагах по грунту, без подвала, с полами</div>
+            <div class="itog">{{building.text}}</div>
           </div>
         </div>
         <div class="column column-fields-00100 col-50">
           <div class="title"><span style="visibility: hidden;">a</span></div>
           <div class="field mb-20">
             <div class="text">Глубина залегания подземных вод:</div>
-            <div class="itog">5м</div>
+            <div class="itog">{{depth}}м</div>
           </div>
           <div class="field field-limitation mb-20">
             <div class="text">Грунты под подошвой фундамента:</div>
-            <div class="itog">Суглинки, глины, а также крупнообломочные грунты с глинистым заполнителем при показателе текучести грунта или заполнителя при IL меньше 0,25</div>
+            <div class="itog">{{soils.text}}</div>
           </div>
         </div>
       </template>
@@ -216,6 +246,110 @@ export default defineComponent({
   data() {
     return {
       modal: false,
+      country: '',
+      region: '',
+      city: '',
+      building: {
+        text: 'Здание, устраиваемое по грунту, без подвала, с полами',
+        value: 1
+      },
+      depth: 5,
+      soils: {
+        text: 'Суглинки, глины, а также крупнообломочные грунты с глинистым заполнителем при показателе текучести грунта или заполнителя при IL меньше 0,25',
+        value: 1
+      },
+      options: [
+        {
+          text: 'Суглинки, глины, а также крупнообломочные грунты с глинистым заполнителем при показателе текучести грунта или заполнителя при IL меньше 0,25',
+          value: 1
+        },
+        {
+          text: 'Суглинки, глины, а также крупнообломочные грунты с глинистым заполнителем при показателе текучести грунта или заполнителя при IL >= 0,25',
+          value: 2
+        },
+        {
+          text: 'Супеси с показателем текучести при IL меньше 0',
+          value: 3
+        },
+        {
+          text: 'Супеси с показателем текучести при IL >= 0',
+          value: 4
+        },
+        {
+          text: 'Пески мелкие и пылеватые',
+          value: 5
+        },
+        {
+          text: 'Скальные, крупнообломочные с песчаным заполнителем, пески гравелистые, крупные и средней крупности',
+          value: 6
+        },
+      ],
+      options2: [
+        {
+          text: 'Здание, устраиваемое по грунту, без подвала, с полами',
+          value: 1
+        },
+        {
+          text: 'Здание, устраиваемое на лагах по грунту, без подвала, с полами',
+          value: 2
+        },
+        {
+          text: 'Здание с утепленным цокольным перекрытием, без подвала, с полами',
+          value: 3
+        },
+        {
+          text: 'Здание с подвалом или техническим подпольем',
+          value: 4
+        },
+        {
+          text: 'Неотапливаемое сооружение',
+          value: 5
+        },
+      ],
+      countryOptions: [
+        {
+          text: 'Российская Федерация',
+          value: 1,
+          region: [
+            {
+              text: 'Республика Адыгея',
+              value: 1,
+              city: [
+                {
+                  text: 'Майкоп',
+                  value: 1
+                },
+                {
+                  text: 'Городок',
+                  value: 2
+                },
+              ]
+            },
+            {
+              text: 'Амурская область',
+              value: 2,
+              city: [
+                {
+                  text: 'Архара',
+                  value: 1
+                },
+                {
+                  text: 'Белогорск',
+                  value: 2
+                },
+                {
+                  text: 'Благовещенск',
+                  value: 3
+                },
+                {
+                  text: 'Бомнак',
+                  value: 4
+                },
+              ]
+            },
+          ]
+        }
+      ]
     };
   },
   components: {
