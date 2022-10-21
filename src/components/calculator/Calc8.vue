@@ -9,8 +9,14 @@
         <div class="field-section field-section-select">
           <div class="field-section__title">Страна:</div>
           <div class="field">
-            <select name="" id="">
-              <option value="">Российская Федерация</option>
+            <select v-model="country">
+              <option
+                v-for="option in countryOptions"
+                :value="option"
+                :key="option"
+              >
+                {{ option.text }}
+              </option>
             </select>
             <span class="meas">
               <img src="/images/arrow-select.svg" alt="">
@@ -20,8 +26,14 @@
         <div class="field-section field-section-select">
           <div class="field-section__title">Регион:</div>
           <div class="field">
-            <select name="" id="">
-              <option value="">Московская обл</option>
+            <select v-model="region">
+              <option
+                v-for="option in country.region"
+                :value="option"
+                :key="option"
+              >
+                {{ option.text }}
+              </option>
             </select>
             <span class="meas">
               <img src="/images/arrow-select.svg" alt="">
@@ -31,8 +43,14 @@
         <div class="field-section field-section-select">
           <div class="field-section__title">Город:</div>
           <div class="field">
-            <select name="" id="">
-              <option value="">Москва</option>
+            <select v-model="city" @change="result">
+              <option
+                v-for="option in region.city"
+                :value="option"
+                :key="option"
+              >
+                {{ option.text }}
+              </option>
             </select>
             <span class="meas">
               <img src="/images/arrow-select.svg" alt="">
@@ -42,8 +60,14 @@
         <div class="field-section field-section-select">
           <div class="field-section__title">Тип сооружения:</div>
           <div class="field">
-            <select name="" id="">
-              <option value="">Здание, устраиваемое на лагах по грунту, без подвала, </option>
+            <select v-model="building" @change="result">
+              <option
+                v-for="option in options"
+                :value="option"
+                :key="option"
+              >
+                {{ option.text }}
+              </option>
             </select>
             <span class="meas">
               <img src="/images/arrow-select.svg" alt="">
@@ -72,19 +96,19 @@
           <div class="title">Общий расчет глубины промерзания грунта</div>
           <div class="field mb-20">
             <div class="text">Страна:</div>
-            <div class="itog">Российская Федерация</div>
+            <div class="itog">{{country.text}}</div>
           </div>
           <div class="field mb-20">
             <div class="text">Регион:</div>
-            <div class="itog">Московская обл</div>
+            <div class="itog">{{region.text}}</div>
           </div>
           <div class="field mb-20">
             <div class="text">Город:</div>
-            <div class="itog">Москва</div>
+            <div class="itog">{{city.text}}</div>
           </div>
           <div class="field mb-20">
             <div class="text">Тип сооружения:</div>
-            <div class="itog">Здание, устраиваемое на лагах по грунту, без подвала, с полами</div>
+            <div class="itog">{{building.text}}</div>
           </div>
         </div>
       </template>
@@ -122,11 +146,12 @@
                 <td class="td-mobile">15⁰C</td>
                 <td class="td-mobile">20⁰C</td>
 
-                <td>1,12</td>
-                <td>1</td>
-                <td>0,89</td>
-                <td>0,78</td>
-                <td>0,67</td>
+                <td
+                  v-for="item in depth[0].ClayLoam"
+                  :key="item"
+                >
+                  {{item.value}}
+                </td>
               </tr>
 
               <tr>
@@ -138,11 +163,12 @@
                 <td class="td-mobile">15⁰C</td>
                 <td class="td-mobile">20⁰C</td>
 
-                <td>1,34</td>
-                <td>1,21</td>
-                <td>1,08</td>
-                <td>0,94</td>
-                <td>0,81</td>
+                <td
+                  v-for="item in depth[0].SandyLoam"
+                  :key="item"
+                >
+                  {{item.value}}
+                </td>
               </tr>
 
               <tr>
@@ -154,11 +180,12 @@
                 <td class="td-mobile">15⁰C</td>
                 <td class="td-mobile">20⁰C</td>
 
-                <td>1,44</td>
-                <td>1,3</td>
-                <td>1,16</td>
-                <td>1,01</td>
-                <td>0,87</td>
+                <td
+                  v-for="item in depth[0].Sand"
+                  :key="item"
+                >
+                  {{item.value}}
+                </td>
               </tr>
 
               <tr>
@@ -170,11 +197,12 @@
                 <td class="td-mobile">15⁰C</td>
                 <td class="td-mobile">20⁰C</td>
 
-                <td>1,63</td>
-                <td>1,47</td>
-                <td>1,31</td>
-                <td>1,15</td>
-                <td>0,98</td>
+                <td
+                  v-for="item in depth[0].CoarseClasticSoils"
+                  :key="item"
+                >
+                  {{item.value}}
+                </td>
               </tr>
             </tbody>
           </table>
@@ -191,19 +219,19 @@
             <tbody>
               <tr>
                 <td>Глина и суглинок</td>
-                <td>1,11</td>
+                <td>{{freezing[0].value}}</td>
               </tr>
               <tr>
                 <td>Супесь, песок пылеватый и мелкий</td>
-                <td>1,34</td>
+                <td>{{freezing[1].value}}</td>
               </tr>
               <tr>
                 <td>Песок средней крупности,  или гравелистый</td>
-                <td>1,44</td>
+                <td>{{freezing[2].value}}</td>
               </tr>
               <tr>
                 <td>Крупнообломочные грунты</td>
-                <td>1,63</td>
+                <td>{{freezing[3].value}}</td>
               </tr>
             </tbody>
           </table>
@@ -251,6 +279,7 @@
     <readme 
       text="Чтобы построенное здание было надежным, долговечным и безопасным, важно правильно рассчитать глубину заложения фундамента. Она зависит от разных факторов, в том числе климата, геологии и гидрологии местности, а также от особенностей возводимого строения. Бесплатный онлайн калькулятор глубины фундамента позволяет рассчитать, на сколько метров необходимо заглублять основание строения, чтобы оно гарантированно выдержало не только само здание, но и воздействие окружающей среды. Калькулятор работает по актуальным строительным нормам и правилам, таким как «Основания зданий и сооружений» и «Строительная климатология». Поэтому результатам расчета можно доверять. В базе калькулятора представлены все субъекты Российской Федерации, а также крупные города в регионах. Итоги расчетов калькулятора глубины заглубления основания основываются на нормативном и расчетном показателях глубины промерзания грунта, уровня залегания грунтовых вод и средней температуры воздуха. Расчеты актуальны для ленточных и монолитных фундаментов одно- и двухэтажных домов, бань, хозяйственных построек, независимо от используемого строительного материала. "
     />
+    
   </div>
 </template>
 
@@ -263,10 +292,80 @@ import readme from "./readme.vue";
 import FormQuetions from '../newComponents/FormQuetions.vue';
 import QrCode from '../newComponents/QrCode.vue';
 
+import countryData from '../../data/CountryFreezing.js'
+
 export default defineComponent({
   data() {
     return {
-      modal: false,
+      modal: '',
+      country: {
+        text: 'Российская Федерация',
+        value: 1,
+        region: [
+          {
+            text: 'Республика Адыгея',
+            value: 1,
+            city: [
+              {
+                text: 'Майкоп',
+                value: 1
+              },
+              {
+                text: 'Городок',
+                value: 2
+              },
+            ]
+          },
+          {
+            text: 'Амурская область',
+            value: 2,
+            city: [
+              {
+                text: 'Архара',
+                value: 1
+              },
+              {
+                text: 'Белогорск',
+                value: 2
+              },
+              {
+                text: 'Благовещенск',
+                value: 3
+              },
+              {
+                text: 'Бомнак',
+                value: 4
+              },
+            ]
+          },
+        ]
+      },
+      region: {
+        "text": "Республика Адыгея", 
+        "value": 1, 
+        "city": [
+          {
+            "text": "Майкоп",
+            "value": 1
+          },
+          {
+            "text": "Городок",
+            "value": 2
+          }
+        ]
+      },
+      city: {
+        text: 'Майкоп',
+        value: 1
+      },
+      options: [],
+      data: '',
+      depth: '',
+      freezing: '',
+      building: {
+        text: 'Здание, устраиваемое по грунту, без подвала, с полами',
+        value: 0
+      },
     };
   },
   components: {
@@ -280,6 +379,26 @@ export default defineComponent({
     // "modal": modal,
     // HelpBetter
   },
+  methods: {
+    result() {
+      let buildingData = this.building.value
+      let regionData = this.region.value
+      let cityData = this.city.value
+
+      this.data[buildingData].filter((item) => {
+        if (item.region === regionData && item.city === cityData) {
+          this.depth = item.depth
+          this.freezing = item.freezing
+        }
+      })
+    }
+  },
+  created() {
+    this.countryOptions = countryData.countryOptions
+    this.options = countryData.options
+    this.data = countryData.optionsDepthFreezing
+    this.result()
+  }
 });
 </script>
 

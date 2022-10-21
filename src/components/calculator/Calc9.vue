@@ -112,22 +112,21 @@
       </button>
       <button class="calculation_blockButton">СКАЧАТЬ ФАЙЛ</button>
     </div>
-
     <BlockSectionResult :gorisontalResult="true">
       <template v-slot:head>
         <div class="column column-fields-00100 col-50">
           <div class="title">Общий расчет глубины промерзания грунта</div>
           <div class="field mb-20">
             <div class="text">Страна:</div>
-            <div class="itog">Российская Федерация</div>
+            <div class="itog">{{country.text}}</div>
           </div>
           <div class="field mb-20">
             <div class="text">Регион:</div>
-            <div class="itog">Московская обл</div>
+            <div class="itog">{{region.text}}</div>
           </div>
           <div class="field mb-20">
             <div class="text">Город:</div>
-            <div class="itog">Москва</div>
+            <div class="itog">{{city.text}}</div>
           </div>
           <div class="field mb-20">
             <div class="text">Тип сооружения:</div>
@@ -242,6 +241,8 @@ import readme from "./readme.vue";
 import FormQuetions from '../newComponents/FormQuetions.vue';
 import QrCode from '../newComponents/QrCode.vue';
 
+import countryData from '../../data/CountryDepth.js'
+
 export default defineComponent({
   data() {
     return {
@@ -254,102 +255,13 @@ export default defineComponent({
         value: 1
       },
       depth: 5,
+      countryOptions: [],
       soils: {
         text: 'Суглинки, глины, а также крупнообломочные грунты с глинистым заполнителем при показателе текучести грунта или заполнителя при IL меньше 0,25',
         value: 1
       },
-      options: [
-        {
-          text: 'Суглинки, глины, а также крупнообломочные грунты с глинистым заполнителем при показателе текучести грунта или заполнителя при IL меньше 0,25',
-          value: 1
-        },
-        {
-          text: 'Суглинки, глины, а также крупнообломочные грунты с глинистым заполнителем при показателе текучести грунта или заполнителя при IL >= 0,25',
-          value: 2
-        },
-        {
-          text: 'Супеси с показателем текучести при IL меньше 0',
-          value: 3
-        },
-        {
-          text: 'Супеси с показателем текучести при IL >= 0',
-          value: 4
-        },
-        {
-          text: 'Пески мелкие и пылеватые',
-          value: 5
-        },
-        {
-          text: 'Скальные, крупнообломочные с песчаным заполнителем, пески гравелистые, крупные и средней крупности',
-          value: 6
-        },
-      ],
-      options2: [
-        {
-          text: 'Здание, устраиваемое по грунту, без подвала, с полами',
-          value: 1
-        },
-        {
-          text: 'Здание, устраиваемое на лагах по грунту, без подвала, с полами',
-          value: 2
-        },
-        {
-          text: 'Здание с утепленным цокольным перекрытием, без подвала, с полами',
-          value: 3
-        },
-        {
-          text: 'Здание с подвалом или техническим подпольем',
-          value: 4
-        },
-        {
-          text: 'Неотапливаемое сооружение',
-          value: 5
-        },
-      ],
-      countryOptions: [
-        {
-          text: 'Российская Федерация',
-          value: 1,
-          region: [
-            {
-              text: 'Республика Адыгея',
-              value: 1,
-              city: [
-                {
-                  text: 'Майкоп',
-                  value: 1
-                },
-                {
-                  text: 'Городок',
-                  value: 2
-                },
-              ]
-            },
-            {
-              text: 'Амурская область',
-              value: 2,
-              city: [
-                {
-                  text: 'Архара',
-                  value: 1
-                },
-                {
-                  text: 'Белогорск',
-                  value: 2
-                },
-                {
-                  text: 'Благовещенск',
-                  value: 3
-                },
-                {
-                  text: 'Бомнак',
-                  value: 4
-                },
-              ]
-            },
-          ]
-        }
-      ]
+      options: [],
+      options2: [],
     };
   },
   components: {
@@ -362,6 +274,11 @@ export default defineComponent({
     // "readme": readme,
     // "modal": modal,
     // HelpBetter
+  },
+  created() {
+    this.countryOptions = countryData[0].countryOptions
+    this.options = countryData[1].options
+    this.options2 = countryData[2].options2
   }
 });
 </script>
