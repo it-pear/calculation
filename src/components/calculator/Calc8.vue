@@ -298,48 +298,7 @@ export default defineComponent({
   data() {
     return {
       modal: '',
-      country: {
-        text: 'Российская Федерация',
-        value: 1,
-        region: [
-          {
-            text: 'Республика Адыгея',
-            value: 1,
-            city: [
-              {
-                text: 'Майкоп',
-                value: 1
-              },
-              {
-                text: 'Городок',
-                value: 2
-              },
-            ]
-          },
-          {
-            text: 'Амурская область',
-            value: 2,
-            city: [
-              {
-                text: 'Архара',
-                value: 1
-              },
-              {
-                text: 'Белогорск',
-                value: 2
-              },
-              {
-                text: 'Благовещенск',
-                value: 3
-              },
-              {
-                text: 'Бомнак',
-                value: 4
-              },
-            ]
-          },
-        ]
-      },
+      country: '',
       region: {
         "text": "Республика Адыгея", 
         "value": 1, 
