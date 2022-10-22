@@ -513,6 +513,234 @@ let optionsDepthFreezing = [
         },
       ]
     },
+    {
+      region: 3,
+      city: 1,
+      depth: [
+        {
+          ClayLoam: [
+            {
+              title: 0,
+              value: 1.21
+            },
+            {
+              title: 5,
+              value: 1.08
+            },
+            {
+              title: 10,
+              value: 0.94
+            },
+            {
+              title: 15,
+              value: 0.81
+            },
+            {
+              title: 20,
+              value: 0.67
+            },
+          ],
+          SandyLoam: [
+            {
+              title: 0,
+              value: 1.48
+            },
+            {
+              title: 5,
+              value: 1.32
+            },
+            {
+              title: 10,
+              value: 1.15
+            },
+            {
+              title: 15,
+              value: 0.99
+            },
+            {
+              title: 20,
+              value: 0.82
+            },
+          ],
+          Sand: [
+            {
+              title: 0,
+              value: 1.58
+            },
+            {
+              title: 5,
+              value: 1.4
+            },
+            {
+              title: 10,
+              value: 1.23
+            },
+            {
+              title: 15,
+              value: 1.05
+            },
+            {
+              title: 20,
+              value: 0.88
+            },
+          ],
+          CoarseClasticSoils: [
+            {
+              title: 0,
+              value: 1.79
+            },
+            {
+              title: 5,
+              value: 1.59
+            },
+            {
+              title: 10,
+              value: 1.39
+            },
+            {
+              title: 15,
+              value: 1.19
+            },
+            {
+              title: 20,
+              value: 0.99
+            },
+          ],
+        }
+      ],
+      freezing: [
+        {
+          title: 'ClayLoam',
+          value: 1.34
+        },
+        {
+          title: 'SandyLoam',
+          value: 1.64
+        },
+        {
+          title: 'Sand',
+          value: 1.75
+        },
+        {
+          title: 'CoarseClasticSoils',
+          value: 1.98
+        },
+      ]
+    },
+    {
+      region: 3,
+      city: 2,
+      depth: [
+        {
+          ClayLoam: [
+            {
+              title: 0,
+              value: 1.23
+            },
+            {
+              title: 5,
+              value: 1.09
+            },
+            {
+              title: 10,
+              value: 0.96
+            },
+            {
+              title: 15,
+              value: 0.82
+            },
+            {
+              title: 20,
+              value: 0.68
+            },
+          ],
+          SandyLoam: [
+            {
+              title: 0,
+              value: 1.49
+            },
+            {
+              title: 5,
+              value: 1.32
+            },
+            {
+              title: 10,
+              value: 1.16
+            },
+            {
+              title: 15,
+              value: 0.99
+            },
+            {
+              title: 20,
+              value: 0.83
+            },
+          ],
+          Sand: [
+            {
+              title: 0,
+              value: 1.6
+            },
+            {
+              title: 5,
+              value: 1.42
+            },
+            {
+              title: 10,
+              value: 1.24
+            },
+            {
+              title: 15,
+              value: 1.07
+            },
+            {
+              title: 20,
+              value: 0.89
+            },
+          ],
+          CoarseClasticSoils: [
+            {
+              title: 0,
+              value: 1.8
+            },
+            {
+              title: 5,
+              value: 1.6
+            },
+            {
+              title: 10,
+              value: 1.4
+            },
+            {
+              title: 15,
+              value: 1.2
+            },
+            {
+              title: 20,
+              value: 1         
+            },
+          ],
+        }
+      ],
+      freezing: [
+        {
+          title: 'ClayLoam',
+          value: 1.34
+        },
+        {
+          title: 'SandyLoam',
+          value: 1.64
+        },
+        {
+          title: 'Sand',
+          value: 1.75
+        },
+        {
+          title: 'CoarseClasticSoils',
+          value: 1.98
+        },
+      ]
+    },
   ],
   [
     {
@@ -968,6 +1196,120 @@ let optionsDepthFreezing = [
         {
           title: 'CoarseClasticSoils',
           value: 1.46
+        },
+      ]
+    },
+    {
+      region: 3,
+      city: 1,
+      depth: [
+        {
+          ClayLoam: [
+            {
+              title: 0,
+              value: 1.34
+            },
+            {
+              title: 5,
+              value: 1.21
+            },
+            {
+              title: 10,
+              value: 1.08
+            },
+            {
+              title: 15,
+              value: 0.94
+            },
+            {
+              title: 20,
+              value: 0.81
+            },
+          ],
+          SandyLoam: [
+            {
+              title: 0,
+              value: 1.64
+            },
+            {
+              title: 5,
+              value: 1.48
+            },
+            {
+              title: 10,
+              value: 1.32
+            },
+            {
+              title: 15,
+              value: 1.15
+            },
+            {
+              title: 20,
+              value: 0.99
+            },
+          ],
+          Sand: [
+            {
+              title: 0,
+              value: 1.75
+            },
+            {
+              title: 5,
+              value: 1.58
+            },
+            {
+              title: 10,
+              value: 1.4
+            },
+            {
+              title: 15,
+              value: 1.23
+            },
+            {
+              title: 20,
+              value: 1.05
+            },
+          ],
+          CoarseClasticSoils: [
+            {
+              title: 0,
+              value: 1.98
+            },
+            {
+              title: 5,
+              value: 1.79
+            },
+            {
+              title: 10,
+              value: 1.59
+            },
+            {
+              title: 15,
+              value: 1.39
+            },
+            {
+              title: 20,
+              value: 1.19
+            },
+          ],
+        }
+      ],
+      freezing: [
+        {
+          title: 'ClayLoam',
+          value: 1.34
+        },
+        {
+          title: 'SandyLoam',
+          value: 1.64
+        },
+        {
+          title: 'Sand',
+          value: 1.75
+        },
+        {
+          title: 'CoarseClasticSoils',
+          value: 1.98
         },
       ]
     },
@@ -1429,6 +1771,120 @@ let optionsDepthFreezing = [
         },
       ]
     },
+    {
+      region: 3,
+      city: 1,
+      depth: [
+        {
+          ClayLoam: [
+            {
+              title: 0,
+              value: 1.34
+            },
+            {
+              title: 5,
+              value: 1.34
+            },
+            {
+              title: 10,
+              value: 1.21
+            },
+            {
+              title: 15,
+              value: 1.08
+            },
+            {
+              title: 20,
+              value: 0.94
+            },
+          ],
+          SandyLoam: [
+            {
+              title: 0,
+              value: 1.64
+            },
+            {
+              title: 5,
+              value: 1.64
+            },
+            {
+              title: 10,
+              value: 1.48
+            },
+            {
+              title: 15,
+              value: 1.32
+            },
+            {
+              title: 20,
+              value: 1.15
+            },
+          ],
+          Sand: [
+            {
+              title: 0,
+              value: 1.75
+            },
+            {
+              title: 5,
+              value: 1.75
+            },
+            {
+              title: 10,
+              value: 1.58
+            },
+            {
+              title: 15,
+              value: 1.4
+            },
+            {
+              title: 20,
+              value: 1.23
+            },
+          ],
+          CoarseClasticSoils: [
+            {
+              title: 0,
+              value: 1.98
+            },
+            {
+              title: 5,
+              value: 1.98
+            },
+            {
+              title: 10,
+              value: 1.79
+            },
+            {
+              title: 15,
+              value: 1.59
+            },
+            {
+              title: 20,
+              value: 1.39
+            },
+          ],
+        }
+      ],
+      freezing: [
+        {
+          title: 'ClayLoam',
+          value: 1.34
+        },
+        {
+          title: 'SandyLoam',
+          value: 1.64
+        },
+        {
+          title: 'Sand',
+          value: 1.75
+        },
+        {
+          title: 'CoarseClasticSoils',
+          value: 1.98
+        },
+      ]
+    },
   ],
   [
     {
@@ -1887,6 +2343,120 @@ let optionsDepthFreezing = [
         },
       ]
     },
+    {
+      region: 3,
+      city: 1,
+      depth: [
+        {
+          ClayLoam: [
+            {
+              title: 0,
+              value: 1.08
+            },
+            {
+              title: 5,
+              value: 0.94
+            },
+            {
+              title: 10,
+              value: 0.81
+            },
+            {
+              title: 15,
+              value: 0.67
+            },
+            {
+              title: 20,
+              value: 0.54
+            },
+          ],
+          SandyLoam: [
+            {
+              title: 0,
+              value: 1.32
+            },
+            {
+              title: 5,
+              value: 1.15
+            },
+            {
+              title: 10,
+              value: 0.99
+            },
+            {
+              title: 15,
+              value: 0.82
+            },
+            {
+              title: 20,
+              value: 0.66
+            },
+          ],
+          Sand: [
+            {
+              title: 0,
+              value: 1.4
+            },
+            {
+              title: 5,
+              value: 1.23
+            },
+            {
+              title: 10,
+              value: 1.05
+            },
+            {
+              title: 15,
+              value: 0.88
+            },
+            {
+              title: 20,
+              value: 0.7
+            },
+          ],
+          CoarseClasticSoils: [
+            {
+              title: 0,
+              value: 1.59
+            },
+            {
+              title: 5,
+              value: 1.39
+            },
+            {
+              title: 10,
+              value: 1.19
+            },
+            {
+              title: 15,
+              value: 0.99
+            },
+            {
+              title: 20,
+              value: 0.8
+            },
+          ],
+        }
+      ],
+      freezing: [
+        {
+          title: 'ClayLoam',
+          value: 1.34
+        },
+        {
+          title: 'SandyLoam',
+          value: 1.64
+        },
+        {
+          title: 'Sand',
+          value: 1.75
+        },
+        {
+          title: 'CoarseClasticSoils',
+          value: 1.98
+        },
+      ]
+    },
   ],
   [
     {
@@ -2342,6 +2912,120 @@ let optionsDepthFreezing = [
         {
           title: 'CoarseClasticSoils',
           value: 1.46
+        },
+      ]
+    },
+    {
+      region: 3,
+      city: 1,
+      depth: [
+        {
+          ClayLoam: [
+            {
+              title: 0,
+              value: 0.81
+            },
+            {
+              title: 5,
+              value: 0.94
+            },
+            {
+              title: 10,
+              value: 1.08
+            },
+            {
+              title: 15,
+              value: 0.67
+            },
+            {
+              title: 20,
+              value: 1.48
+            },
+          ],
+          SandyLoam: [
+            {
+              title: 0,
+              value: 0.99
+            },
+            {
+              title: 5,
+              value: 1.15
+            },
+            {
+              title: 10,
+              value: 1.32
+            },
+            {
+              title: 15,
+              value: 0.82
+            },
+            {
+              title: 20,
+              value: 1.81
+            },
+          ],
+          Sand: [
+            {
+              title: 0,
+              value: 1.05
+            },
+            {
+              title: 5,
+              value: 1.23
+            },
+            {
+              title: 10,
+              value: 1.4
+            },
+            {
+              title: 15,
+              value: 0.88
+            },
+            {
+              title: 20,
+              value: 1.93
+            },
+          ],
+          CoarseClasticSoils: [
+            {
+              title: 0,
+              value: 1.19
+            },
+            {
+              title: 5,
+              value: 1.39
+            },
+            {
+              title: 10,
+              value: 1.59
+            },
+            {
+              title: 15,
+              value: 0.99
+            },
+            {
+              title: 20,
+              value: 2.18
+            },
+          ],
+        }
+      ],
+      freezing: [
+        {
+          title: 'ClayLoam',
+          value: 1.34
+        },
+        {
+          title: 'SandyLoam',
+          value: 1.64
+        },
+        {
+          title: 'Sand',
+          value: 1.75
+        },
+        {
+          title: 'CoarseClasticSoils',
+          value: 1.98
         },
       ]
     },
