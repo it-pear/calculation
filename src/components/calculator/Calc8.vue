@@ -299,20 +299,7 @@ export default defineComponent({
     return {
       modal: '',
       country: '',
-      region: {
-        "text": "Республика Адыгея", 
-        "value": 1, 
-        "city": [
-          {
-            "text": "Майкоп",
-            "value": 1
-          },
-          {
-            "text": "Городок",
-            "value": 2
-          }
-        ]
-      },
+      region: '',
       city: {
         text: 'Майкоп',
         value: 1
@@ -321,10 +308,7 @@ export default defineComponent({
       data: '',
       depth: '',
       freezing: '',
-      building: {
-        text: 'Здание, устраиваемое по грунту, без подвала, с полами',
-        value: 0
-      },
+      building: '',
     };
   },
   components: {
@@ -354,6 +338,11 @@ export default defineComponent({
   },
   created() {
     this.countryOptions = countryData.countryOptions
+    this.country = countryData.countryOptions[0]
+    this.region = countryData.countryOptions[0].region[1]
+    this.city = countryData.countryOptions[0].region[1].city[2]
+    this.building = countryData.options[0]
+
     this.options = countryData.options
     this.data = countryData.optionsDepthFreezing
     this.result()

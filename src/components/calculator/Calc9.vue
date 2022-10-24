@@ -42,7 +42,7 @@
         <div class="field-section field-section-select">
           <div class="field-section__title">Город:</div>
           <div class="field">
-            <select v-model="city">
+            <select v-model="city" @change="result">
               <option
                 v-for="option in region.city"
                 :value="option"
@@ -59,9 +59,9 @@
         <div class="field-section field-section-select">
           <div class="field-section__title">Тип сооружения:</div>
           <div class="field">
-            <select v-model="building">
+            <select v-model="building" @change="result">
               <option
-                v-for="option in options2"
+                v-for="option in options"
                 :value="option"
                 :key="option"
               >
@@ -76,16 +76,16 @@
         <div class="field-section field-section-select">
           <div class="field-section__title">Глубина залегания подземных вод, М:</div>
           <div class="field">
-            <input type="number" placeholder="Возраст" class="inp"  v-model="depth" />
+            <input type="number" placeholder="Возраст" class="inp" v-model="depthInp" @change="result" />
             <span class="meas">м</span>
           </div>
         </div>
         <div class="field-section field-section-select">
           <div class="field-section__title">Грунты под подошвой фундамента:</div>
           <div class="field">
-            <select v-model="soils">
+            <select v-model="soils" @change="result">
               <option
-                v-for="option in options"
+                v-for="option in options2"
                 :value="option"
                 :key="option"
               >
@@ -137,7 +137,7 @@
           <div class="title"><span style="visibility: hidden;">a</span></div>
           <div class="field mb-20">
             <div class="text">Глубина залегания подземных вод:</div>
-            <div class="itog">{{depth}}м</div>
+            <div class="itog">{{depthInp}}м</div>
           </div>
           <div class="field field-limitation mb-20">
             <div class="text">Грунты под подошвой фундамента:</div>
@@ -165,23 +165,77 @@
             <tbody>
               <tr>
                 <td>0</td>
-                <td>Не менее 0,56</td>
+                <td v-if="noneData">
+                  <span>Не зависит от df</span> 
+                </td>
+                <td v-else-if="depthInpActive">
+                  <span v-show="noneData">Не менее</span> 
+                  {{this.depthTable[0].value / 2}}
+                </td>
+                <td v-else>
+                  <span v-show="!noneData">Не менее</span>
+                  {{this.depthTable[0].value}}
+                </td>
               </tr>
+              
               <tr>
                 <td>5</td>
-                <td>Не менее 0,5</td>
+                <td v-if="noneData">
+                  <span>Не зависит от df</span> 
+                </td>
+                <td v-else-if="depthInpActive">
+                  <span v-show="noneData">Не менее</span>
+                  {{this.depthTable[1].value / 2}}
+                </td>
+                <td v-else>
+                  <span v-show="!noneData">Не менее</span>
+                  {{this.depthTable[1].value}}
+                </td>
               </tr>
+
               <tr>
                 <td>10</td>
-                <td>Не менее 0,45</td>
+                <td v-if="noneData">
+                  <span>Не зависит от df</span> 
+                </td>
+                <td v-else-if="depthInpActive">
+                  <span v-show="noneData">Не менее</span> 
+                  {{this.depthTable[2].value / 2}}
+                </td>
+                <td v-else>
+                  <span v-show="!noneData">Не менее</span> 
+                  {{this.depthTable[2].value}}
+                </td>
               </tr>
+
               <tr>
                 <td>15</td>
-                <td>Не менее 0,39</td>
+                <td v-if="noneData">
+                  <span>Не зависит от df</span> 
+                </td>
+                <td v-else-if="depthInpActive">
+                  <span v-show="noneData">Не менее</span> 
+                  {{this.depthTable[3].value / 2}}
+                </td>
+                <td v-else>
+                  <span v-show="!noneData">Не менее</span> 
+                  {{this.depthTable[3].value}}
+                </td>
               </tr>
+
               <tr>
                 <td>20</td>
-                <td>Не менее 0,34</td>
+                <td v-if="noneData">
+                  <span>Не зависит от df</span> 
+                </td>
+                <td v-else-if="depthInpActive">
+                  <span v-show="noneData">Не менее</span> 
+                  {{this.depthTable[4].value / 2}}
+                </td>
+                <td v-else>
+                  <span v-show="!noneData">Не менее</span> 
+                  {{this.depthTable[4].value}}
+                </td>
               </tr>
             </tbody>
           </table>
@@ -241,7 +295,7 @@ import readme from "./readme.vue";
 import FormQuetions from '../newComponents/FormQuetions.vue';
 import QrCode from '../newComponents/QrCode.vue';
 
-import countryData from '../../data/CountryDepth.js'
+import countryData from '../../data/CountryFreezing.js'
 
 export default defineComponent({
   data() {
@@ -250,16 +304,15 @@ export default defineComponent({
       country: '',
       region: '',
       city: '',
-      building: {
-        text: 'Здание, устраиваемое по грунту, без подвала, с полами',
-        value: 1
-      },
-      depth: 5,
+      building: '',
+      depthInp: 1,
+      depthInpActive: false,
+      noneData: false,
+      depth: '',
       countryOptions: [],
-      soils: {
-        text: 'Суглинки, глины, а также крупнообломочные грунты с глинистым заполнителем при показателе текучести грунта или заполнителя при IL меньше 0,25',
-        value: 1
-      },
+      soils: '',
+      data: '',
+      depthTable: '', 
       options: [],
       options2: [],
     };
@@ -275,10 +328,68 @@ export default defineComponent({
     // "modal": modal,
     // HelpBetter
   },
+  methods: {
+    result() {
+      let buildingData = this.building.value
+      let regionData = this.region.value
+      let cityData = this.city.value
+
+      this.data[buildingData].filter((item) => {
+        if (item.region === regionData && item.city === cityData) {
+          this.depth = item.depth
+          this.freezing = item.freezing
+        }
+      })
+
+      let val = this.soils.value
+      let val2 = this.depthInp
+
+      if (val === 0) this.depthTable = this.depth[0].ClayLoam
+      if (val === 1) this.depthTable = this.depth[0].ClayLoam
+      if (val === 2) this.depthTable = this.depth[0].CoarseClasticSoils
+      if (val === 3) this.depthTable = this.depth[0].CoarseClasticSoils
+      if (val === 4) this.depthTable = this.depth[0].CoarseClasticSoils
+      if (val === 5) this.depthTable = this.depth[0].CoarseClasticSoils
+
+      if (val2 > 2 && val === 0) {
+        this.depthInpActive = true
+      } else {
+        this.depthInpActive = false
+      }
+
+      if (val2 > 2 && val === 2) {
+        this.noneData = true
+      }
+      if (val2 < 3 && val === 2) {
+        this.noneData = false
+      }
+
+      if (val2 > 3 && val === 4) {
+        this.noneData = true
+      } else {
+        this.noneData = false
+      }
+
+      if (val === 5) {
+        this.noneData = true
+      } else {
+        this.noneData = false
+      }
+
+    }
+  },
   created() {
-    this.countryOptions = countryData[0].countryOptions
-    this.options = countryData[1].options
-    this.options2 = countryData[2].options2
+    this.countryOptions = countryData.countryOptions
+    this.country = countryData.countryOptions[0]
+    this.region = countryData.countryOptions[0].region[1]
+    this.city = countryData.countryOptions[0].region[1].city[2]
+    this.building = countryData.options[0]
+    this.soils = countryData.options2[0]
+
+    this.options = countryData.options
+    this.options2 = countryData.options2
+    this.data = countryData.optionsDepthFreezing
+    this.result()
   }
 });
 </script>
