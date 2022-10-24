@@ -179,7 +179,7 @@ export default defineComponent({
           .field {
             max-width: 465px;
             width: 100%;
-            
+            position: relative;
             .inp {
               border: 1px solid #E8E8E8;
               border-radius: 4px;
@@ -209,9 +209,11 @@ export default defineComponent({
               background: white;
               height: calc(100% - 4px);
               padding-left: 10px;
+              pointer-events: none;
             }
           }
         }
+        
         &-select-2 {
           .field {
             max-width: 256px;

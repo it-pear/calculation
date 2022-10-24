@@ -23,8 +23,19 @@
         <img class="calc_rightBlock_Image" src="https://gorizontbeton.ru/wp-content/uploads/2021/10/2_1.png" alt="" srcset="">
       </div>
     </div>
+    <MiniResult
+      title="Простая лента"
+      tip="Данные калькулятора будут верны только в том случае, если высота не меняется на участках опалубки и не нарушена геометрия самой опалубочной системы"
+      :concrete="simple.result"
+      :totalData="printResult(simple.result)"
+    />
 
-    <slotInlineBlockContainer title="Лента с внутренними перегородками" tip="Если будущий фундамент имеет внутренние перегородки, то лучшим способом будет посчитать их объем отдельно и сложить полученные значения. Таким образом объем будет наиболее близок к реальному">
+    <slotInlineBlockContainer
+      title="Лента с внутренними перегородками"
+      tip="Если будущий фундамент имеет внутренние перегородки, то лучшим способом будет посчитать их объем отдельно и сложить полученные значения. Таким образом объем будет наиболее близок к реальному"
+      :concrete="complex.result"
+      :totalData="printResult(complex.result)"
+      >
       <template v-slot:inlineBlock>
         <div class="calc_block_inlineContainer" v-for="(undefined__, index) in complex.values" :key="index">
           <span class="calc_section_title">Размер секции {{ index + 1 }}:</span>
@@ -105,6 +116,7 @@ import {printResultBlock, printResult, removeField} from "./methods"
 import slotInlineBlockContainer from "./slotInlineBlockContainer.vue"
 import slotResultBlock from "./slotResultBlock.vue";
 import HelpBetter from "../newComponents/HelpBetter.vue";
+import MiniResult from "./MiniResult.vue";
 import modal from "./modal.vue";
 import readme from "./readme.vue";
 import axios from 'axios'
@@ -223,7 +235,8 @@ export default defineComponent({
     "slotResultBlock": slotResultBlock,
     "modal": modal,
     "readme": readme,
-    HelpBetter
+    HelpBetter,
+    MiniResult
   }
 
 })

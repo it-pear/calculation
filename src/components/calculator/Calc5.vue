@@ -1,7 +1,10 @@
 <template>
   <slotInlineBlockContainer 
     title="Добавить сваю"
-    tip="Если требуется залить отдельно стоящие сваи, можно внести их геометрические размеры и количество">
+    tip="Если требуется залить отдельно стоящие сваи, можно внести их геометрические размеры и количество"
+    :concrete="pile.result"
+      :totalData="printResult(pile.result)"
+  >
     <template v-slot:addContainer>
       <div class="calc_block_addField" @click="addPile()">
         <img src="./../assets/icons/add_field.png" alt="">

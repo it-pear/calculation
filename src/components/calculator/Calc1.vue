@@ -22,13 +22,21 @@
       <div class="calc_rightBlock">
         <img class="calc_rightBlock_Image" src="https://gorizontbeton.ru/wp-content/uploads/2021/10/1_1.png" alt="" srcset="">
       </div>
+      
     </div>
+    <MiniResult
+      title="Простая плита"
+      tip="Данные калькулятора будут верны только в том случае, если высота не меняется на участках опалубки и не нарушена геометрия самой опалубочной системы"
+      :concrete="simple.result"
+      :totalData="printResult(simple.result)"
+    />
 
     <slotInlineBlockContainer
       title="Сложная плита"
       tip="Рассчитать объем сложных монолитных плит можно, разделив конструкцию на сектора. Таким образом можно узнать совокупный объем с помощью суммы объемов отдельных участков"
       :concrete="complex.result"
       v-if="true"
+      :totalData="printResult(complex.result)"
     >
       <template v-slot:inlineBlock>
         <div class="calc_block_inlineContainer" v-for="(undefined, index) in complex.values" :key="index">
@@ -61,6 +69,7 @@
       tip="Если стороны опалубки не перпендикулярны друг другу, то лучшим решением будет разделить весь объем на треугольные и прямоугольный участки. С помощью суммы таких участков легко получить требуемый объем "
       v-if="true"
       :concrete="triangle.result"
+      :totalData="printResult(triangle.result)"
     >
       <template v-slot:inlineBlock>
         <div class="calc_block_inlineContainer calc_block_triangle" v-for="(undefined_, index) in triangle.values" :key="index">
@@ -90,7 +99,13 @@
       </template>
     </slotInlineBlockContainer>
 
-    <slotInlineBlockContainer title="Добавить радиусный сектор" tip="Если будущий фундамент содержит радиусные элементы, то лучшим способом будет считать их объем отдельно и суммировать с объемом других участков" v-if="true">
+    <slotInlineBlockContainer
+      title="Добавить радиусный сектор" 
+      tip="Если будущий фундамент содержит радиусные элементы, то лучшим способом будет считать их объем отдельно и суммировать с объемом других участков"
+      v-if="true"
+      :concrete="rad.result"
+      :totalData="printResult(rad.result)"
+    >
       <template v-slot:inlineBlock>
         <div class="calc_block_inlineContainer" v-for="(undefined__, index) in rad.values" :key="index">
           <span class="calc_section_title">Радиусный сектор {{ index + 1 }}:</span>
@@ -177,6 +192,7 @@ import {printResultBlock, printResult, removeField} from "./methods"
 import slotInlineBlockContainer from "./slotInlineBlockContainer.vue"
 import slotResultBlock from "./slotResultBlock.vue";
 import HelpBetter from "../newComponents/HelpBetter.vue";
+import MiniResult from "./MiniResult.vue";
 import readme from "./readme.vue";
 import modal from "./modal.vue";
 import axios from 'axios'
@@ -346,7 +362,8 @@ export default defineComponent({
     "slotResultBlock": slotResultBlock,
     "readme": readme,
     "modal": modal,
-    HelpBetter
+    HelpBetter,
+    MiniResult
   }
 
 })

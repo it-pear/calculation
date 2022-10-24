@@ -35,8 +35,19 @@
         <img class="calc_rightBlock_Image" src="https://gorizontbeton.ru/wp-content/uploads/2021/10/3_1.png" alt="" srcset="">
       </div>
     </div>
+    <MiniResult
+      title="Простой фундамент УШП"
+      tip="Данные калькулятора будут верны только в том случае, если высота не меняется на участках опалубки и не нарушена геометрия самой опалубочной системы"
+      :concrete="simple.result"
+      :totalData="printResult(simple.result)"
+    />
 
-    <slotInlineBlockContainer title="Сложная плита УШП" tip="Рассчитать общий объем такой конструкции лучше всего путем сложения объема внешней части ростверка, его перегородок и объемов свай.">
+    <slotInlineBlockContainer
+      title="Сложная плита УШП"
+      tip="Рассчитать общий объем такой конструкции лучше всего путем сложения объема внешней части ростверка, его перегородок и объемов свай."
+      :concrete="complex.result"
+      :totalData="printResult(complex.result)"
+    >
       <template v-slot:inlineBlock>
         <template v-for="(undefined_, index) in complex.values" :key="index">
           <div class="calc_block_inlineContainer">
@@ -65,7 +76,6 @@
           <span>Добавить секцию</span>
         </div>
       </template>
-
 
       <template v-slot:resultBlocks>
         <div class="calc_block_inputResult">Объем сложной УШП: <span>{{ printResult(complex.result) }}</span></div>
@@ -127,6 +137,7 @@ import {printResultBlock, printResult} from "./methods"
 import slotInlineBlockContainer from "./slotInlineBlockContainer.vue"
 import slotResultBlock from "./slotResultBlock.vue";
 import HelpBetter from "../newComponents/HelpBetter.vue";
+import MiniResult from "./MiniResult.vue";
 import readme from "./readme.vue";
 import modal from "./modal.vue"
 import axios from 'axios'
@@ -251,7 +262,8 @@ export default defineComponent({
     "slotResultBlock": slotResultBlock,
     "readme": readme,
     "modal": modal,
-    HelpBetter
+    HelpBetter,
+    MiniResult
   }
 
 })

@@ -216,6 +216,7 @@ export default defineComponent({
     },
     typeBeton2() {
       this.$emit('typeBeton2', this.typeBeton.title);
+      console.log(this.typeBeton)
     },
     markaBeton2() {
       this.$emit('markaBeton2', this.markaBeton.title);
@@ -223,6 +224,10 @@ export default defineComponent({
     saveFile() {
       this.$emit('saveFile');
     }
+  },
+  mounted() {
+    this.typeBeton = this.typeBetonOptions[0]
+    this.markaBeton = this.typeBeton.price[0]
   },
   components: {
     FormQuetions,

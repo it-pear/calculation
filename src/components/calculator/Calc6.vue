@@ -6,7 +6,7 @@
       tip="Расчитать объем сложных монолитных плит удобней всего, разделив общий объем на сектора. Таким образом..."
     >
       <template v-slot:inputFields>
-        <div class="field-section">
+        <!-- <div class="field-section">
           <div class="field-section__title">Периметр дома, <b>М:</b></div>
           <div class="field">
             <input
@@ -17,7 +17,7 @@
             />
             <span class="meas">м</span>
           </div>
-        </div>
+        </div> -->
         <div class="field-section">
           <div class="field-section__title">Ширина отмостки, <b>М:</b></div>
           <div class="field">
@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="field-section">
-          <div class="field-section__title">Внешние углы A, <b>ШТ:</b></div>
+          <div class="field-section__title">Внешние углы <b>ШТ:</b></div>
           <div class="field">
             <input type="number"
               placeholder="Углы"
@@ -42,7 +42,7 @@
           </div>
         </div>
         <div class="field-section">
-          <div class="field-section__title">Внутренние углы a, <b>ШТ:</b></div>
+          <div class="field-section__title">Внутренние углы <b>ШТ:</b></div>
           <div class="field">
             <input
               type="number"
@@ -53,13 +53,43 @@
             <span class="meas">шт</span>
           </div>
         </div>
+
+        <div
+          class="field-section field-section-mini"
+          v-for="item in sides"
+          :key="item"
+        >
+          <div class="field-section__title">{{item.title}}</div>
+          <div class="field">
+            <input
+              type="number"
+              placeholder="Длина"
+              class="inp"
+              v-model="item.value"
+            />
+            <span class="meas">м</span>
+          </div>
+        </div>
+
+        <div
+          class="field-section"
+        >
+          <div 
+            class="calc_block_addField" 
+            style="margin-bottom: 0; display: flex; align-items: center; cursor: pointer;"
+            @click="addSide"
+          >
+            <img src="./../assets/icons/add_field.png" alt="">
+            <span style="transform: translateY(0)">Добавить секцию</span>
+          </div>
+        </div>
       </template>
 
       <template v-slot:fieldItog>
         <div class="field-section-itog">
-          <div class="title">Площадь отмостки:</div>
+          <div class="title">Объем отмостки:</div>
           <div class="inp-itog">{{result}} м<sup>3</sup></div>
-          <div class="inp-itog">1 шт</div>
+          <!-- <div class="inp-itog">1 шт</div> -->
         </div>
       </template>
 
@@ -379,6 +409,28 @@ export default defineComponent({
       rubble: 0.3,
       sand: 0.2,
 
+      letters: [
+        'A', 'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z'
+      ],
+      sides: [
+        {
+          title: 'Длина стороны A:',
+          value: ''
+        },
+        {
+          title: 'Длина стороны B:',
+          value: ''
+        },
+        {
+          title: 'Длина стороны C:',
+          value: ''
+        },
+        {
+          title: 'Длина стороны D:',
+          value: ''
+        },
+      ],
+      
       checKgeotextile: false,
       checKreinforcing: false,
       checKborder: false,
@@ -386,12 +438,29 @@ export default defineComponent({
       checKwaterproofing: false
     };
   },
+  methods: {
+    addSide() {
+      let letter = this.letters[this.sides.length]
+      console.log(letter)
+      let newElem = {
+        title: `Длина стороны ${letter}:`,
+        value: ''
+      }
+      this.sides.push(newElem)
+    }
+  },
   computed: {
     result() {
       if (this.external < 4) {
         return 'null'
       } else {
-        return this.perimeter * this.width + (this.width * this.width * 2 * 2) - (this.external - 4) + this.internal
+        // return this.perimeter * this.width + (this.width * this.width * 2 * 2) - (this.external - 4) + this.internal
+        let result1 = 0
+        let result2 = (this.width * this.width) * this.external - (this.width * this.width) * this.internal
+        this.sides.forEach((element) => {
+          result1 += element.value * this.width
+        })
+        return result1 + result2
       }
     },
     resultPaving() {
@@ -446,6 +515,14 @@ export default defineComponent({
     }
     .calc_readme {
       margin-top: 63px;
+    }
+  }
+  .field-section-mini {
+    @media (min-width: 772px) {
+      .field, input {
+        max-width: 107px !important;
+      }
+      
     }
   }
 </style>

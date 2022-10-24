@@ -1,44 +1,52 @@
 <template>
   <div>
     <!--    Простая-->
-      <div class="calc_block" v-if="true">
-        <div class="calc_leftBlock">
-          <h3 class="calc_block_title">
-            Простой свайно-ростверковый фундамент
-            <span class="calc_block_tip">
-              подсказка 
-              <div>Простая УШП плита состоит из внешнего «контура» - ростверка и из внутреннего обогреваемого. Как правило они имеют разные геометрические размеры. Лучшим методом будет посчитать их объемы отдельно и суммировать полученный результат.</div>
-            </span>
-          </h3>
-          <div class="calc_block_inputContainer">Общая длина ростверка, L:
-            <input type="number" v-model.number="simple.valueOfFundament.l" placeholder="Длина"><span class="metr">м</span>
-          </div>
-          <div class="calc_block_inputContainer">Ширина ростверка, B:
-            <input type="number" v-model.number="simple.valueOfFundament.w" placeholder="Ширина"><span class="metr">м</span></div>
-          <div class="calc_block_inputContainer">Высота ростверка, H:
-            <input type="number" v-model.number="simple.valueOfFundament.h" placeholder="Высота"><span class="metr">м</span></div>
-          <div class="calc_block_inlineContainer">
-            <span class="description">Сваи: </span>
-            <input type="number" v-model.number="simple.valueOfPile.r" placeholder="Радиус"><span class="metr">м</span>
-            <span class="calc_section_spread">&#215;</span>
-            <input type="number" v-model.number="simple.valueOfPile.h" placeholder="Высота"><span class="metr">м</span>
-            <span class="calc_section_spread">&#215;</span>
-            <input type="number" v-model.number="simple.valueOfPile.c" placeholder="Кол-во"><span class="metr">м</span>
-          </div>
-          <div class="calc_block_inputResult">Объем ростверка:
-            <span>
-              {{ printResult(simple.result) }}
+    <div class="calc_block" v-if="true">
+      <div class="calc_leftBlock">
+        <h3 class="calc_block_title">
+          Простой свайно-ростверковый фундамент
+          <span class="calc_block_tip">
+            подсказка 
+            <div>Простая УШП плита состоит из внешнего «контура» - ростверка и из внутреннего обогреваемого. Как правило они имеют разные геометрические размеры. Лучшим методом будет посчитать их объемы отдельно и суммировать полученный результат.</div>
           </span>
-          </div>
+        </h3>
+        <div class="calc_block_inputContainer">Общая длина ростверка, L:
+          <input type="number" v-model.number="simple.valueOfFundament.l" placeholder="Длина"><span class="metr">м</span>
         </div>
-        <div class="calc_rightBlock">
-          <img class="calc_rightBlock_Image" src="https://gorizontbeton.ru/wp-content/uploads/2021/10/4_1.png" alt="" srcset="">
+        <div class="calc_block_inputContainer">Ширина ростверка, B:
+          <input type="number" v-model.number="simple.valueOfFundament.w" placeholder="Ширина"><span class="metr">м</span></div>
+        <div class="calc_block_inputContainer">Высота ростверка, H:
+          <input type="number" v-model.number="simple.valueOfFundament.h" placeholder="Высота"><span class="metr">м</span></div>
+        <div class="calc_block_inlineContainer">
+          <span class="description">Сваи: </span>
+          <input type="number" v-model.number="simple.valueOfPile.r" placeholder="Радиус"><span class="metr">м</span>
+          <span class="calc_section_spread">&#215;</span>
+          <input type="number" v-model.number="simple.valueOfPile.h" placeholder="Высота"><span class="metr">м</span>
+          <span class="calc_section_spread">&#215;</span>
+          <input type="number" v-model.number="simple.valueOfPile.c" placeholder="Кол-во"><span class="metr">м</span>
+        </div>
+        <div class="calc_block_inputResult">Объем ростверка:
+          <span>
+            {{ printResult(simple.result) }}
+        </span>
         </div>
       </div>
+      <div class="calc_rightBlock">
+        <img class="calc_rightBlock_Image" src="https://gorizontbeton.ru/wp-content/uploads/2021/10/4_1.png" alt="" srcset="">
+      </div>
+    </div>
+    <MiniResult
+      title="Простой свайно-ростверковый фундамент"
+      tip="Простая УШП плита состоит из внешнего «контура» - ростверка и из внутреннего обогреваемого. Как правило они имеют разные геометрические размеры. Лучшим методом будет посчитать их объемы отдельно и суммировать полученный результат."
+      :concrete="simple.result"
+      :totalData="printResult(simple.result)"
+    />
 
     <slotInlineBlockContainer
       title="Сложный свайно-ростверковый фундамент"
       tip="Сложная УШП состоит из нескольких обогреваемых участков, разделенных внутренними перегородками. В этом случае предлагаем отдельно рассчитать объемы перегородок и обогреваемых участков."
+      :concrete="complex.result"
+      :totalData="printResult(complex.result)"
     >
       <template v-slot:inlineBlock>
         <template v-for="(undefined, index) in complex.valuesOfFundament" :key="index">
@@ -92,6 +100,8 @@
     <slotInlineBlockContainer 
       title="Добавить сваю"
       tip="Рассчитать объем сложных плит удобней всего, разделив общий объем на сектора. Таким образом, можно посчитать площадь каждого сектора и задать для него разные параметры высотных отметок"
+      :concrete="pile.result"
+      :totalData="printResult(pile.result)"
     >
       <template v-slot:addContainer>
         <div class="calc_block_addField" @click="addPile()">
@@ -185,6 +195,7 @@ import {printResult, printResultBlock} from "./methods"
 import slotInlineBlockContainer from "./slotInlineBlockContainer.vue"
 import slotResultBlock from "./slotResultBlock.vue";
 import HelpBetter from "../newComponents/HelpBetter.vue";
+import MiniResult from "./MiniResult.vue";
 import modal from "./modal.vue"
 import readme from "./readme.vue";
 import axios from 'axios'
@@ -380,7 +391,8 @@ export default defineComponent({
     "slotResultBlock": slotResultBlock,
     "modal": modal,
     "readme": readme,
-    HelpBetter
+    HelpBetter,
+    MiniResult
   }
 
 })

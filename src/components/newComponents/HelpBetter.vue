@@ -114,7 +114,7 @@ export default defineComponent({
           flex-direction: column;
         }
         .help-better__textarea {
-          min-height: 84px;
+          min-height: 108px;
           font-weight: 400;
           font-size: 16px;
           line-height: 140%;

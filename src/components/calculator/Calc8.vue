@@ -9,7 +9,7 @@
         <div class="field-section field-section-select">
           <div class="field-section__title">Страна:</div>
           <div class="field">
-            <select v-model="country">
+            <select v-model="country" ref="countrySelect">
               <option
                 v-for="option in countryOptions"
                 :value="option"
