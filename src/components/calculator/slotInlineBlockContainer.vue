@@ -20,7 +20,7 @@
     </div>
   </div>
 
-  <div class="calc_concreteCalculation" v-if="concrete">
+  <div class="calc_concreteCalculation" :class="{'calc_concreteCalculation__active': concrete}">
     <div class="calc_block_inline">
 
       <div class="calc_leftBlock">
@@ -51,7 +51,7 @@
           </select>
           <p class="placholder" v-show="!markaBeton">М 300</p>
         </div>
-        <div class="calc_leftBlock__info">
+        <div class="calc_leftBlock__info" @click="scrollResult">
           Полный расчет внизу страницы
           <img src="./../assets/icons/arrowSvg.svg" alt="">
         </div>
@@ -81,7 +81,7 @@
           </div>
           <div class="calc_result-btn">
             <div class="calc_blockButtonContainer">
-              <div class="calc_blockButton">сохранить </div>
+              <div class="calc_blockButton">Скачать данные </div>
               <div class="calc_blockButton Orange">Оформить заказ</div>
             </div>
           </div>
@@ -181,6 +181,11 @@ export default defineComponent({
       ]
     }
   },
+  methods: {
+    scrollResult() {
+      this.$emit('scrollResult')
+    },
+  },
   computed: {
     calculationConcrete() {
       return ''
@@ -192,6 +197,7 @@ export default defineComponent({
   mounted() {
     this.typeBeton = this.typeBetonOptions[0]
     this.markaBeton = this.typeBeton.price[0]
+    
   }
 })
 </script>
@@ -230,6 +236,7 @@ export default defineComponent({
     font-size: 14px
     line-height: 130%
 
+
 .calc_concreteCalculation
   padding-right: 46px
   margin-bottom: 0
@@ -241,8 +248,15 @@ export default defineComponent({
   position: relative
   top: -30px
   z-index: 1
+  transition: all 0.25s
+  opacity: 0
+  overflow: hidden
+  height: 0
+  .calc_result
+    flex: 0 0 301px
   @media (max-width: 960px)
     padding-left: 0
+    display: none !important
   .calc_block_inline
     display: flex
     margin-bottom: 0
@@ -261,13 +275,14 @@ export default defineComponent({
         line-height: 140%
         color: #FFA92E
         margin-left: 10px
+        cursor: pointer
         img
           margin-left: 8px
     .calc_rightBlock
       flex: 1 1 100%
       .calc_row
         width: 100%
-        justify-content: flex-end
+        justify-content: center
         .calc_result
           .calc_result__title
             margin-top: 12px
@@ -333,4 +348,9 @@ export default defineComponent({
     @media (max-width: 1100px)
       width: unset
       flex: 1 1 100%
+.calc_concreteCalculation__active
+  opacity: 1
+  display: block
+  overflow: visible
+  height: auto
 </style>

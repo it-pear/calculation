@@ -1,5 +1,5 @@
 <template>
-  <div class="calc_block_result">
+  <div class="calc_block_result" ref="resultblock">
     <div class="calc_block">
       <div class="calc_leftBlock">
         <div class="calc_row">
@@ -203,6 +203,7 @@ export default defineComponent({
           ]
         } 
       ],
+      reultScrollData: ''
     }
   },
   computed: {
@@ -216,18 +217,22 @@ export default defineComponent({
     },
     typeBeton2() {
       this.$emit('typeBeton2', this.typeBeton.title);
-      console.log(this.typeBeton)
     },
     markaBeton2() {
       this.$emit('markaBeton2', this.markaBeton.title);
     },
+    getScrollResult() {
+      this.$emit('getScrollResult', this.$refs.resultblock.offsetTop + 270)
+    },
     saveFile() {
       this.$emit('saveFile');
-    }
+    },
   },
   mounted() {
     this.typeBeton = this.typeBetonOptions[0]
     this.markaBeton = this.typeBeton.price[0]
+
+    this.getScrollResult()
   },
   components: {
     FormQuetions,
@@ -308,7 +313,7 @@ export default defineComponent({
         color: #696969
   .calc_result__title
     font-weight: 600
-    font-size: 20px
+    font-size: 18px
     line-height: 24px
     color: #2B2B2B
 .calc_block_result
@@ -371,13 +376,11 @@ export default defineComponent({
           position: relative
           top: -35px
       .calc__select 
-        margin-left: auto
-        position: relative
+        position: relative !important
         z-index: 1
-        text-align: right
-        position: absolute
         width: 100%
         right: 4px
+        text-align: right !important
         left: 0
       .placholder 
         position: absolute

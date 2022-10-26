@@ -1,5 +1,5 @@
 <template>
-  <div class="calc_concreteCalculation" v-if="concrete">
+  <div class="calc_concreteCalculation" :class="{'calc_concreteCalculation__active': concrete}">
     <div class="calc_block_inline">
 
       <div class="calc_leftBlock">
@@ -30,7 +30,7 @@
           </select>
           <p class="placholder" v-show="!markaBeton">М 300</p>
         </div>
-        <div class="calc_leftBlock__info">
+        <div class="calc_leftBlock__info" @click="scrollResult">
           Полный расчет внизу страницы
           <img src="./../assets/icons/arrowSvg.svg" alt="">
         </div>
@@ -60,7 +60,7 @@
           </div>
           <div class="calc_result-btn">
             <div class="calc_blockButtonContainer">
-              <div class="calc_blockButton">сохранить </div>
+              <div class="calc_blockButton">Скачать данные </div>
               <div class="calc_blockButton Orange">Оформить заказ</div>
             </div>
           </div>
@@ -159,6 +159,11 @@ export default defineComponent({
         } 
       ]
     }
+  },
+  methods: {
+    scrollResult() {
+      this.$emit('scrollResult')
+    },
   },
   computed: {
     calculationConcrete() {

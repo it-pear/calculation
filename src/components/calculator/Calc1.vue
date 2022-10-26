@@ -29,6 +29,7 @@
       tip="Данные калькулятора будут верны только в том случае, если высота не меняется на участках опалубки и не нарушена геометрия самой опалубочной системы"
       :concrete="simple.result"
       :totalData="printResult(simple.result)"
+      @scrollResult="onscrollResult"
     />
 
     <slotInlineBlockContainer
@@ -37,6 +38,7 @@
       :concrete="complex.result"
       v-if="true"
       :totalData="printResult(complex.result)"
+      @scrollResult="onscrollResult"
     >
       <template v-slot:inlineBlock>
         <div class="calc_block_inlineContainer" v-for="(undefined, index) in complex.values" :key="index">
@@ -70,6 +72,7 @@
       v-if="true"
       :concrete="triangle.result"
       :totalData="printResult(triangle.result)"
+      @scrollResult="onscrollResult"
     >
       <template v-slot:inlineBlock>
         <div class="calc_block_inlineContainer calc_block_triangle" v-for="(undefined_, index) in triangle.values" :key="index">
@@ -105,6 +108,7 @@
       v-if="true"
       :concrete="rad.result"
       :totalData="printResult(rad.result)"
+      @scrollResult="onscrollResult"
     >
       <template v-slot:inlineBlock>
         <div class="calc_block_inlineContainer" v-for="(undefined__, index) in rad.values" :key="index">
@@ -141,6 +145,7 @@
       @modalActive="modalActive"
       @saveFile="saveFile"
       :totalData="totalData"
+      @getScrollResult="ongetScrollResult"
     >
       <template v-slot:total>
         <div class="calc_block_inputResult">Общий объем: <span>{{ printResultBlock(totalData) }}</span></div>
@@ -223,6 +228,7 @@ export default defineComponent({
       markaBeton: '',
       podvigBeton: '',
       totalModalPrice: 0,
+      positionResult: 0
     }
   },
   computed: {
@@ -299,6 +305,15 @@ export default defineComponent({
         link.click();
         return alert('Файл сохранен');
       });
+    },
+    ongetScrollResult(value: number) {
+      this.positionResult = value
+    },
+    onscrollResult() {
+      window.scrollBy({
+        top: this.positionResult - window.pageYOffset,
+        behavior: 'smooth'
+      })
     }
   },
   watch: {
@@ -365,7 +380,6 @@ export default defineComponent({
     HelpBetter,
     MiniResult
   }
-
 })
 </script>
 
