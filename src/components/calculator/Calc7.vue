@@ -36,12 +36,7 @@
     </BlockSection>
 
     <div class="calculation_blockButtonContainer">
-      <button
-        class="calculation_blockButton Orange m-40"
-      >
-        ПОКАЗАТЬ РЕЗУЛЬТАТ
-      </button>
-      <button class="calculation_blockButton">СКАЧАТЬ ФАЙЛ</button>
+      <div class="zagolovok">Результат</div>
     </div>
 
     <div class="row-section-sidebar">
@@ -61,9 +56,9 @@
         </template>
 
         <template v-slot:btnSection>
-          <button class="calculation_blockButton Orange mt-10">
+          <!-- <button class="calculation_blockButton Orange mt-10">
             Рассчитать стоимость
-          </button>
+          </button> -->
         </template>
         <template v-slot:result>
           <div class="field">
@@ -89,7 +84,7 @@
             </div>
             <div class="calculation_blockButtonMiniContainer pl-0 mt-37">
               <button class="calculation_blockButton m-40">
-                сохранить ФАЙЛ
+                скачать результаты
               </button>
               <button class="calculation_blockButton Orange">
                 Оформить заказ

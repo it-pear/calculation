@@ -43,8 +43,8 @@
     @saveFile="saveFile"
     :totalData="totalData"
     @typeBeton2="typeBeton2"
-      @markaBeton2="markaBeton2"
-      @podvigBeton2="podvigBeton2"
+    @markaBeton2="markaBeton2"
+    @podvigBeton2="podvigBeton2"
   >
     <template v-slot:total>
       <div class="calc_block_inputResult">Объем свай:

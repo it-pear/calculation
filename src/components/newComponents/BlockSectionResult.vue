@@ -322,6 +322,8 @@ export default defineComponent({
         }
         &.pl-30 {
           padding-left: 30px;
+          margin-left: auto;
+          margin-right: 25px;
         }
         .text,
         .title {
@@ -405,6 +407,7 @@ export default defineComponent({
           padding-top: 23px;
           &.max-410 {
             max-width: 518px;
+            margin-left: 0;
           }
           &.pl-30 {
             padding-left: 0;

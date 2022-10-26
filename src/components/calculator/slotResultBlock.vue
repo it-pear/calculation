@@ -267,7 +267,7 @@ export default defineComponent({
   display: flex
   .calc_result
     ul
-      margin-top: 46px
+      margin-top: 0
   @media (max-width: 780px)
     display: block
 .calc_warning 

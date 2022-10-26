@@ -107,5 +107,10 @@ export default defineComponent({
 });
 </script>
 
-<style lang="sass" scoped>
+<style lang="scss">
+  @media (min-width: 960px) {
+    .calc_title {
+      margin-top: 13px !important;
+    }
+  }
 </style>

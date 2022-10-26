@@ -87,8 +87,8 @@
 
       <template v-slot:fieldItog>
         <div class="field-section-itog">
-          <div class="title">Объем отмостки:</div>
-          <div class="inp-itog">{{result}} м<sup>3</sup></div>
+          <div class="title">Площадь отмостки:</div>
+          <div class="inp-itog">{{result}} м<sup>2</sup></div>
           <!-- <div class="inp-itog">1 шт</div> -->
         </div>
       </template>
@@ -99,7 +99,7 @@
     </BlockSection>
 
     <BlockSection
-      title="Материалы"
+      title="Толщина слоя, выбрать материал"
       titlePage="БЕТОН ДЛЯ ПЛИТ"
       tip="Расчитать объем сложных монолитных плит удобней всего, разделив общий объем на сектора. Таким образом..."
     >
@@ -143,7 +143,7 @@
 
       <template v-slot:fieldItog>
         <div class="field-section-itog">
-          <div class="title">Общий размер материалов:</div>
+          <div class="title">Общий объем материалов:</div>
           <div class="inp-itog">0 м<sup>3</sup></div>
         </div>
       </template>
@@ -154,7 +154,7 @@
     </BlockSection>
 
     <BlockSection
-      title="Материалы"
+      title="Выбрать дполнителоьные материалы"
       titlePage="БЕТОН ДЛЯ ПЛИТ"
       tip="Расчитать объем сложных монолитных плит удобней всего, разделив общий объем на сектора. Таким образом..."
     >
@@ -206,25 +206,26 @@
         </div>
       </template>
 
-      <template v-slot:fieldItog>
+      <!-- <template v-slot:fieldItog>
         <div class="field-section-itog">
-          <div class="title">Общий размер материалов:</div>
+          <div class="title">Общий объем материалов:</div>
           <div class="inp-itog">0 м<sup>3</sup></div>
         </div>
-      </template>
-
+      </template> -->
+      Выбрать дполнителоьные материалы
       <template v-slot:image>
         <img src="/images/raschet.jpg" />
       </template>
     </BlockSection>
 
     <div class="calculation_blockButtonContainer">
-      <button
+      <div class="zagolovok">Результат</div>
+      <!-- <button
         class="calculation_blockButton Orange m-40"
       >
         ПОКАЗАТЬ РЕЗУЛЬТАТ
       </button>
-      <button class="calculation_blockButton">СКАЧАТЬ ФАЙЛ</button>
+      <button class="calculation_blockButton">скачать результа</button> -->
     </div>
 
     <BlockSectionResult>
@@ -232,8 +233,8 @@
         <div class="column col-4">
           <div class="title">Общий  рассчет отмостки</div>
           <div class="field mb-20">
-            <div class="text">Общий размер отмостки:</div>
-            <div class="itog">{{result}} м<sup>3</sup></div>
+            <div class="text">общий размер отмостки:</div>
+            <div class="itog">{{result}} м<sup>2</sup></div>
           </div>
           <div class="field mb-20">
             <div class="text">Общее количество углов:</div>
@@ -241,26 +242,26 @@
           </div>
           <div class="field mb-20">
             <div class="text opacity">Периметр дома:</div>
-            <div class="itog">{{perimeter || 0}} м<sup>3</sup></div>
+            <div class="itog">{{perimeter || 0}} м<sup></sup></div>
           </div>
           <div class="field mb-20">
             <div class="text opacity">Ширина отмостки:</div>
-            <div class="itog">{{width || 0}} м<sup>3</sup></div>
+            <div class="itog">{{width || 0}} м<sup></sup></div>
           </div>
           <div class="field mb-20">
             <div class="text opacity">Внешние углы А:</div>
             <div class="itog">{{external || 0}} шт</div>
           </div>
           <div class="field mb-20">
-            <div class="text opacity">Внешние углы а:</div>
+            <div class="text opacity">Внутренние углы а:</div>
             <div class="itog">{{internal || 0}} шт</div>
           </div>
         </div>
 
         <div class="column col-4">
-          <div class="title">Общий  рассчет отмостки</div>
+          <div class="title">Рассчет материалов отмостки</div>
           <div class="field mb-20">
-            <div class="text">Общий рассчет материалов:</div>
+            <div class="text">общий объем материалов:</div>
             <div class="itog">{{pcirsResult}} м<sup>3</sup></div>
           </div>
           <div class="field mb-20">
@@ -286,42 +287,42 @@
         </div>
 
         <div class="column col-4">
-          <div class="title">Общий размер материалов:</div>
-          <div class="field mb-20">
-            <div class="text">Общий рассчет материалов:</div>
+          <div class="title">Рассчет материалов отмостки</div>
+          <!-- <div class="field mb-20">
+            <div class="text">Рассчет материалов отмостки</div>
             <div class="itog">0 м<sup>3</sup></div>
-          </div>
+          </div> -->
           <div class="field mb-20">
-            <div class="text opacity">Геотекстиль:</div>
+            <div class="text opacity">площадь геотекстиля:</div>
             <div class="itog" v-if="checKgeotextile">{{result}} м<sup>3</sup></div>
             <div class="itog" v-if="!checKgeotextile">не выбрано</div>
           </div>
           <div class="field mb-20">
-            <div class="text opacity">Арматурная сетка:</div>
+            <div class="text opacity">площадь арм.сетки:</div>
             <div class="itog" v-if="checKreinforcing">{{result}} м<sup>3</sup></div>
             <div class="itog" v-if="!checKreinforcing">не выбрано</div>
           </div>
           <div class="field mb-20">
-            <div class="text opacity">Бордюр:</div>
+            <div class="text opacity">длина бордюра:</div>
             <div class="itog" v-if="checKborder">{{border}} м.п.</div>
             <div class="itog" v-if="!checKborder">не выбрано</div>
           </div>
           <div class="field mb-20">
-            <div class="text opacity">Опалубка:</div>
-            <div class="itog" v-if="checKformwork"> м<sup>3</sup></div>
+            <div class="text opacity">длина опалубки:</div>
+            <div class="itog" v-if="checKformwork">{{perimeter}} м<sup>3</sup></div>
             <div class="itog" v-if="!checKformwork">не выбрано</div>
           </div>
           <div class="field mb-20">
-            <div class="text opacity">Гидроизоляция:</div>
+            <div class="text opacity">площадь гидроизоляции:</div>
             <div class="itog" v-if="checKwaterproofing">{{waterproofing}} м<sup>2</sup></div>
             <div class="itog" v-if="!checKwaterproofing">не выбрано</div>
           </div>
         </div>
       </template>
       <template v-slot:btnSection>
-        <button class="calculation_blockButton Orange mt-10">
+        <!-- <button class="calculation_blockButton Orange mt-10">
           Рассчитать стоимость
-        </button>
+        </button> -->
       </template>
       <template v-slot:result>
         <div class="field">
@@ -365,7 +366,7 @@
           </div>
           <div class="calculation_blockButtonMiniContainer pl-0 mt-37">
             <button class="calculation_blockButton m-40">
-              сохранить ФАЙЛ
+              скачать результаты
             </button>
             <button class="calculation_blockButton Orange">
               Оформить заказ
@@ -398,7 +399,6 @@ export default defineComponent({
   data() {
     return {
       modal: false,
-      perimeter: 40,
       width: 1,
       external: 4,
       internal: 0,
@@ -447,9 +447,17 @@ export default defineComponent({
         value: ''
       }
       this.sides.push(newElem)
-    }
+    },
+    
   },
   computed: {
+    perimeter() {
+      let result1 = 0
+      this.sides.forEach((element) => {
+        result1 += element.value * this.width
+      })
+      return result1
+    },
     result() {
       if (this.external < 4) {
         return 'null'

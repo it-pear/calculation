@@ -40,6 +40,7 @@
       tip="Данные калькулятора будут верны только в том случае, если высота не меняется на участках опалубки и не нарушена геометрия самой опалубочной системы"
       :concrete="simple.result"
       :totalData="printResult(simple.result)"
+      @scrollResult="onscrollResult"
     />
 
     <slotInlineBlockContainer
@@ -47,6 +48,7 @@
       tip="Рассчитать общий объем такой конструкции лучше всего путем сложения объема внешней части ростверка, его перегородок и объемов свай."
       :concrete="complex.result"
       :totalData="printResult(complex.result)"
+      @scrollResult="onscrollResult"
     >
       <template v-slot:inlineBlock>
         <template v-for="(undefined_, index) in complex.values" :key="index">
@@ -92,6 +94,7 @@
       @typeBeton2="typeBeton2"
       @markaBeton2="markaBeton2"
       @podvigBeton2="podvigBeton2"
+      @getScrollResult="ongetScrollResult"
     >
       <template v-slot:total>
         <div class="calc_block_inputResult">Общий объем: <span>{{ printResultBlock(totalData) }}</span></div>
@@ -163,7 +166,8 @@ export default defineComponent({
       typeBeton: '',
       markaBeton: '',
       podvigBeton: '',
-      totalModalPrice: 0
+      totalModalPrice: 0,
+      positionResult: 0
     }
   },
   computed: {
@@ -235,6 +239,15 @@ export default defineComponent({
         link.click();
         return alert('Файл сохранен');
       });
+    },
+    ongetScrollResult(value: number) {
+      this.positionResult = value
+    },
+    onscrollResult() {
+      window.scrollBy({
+        top: this.positionResult - window.pageYOffset,
+        behavior: 'smooth'
+      })
     }
   },
   watch: {

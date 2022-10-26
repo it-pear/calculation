@@ -40,6 +40,7 @@
       tip="Простая УШП плита состоит из внешнего «контура» - ростверка и из внутреннего обогреваемого. Как правило они имеют разные геометрические размеры. Лучшим методом будет посчитать их объемы отдельно и суммировать полученный результат."
       :concrete="simple.result"
       :totalData="printResult(simple.result)"
+      @scrollResult="onscrollResult"
     />
 
     <slotInlineBlockContainer
@@ -47,6 +48,7 @@
       tip="Сложная УШП состоит из нескольких обогреваемых участков, разделенных внутренними перегородками. В этом случае предлагаем отдельно рассчитать объемы перегородок и обогреваемых участков."
       :concrete="complex.result"
       :totalData="printResult(complex.result)"
+      @scrollResult="onscrollResult"
     >
       <template v-slot:inlineBlock>
         <template v-for="(undefined, index) in complex.valuesOfFundament" :key="index">
@@ -102,6 +104,7 @@
       tip="Рассчитать объем сложных плит удобней всего, разделив общий объем на сектора. Таким образом, можно посчитать площадь каждого сектора и задать для него разные параметры высотных отметок"
       :concrete="pile.result"
       :totalData="printResult(pile.result)"
+      @scrollResult="onscrollResult"
     >
       <template v-slot:addContainer>
         <div class="calc_block_addField" @click="addPile()">
@@ -143,6 +146,7 @@
       @typeBeton2="typeBeton2"
       @markaBeton2="markaBeton2"
       @podvigBeton2="podvigBeton2"
+      @getScrollResult="ongetScrollResult"
     >
       <template v-slot:total>
 
@@ -257,7 +261,8 @@ export default defineComponent({
       typeBeton: '',
       markaBeton: '',
       podvigBeton: '',
-      totalModalPrice: 0
+      totalModalPrice: 0,
+      positionResult: 0
     }
   },
   computed: {
@@ -342,6 +347,15 @@ export default defineComponent({
         link.click();
         return alert('Файл сохранен');
       });
+    },
+    ongetScrollResult(value: number) {
+      this.positionResult = value
+    },
+    onscrollResult() {
+      window.scrollBy({
+        top: this.positionResult - window.pageYOffset,
+        behavior: 'smooth'
+      })
     }
   },
   watch: {

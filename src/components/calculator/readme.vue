@@ -41,7 +41,7 @@ export default defineComponent({
   },
   data() {
     return {
-      readme: true
+      readme: false
     }
   }
 })

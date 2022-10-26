@@ -54,6 +54,16 @@
 .calculation_blockButtonContainer,
 .calculation_blockButtonMiniContainer {
   display: flex;
+  .zagolovok {
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 36px;
+    /* identical to box height */
+
+    text-transform: uppercase;
+
+    color: #2B2B2B;
+  }
   .calculation_blockButton {
     padding: 20.5px 30px;
     font-weight: 600;
@@ -116,7 +126,8 @@
       justify-content: flex-start;
       
       .calc_contact {
-        max-width: 457px;
+        max-width: calc(100% - 38px);
+        margin-right: 38px;
         text-align: left;
         border-radius: 2px;
         height: 224px;
@@ -149,6 +160,8 @@
         display: flex;
         margin-top: 0;
         margin-left: auto;
+        height: 224px;
+        min-width: 441px;
         .subtitle {
           max-width: 255px;
           margin-right: 23px;

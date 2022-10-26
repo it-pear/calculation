@@ -59,8 +59,10 @@ export default defineComponent({
         }    
         .block-section_tip {
           color: #FFA92E;
-          padding-left: 0;
+          position: relative;
+          padding-left: 5px;
           font-style: normal;
+          top: -3px;
           font-weight: 600;
           font-size: 13px;
           line-height: 16px;
@@ -227,7 +229,7 @@ export default defineComponent({
         background: #F5F5F5;
         border-radius: 2px;
         padding: 5px 10px 5px 14px;
-        max-width: 426px;
+        width: 395px;
         margin-top: 30px;
         .title {
           font-weight: 700;
@@ -292,7 +294,7 @@ export default defineComponent({
           padding-bottom: 10px;
           position: relative;    
           span {
-            min-width: 195px;
+            min-width: 175px;
           }    
           .block-section_tip {
             color: #FFA92E;
@@ -409,6 +411,7 @@ export default defineComponent({
           border-radius: 2px;
           padding: 5px 10px 5px 14px;
           max-width: 426px;
+          width: auto;
           margin-top: 30px;
           .title {
             font-weight: 700;
