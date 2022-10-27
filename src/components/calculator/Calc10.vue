@@ -60,7 +60,7 @@
     </div>
 
     <div class="row-section-sidebar">
-      <BlockSectionResult :gorisontalResult2="true">
+      <BlockSectionResult :gorisontalResult2="true" @saveFile="saveFile">
         <template v-slot:head>
           <div class="column col-50">
             <div class="title">Общий расчет материалов для изготовлния бетона</div>
@@ -142,7 +142,7 @@
             <div class="text">Стоимость рассчета:</div>
             <div class="info">0 руб.</div>
             <div class="calculation_blockButtonMiniContainer pl-0 mt-37 lg-visible">
-              <button class="calculation_blockButton m-40">
+              <button class="calculation_blockButton m-40" @click="saveFile()">
                 скачать результаты
               </button>
               <button class="calculation_blockButton Orange">
@@ -171,6 +171,7 @@ import HelpBetter from "../newComponents/HelpBetter.vue";
 import BlockSection from "../newComponents/BlockSection.vue";
 import BlockSectionResult from "../newComponents/BlockSectionResult.vue";
 import readme from "./readme.vue";
+import axios from 'axios'
 import FormQuetions from '../newComponents/FormQuetions.vue';
 import QrCode from '../newComponents/QrCode.vue';
 
@@ -494,6 +495,46 @@ export default defineComponent({
         }
       ],
     }
+  },
+  methods: {
+    
+
+    saveFile() {
+      let state = {
+        head1: 'Пропорзия (Ц-Щ-П-В) ',
+        head2: 'Масса цемента: ',
+        head3: 'Масса щебня: ',
+        head4: 'Масса песка: ',
+        head5: 'Масса воды: ',
+        head6: 'Объем цемента: ',
+        head7: 'Объем щебня: ',
+        head8: 'Объем песка: ',
+        head9: 'Объем воды: ',
+
+        title1: this.dataBetonModel.proportion,
+        title2: this.dataBetonModel.mcement,
+        title3: this.dataBetonModel.mrubble,
+        title4: this.dataBetonModel.msand,
+        title5: this.dataBetonModel.mwater,
+        title6: this.dataBetonModel.ocement,
+        title7: this.dataBetonModel.orubble,
+        title8: this.dataBetonModel.osand,
+        title9: this.dataBetonModel.owater,
+
+      };
+      axios({
+        method: 'post',
+        url: '/sendmail2.php',
+        headers: { 'content-type': 'application/json' },
+        data: state
+      }).then(res => {
+        var link = document.createElement('a');
+        link.setAttribute('href','/data.txt');
+        link.setAttribute('download','download');
+        link.click();
+        return alert('Файл сохранен');
+      });
+    },
   },
   components: {
     BlockSection,

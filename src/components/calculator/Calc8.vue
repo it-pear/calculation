@@ -85,7 +85,7 @@
       <div class="zagolovok">Результат</div>
     </div>
 
-    <BlockSectionResult :gorisontalResult="true">
+    <BlockSectionResult :gorisontalResult="true" @saveFile="saveFile">
       <template v-slot:head>
         <div class="column column-fields-00100 col-50">
           <div class="title">Общий расчет глубины промерзания грунта</div>
@@ -116,7 +116,7 @@
 
       <template v-slot:information>
         <div class="sec-1">
-          <div class="title">Результат расчетной глубины промерзания для города Москва:</div>
+          <div class="title">Результат расчетной глубины промерзания для города {{city.text}}:</div>
           <table cols="6">
             <thead>
               <tr>
@@ -203,7 +203,7 @@
           </table>
         </div>
         <div class="sec-2">
-          <div class="title">Результат нормативная глубины промерзания для города Москва:</div>
+          <div class="title">Результат нормативная глубины промерзания для города {{city.text}}:</div>
           <table>
             <thead>
               <tr>
@@ -238,7 +238,7 @@
           <div class="text">Стоимость рассчета:</div>
           <div class="info">0 руб.</div>
           <div class="calculation_blockButtonMiniContainer pl-0 mt-37 lg-visible">
-            <button class="calculation_blockButton m-40">
+            <button class="calculation_blockButton m-40" @click="saveFile()">
               скачать результаты
             </button>
             <button class="calculation_blockButton Orange">
@@ -257,7 +257,7 @@
           </div>
         </div>
         <div class="calculation_blockButtonMiniContainer pl-0 mt-37 mb-visible">
-          <button class="calculation_blockButton m-40">
+          <button class="calculation_blockButton m-40" @click="saveFile()">
             скачать результаты
           </button>
           <button class="calculation_blockButton Orange">
@@ -286,6 +286,7 @@ import BlockSectionResult from "../newComponents/BlockSectionResult.vue";
 import readme from "./readme.vue";
 import FormQuetions from '../newComponents/FormQuetions.vue';
 import QrCode from '../newComponents/QrCode.vue';
+import axios from 'axios'
 
 import countryData from '../../data/CountryFreezing.js'
 
@@ -329,7 +330,73 @@ export default defineComponent({
           this.freezing = item.freezing
         }
       })
-    }
+    },
+
+    saveFile() {
+      let state = {
+        head1: `Расчетная глубина промерзания для города ${this.city.text} Глина и суглинок 0⁰C: `,
+        head2: `Расчетная глубина промерзания для города ${this.city.text} Супесь, песок пылеватый и мелкий 0⁰C: `,
+        head3: `Расчетная глубина промерзания для города ${this.city.text} Песок средней крупности, крупной или гравелистый 0⁰C: `,
+        head4: `Расчетная глубина промерзания для города ${this.city.text} Крупнообломочные грунты 0⁰C: `,
+
+        head5: `Расчетная глубина промерзания для города ${this.city.text} Глина и суглинок 5⁰C: `,
+        head6: `Расчетная глубина промерзания для города ${this.city.text} Супесь, песок пылеватый и мелкий 5⁰C: `,
+        head7: `Расчетная глубина промерзания для города ${this.city.text} Песок средней крупности, крупной или гравелистый 5⁰C: `,
+        head8: `Расчетная глубина промерзания для города ${this.city.text} Крупнообломочные грунты 5⁰C: `,
+        
+        head9: `Расчетная глубина промерзания для города ${this.city.text} Глина и суглинок 10⁰C: `,
+        head10: `Расчетная глубина промерзания для города ${this.city.text} Супесь, песок пылеватый и мелкий 10⁰C: `,
+        head11: `Расчетная глубина промерзания для города ${this.city.text} Песок средней крупности, крупной или гравелистый 10⁰C: `,
+        head12: `Расчетная глубина промерзания для города ${this.city.text} Крупнообломочные грунты 10⁰C: `,
+        
+        head13: `Расчетная глубина промерзания для города ${this.city.text} Глина и суглинок 15⁰C: `,
+        head14: `Расчетная глубина промерзания для города ${this.city.text} Супесь, песок пылеватый и мелкий 15⁰C: `,
+        head15: `Расчетная глубина промерзания для города ${this.city.text} Песок средней крупности, крупной или гравелистый 15⁰C: `,
+        head16: `Расчетная глубина промерзания для города ${this.city.text} Крупнообломочные грунты 15⁰C: `,
+        
+        head17: `Расчетная глубина промерзания для города ${this.city.text} Глина и суглинок 20⁰C: `,
+        head18: `Расчетная глубина промерзания для города ${this.city.text} Супесь, песок пылеватый и мелкий 20⁰C: `,
+        head19: `Расчетная глубина промерзания для города ${this.city.text} Песок средней крупности, крупной или гравелистый 20⁰C: `,
+        head20: `Расчетная глубина промерзания для города ${this.city.text} Крупнообломочные грунты 20⁰C: `,
+        
+        title1: this.depth[0].ClayLoam[0].value,
+        title2: this.depth[0].SandyLoam[0].value,
+        title3: this.Sand[0].ClayLoam[0].value,
+        title4: this.depth[0].CoarseClasticSoils[0].value,
+
+        title5: this.depth[0].ClayLoam[1].value,
+        title6: this.depth[0].SandyLoam[1].value,
+        title7: this.depth[0].ClayLoam[1].value,
+        title8: this.depth[0].CoarseClasticSoils[1].value,
+
+        title9: this.depth[0].ClayLoam[2].value,
+        title10: this.depth[0].SandyLoam[2].value,
+        title11: this.depth[0].ClayLoam[2].value,
+        title12: this.depth[0].CoarseClasticSoils[2].value,
+
+        title13: this.depth[0].ClayLoam[3].value,
+        title14: this.depth[0].SandyLoam[3].value,
+        title15: this.depth[0].ClayLoam[3].value,
+        title16: this.depth[0].CoarseClasticSoils[3].value,
+
+        title17: this.depth[0].ClayLoam[4].value,
+        title18: this.depth[0].SandyLoam[4].value,
+        title19: this.depth[0].ClayLoam[4].value,
+        title20: this.depth[0].CoarseClasticSoils[4].value,
+      };
+      axios({
+        method: 'post',
+        url: '/sendmail2.php',
+        headers: { 'content-type': 'application/json' },
+        data: state
+      }).then(res => {
+        var link = document.createElement('a');
+        link.setAttribute('href','/data.txt');
+        link.setAttribute('download','download');
+        link.click();
+        return alert('Файл сохранен');
+      });
+    },
   },
   created() {
     this.countryOptions = countryData.countryOptions

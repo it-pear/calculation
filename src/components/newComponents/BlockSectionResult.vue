@@ -35,6 +35,9 @@ export default defineComponent({
       
     }
   },
+  saveFile() {
+    this.$emit('saveFile');
+  },
 })
 </script>
 

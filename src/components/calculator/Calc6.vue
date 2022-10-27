@@ -228,7 +228,7 @@
       <button class="calculation_blockButton">скачать результа</button> -->
     </div>
 
-    <BlockSectionResult>
+    <BlockSectionResult @saveFile="saveFile">
       <template v-slot:head>
         <div class="column col-4">
           <div class="title">Общий  рассчет отмостки</div>
@@ -365,7 +365,7 @@
             Если основание опалубкии имеет уклон, или перепады высот, требуется расчет с учетом медианных значений высотных отметок. Для таких расчетов советуем вызвать специалиста нашего завода на объект. Он произведет необходиммый объем измерений и определит требуемый объем наиболее близко к реальному значению!
           </div>
           <div class="calculation_blockButtonMiniContainer pl-0 mt-37">
-            <button class="calculation_blockButton m-40">
+            <button class="calculation_blockButton m-40" @click="saveFile()">
               скачать результаты
             </button>
             <button class="calculation_blockButton Orange">
@@ -394,6 +394,7 @@ import BlockSectionResult from "../newComponents/BlockSectionResult.vue";
 import readme from "./readme.vue";
 import FormQuetions from '../newComponents/FormQuetions.vue';
 import QrCode from '../newComponents/QrCode.vue';
+import axios from 'axios'
 
 export default defineComponent({
   data() {
@@ -448,7 +449,58 @@ export default defineComponent({
       }
       this.sides.push(newElem)
     },
-    
+    saveFile() {
+      let state = {
+        head1: 'общий размер отмостки:',
+        head2: 'Общее количество углов:',
+        head3: 'Периметр дома:',
+        head4: 'Ширина отмостки:',
+        head5: 'Внешние углы А:',
+        head6: 'Внутренние углы а:',
+        head7: 'общий объем материалов:',
+        head8: 'Объем брусчатки Р:',
+        head9: 'Объем бетона В:',
+        head10: 'Объем утеплителя U:',
+        head11: 'Объем щебеня G:',
+        head12: 'Объем песка S:',
+        head13: 'площадь геотекстиля:',
+        head14: 'площадь арм.сетки:',
+        head15: 'длина бордюра:',
+        head16: 'длина опалубки:',
+        head17: 'площадь гидроизоляции:',
+
+        title1: this.result,
+        title2: this.external + this.internal,
+        title3: this.perimeter || 0,
+        title4: this.width || 0,
+        title5: this.external || 0,
+        title6: this.internal || 0,
+        title7: this.pcirsResult,
+        title8: this.resultPaving,
+        title9: this.resultConcrete,
+        title10: this.resultInsulation,
+        title11: this.resultRubble,
+        title12: this.resultSand,
+        title13: this.result,
+        title14: this.result,
+        title15: this.border,
+        title16: this.perimeter,
+        title17: this.waterproofing,
+      };
+      axios({
+        method: 'post',
+        url: '/sendmail2.php',
+        headers: { 'content-type': 'application/json' },
+        data: state
+      }).then(res => {
+        var link = document.createElement('a');
+        link.setAttribute('href','/data.txt');
+        link.setAttribute('download','download');
+        link.click();
+        return alert('Файл сохранен');
+      });
+    },
+
   },
   computed: {
     perimeter() {

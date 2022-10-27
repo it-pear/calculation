@@ -107,7 +107,7 @@
     <div class="calculation_blockButtonContainer"> 
       <div class="zagolovok">Результат</div>
     </div>
-    <BlockSectionResult :gorisontalResult="true">
+    <BlockSectionResult :gorisontalResult="true" @saveFile="saveFile">
       <template v-slot:head>
         <div class="column column-fields-00100 col-50">
           <div class="title">Общий расчет глубины промерзания грунта</div>
@@ -149,7 +149,7 @@
 
       <template v-slot:information>
         <div class="sec-2 sec-3">
-          <div class="title">Глубина заложения фундамента для города Москва</div>
+          <div class="title">Глубина заложения фундамента для города {{city.text}}</div>
           <table>
             <thead>
               <tr>
@@ -242,7 +242,7 @@
           <div class="text">Стоимость рассчета:</div>
           <div class="info">0 руб.</div>
           <div class="calculation_blockButtonMiniContainer pl-0 mt-37 lg-visible">
-            <button class="calculation_blockButton m-40">
+            <button class="calculation_blockButton m-40" @click="saveFile()">
               скачать результаты
             </button>
             <button class="calculation_blockButton Orange">
@@ -261,7 +261,7 @@
           </div>
         </div>
         <div class="calculation_blockButtonMiniContainer pl-0 mt-37 mb-visible">
-          <button class="calculation_blockButton m-40">
+          <button class="calculation_blockButton m-40" @click="saveFile()">
             скачать результаты
           </button>
           <button class="calculation_blockButton Orange">
@@ -289,7 +289,7 @@ import BlockSectionResult from "../newComponents/BlockSectionResult.vue";
 import readme from "./readme.vue";
 import FormQuetions from '../newComponents/FormQuetions.vue';
 import QrCode from '../newComponents/QrCode.vue';
-
+import axios from 'axios'
 import countryData from '../../data/CountryFreezing.js'
 
 export default defineComponent({
@@ -371,7 +371,35 @@ export default defineComponent({
         this.noneData = false
       }
 
-    }
+    },
+    saveFile() {
+      let state = {
+        head1: `Глубина заложения фундамента для города ${this.city.text} 0⁰C: ${this.noneData ? 'Не зависит от df' : ''} `,
+        head2: `Глубина заложения фундамента для города ${this.city.text} 5⁰C: ${this.noneData ? 'Не зависит от df' : ''} `,
+        head3: `Глубина заложения фундамента для города ${this.city.text} 10⁰C: ${this.noneData ? 'Не зависит от df' : ''} `,
+        head4: `Глубина заложения фундамента для города ${this.city.text} 15⁰C: ${this.noneData ? 'Не зависит от df' : ''} `,
+        head5: `Глубина заложения фундамента для города ${this.city.text} 20⁰C: ${this.noneData ? 'Не зависит от df' : ''} `,
+        
+        title1: this.depthInpActive ? this.depthTable[0].value / 2 : this.depthTable[0].value,
+        title2: this.depthInpActive ? this.depthTable[1].value / 2 : this.depthTable[1].value,
+        title3: this.depthInpActive ? this.depthTable[2].value / 2 : this.depthTable[2].value,
+        title4: this.depthInpActive ? this.depthTable[3].value / 2 : this.depthTable[3].value,
+        title5: this.depthInpActive ? this.depthTable[4].value / 2 : this.depthTable[4].value,
+
+      };
+      axios({
+        method: 'post',
+        url: '/sendmail2.php',
+        headers: { 'content-type': 'application/json' },
+        data: state
+      }).then(res => {
+        var link = document.createElement('a');
+        link.setAttribute('href','/data.txt');
+        link.setAttribute('download','download');
+        link.click();
+        return alert('Файл сохранен');
+      });
+    },
   },
   created() {
     this.countryOptions = countryData.countryOptions
