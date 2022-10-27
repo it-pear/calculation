@@ -279,6 +279,7 @@
       @modalDisable="modalDisable"
       titlePage="РАСЧЕТ ГЛУБИНЫ ПРОМЕРЗАНИЯ ГРУНТА"
     />
+   {{depth[0].ClayLoam[0].value}}
   </div>
 </template>
 
@@ -372,7 +373,7 @@ export default defineComponent({
         
         title1: this.depth[0].ClayLoam[0].value,
         title2: this.depth[0].SandyLoam[0].value,
-        title3: this.Sand[0].ClayLoam[0].value,
+        title3: this.depth[0].ClayLoam[0].value,
         title4: this.depth[0].CoarseClasticSoils[0].value,
 
         title5: this.depth[0].ClayLoam[1].value,
