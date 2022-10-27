@@ -85,7 +85,7 @@
       <div class="zagolovok">Результат</div>
     </div>
 
-    <BlockSectionResult :gorisontalResult="true" @saveFile="saveFile">
+    <BlockSectionResult :gorisontalResult="true" @saveFile="saveFile" @modalActive="modalActive">
       <template v-slot:head>
         <div class="column column-fields-00100 col-50">
           <div class="title">Общий расчет глубины промерзания грунта</div>
@@ -241,7 +241,7 @@
             <button class="calculation_blockButton m-40" @click="saveFile()">
               скачать результаты
             </button>
-            <button class="calculation_blockButton Orange">
+            <button class="calculation_blockButton Orange" @click="modalActive()">
               Оформить заказ
             </button>
           </div>
@@ -260,7 +260,7 @@
           <button class="calculation_blockButton m-40" @click="saveFile()">
             скачать результаты
           </button>
-          <button class="calculation_blockButton Orange">
+          <button class="calculation_blockButton Orange" @click="modalActive()">
             Оформить заказ
           </button>
         </div>
@@ -274,7 +274,11 @@
     <readme 
       text="Чтобы построенное здание было надежным, долговечным и безопасным, важно правильно рассчитать глубину заложения фундамента. Она зависит от разных факторов, в том числе климата, геологии и гидрологии местности, а также от особенностей возводимого строения. Бесплатный онлайн калькулятор глубины фундамента позволяет рассчитать, на сколько метров необходимо заглублять основание строения, чтобы оно гарантированно выдержало не только само здание, но и воздействие окружающей среды. Калькулятор работает по актуальным строительным нормам и правилам, таким как «Основания зданий и сооружений» и «Строительная климатология». Поэтому результатам расчета можно доверять. В базе калькулятора представлены все субъекты Российской Федерации, а также крупные города в регионах. Итоги расчетов калькулятора глубины заглубления основания основываются на нормативном и расчетном показателях глубины промерзания грунта, уровня залегания грунтовых вод и средней температуры воздуха. Расчеты актуальны для ленточных и монолитных фундаментов одно- и двухэтажных домов, бань, хозяйственных построек, независимо от используемого строительного материала. "
     />
-    
+    <modal
+      :modal="modal"
+      @modalDisable="modalDisable"
+      titlePage="РАСЧЕТ ГЛУБИНЫ ПРОМЕРЗАНИЯ ГРУНТА"
+    />
   </div>
 </template>
 
@@ -286,6 +290,7 @@ import BlockSectionResult from "../newComponents/BlockSectionResult.vue";
 import readme from "./readme.vue";
 import FormQuetions from '../newComponents/FormQuetions.vue';
 import QrCode from '../newComponents/QrCode.vue';
+import modal from "../newComponents/modal.vue";
 import axios from 'axios'
 
 import countryData from '../../data/CountryFreezing.js'
@@ -293,9 +298,9 @@ import countryData from '../../data/CountryFreezing.js'
 export default defineComponent({
   data() {
     return {
-      modal: '',
       country: '',
       region: '',
+      modal: false,
       city: {
         text: 'Майкоп',
         value: 1
@@ -313,7 +318,8 @@ export default defineComponent({
     HelpBetter,
     readme,
     FormQuetions,
-    QrCode
+    QrCode,
+    modal
     // "readme": readme,
     // "modal": modal,
     // HelpBetter
@@ -331,7 +337,12 @@ export default defineComponent({
         }
       })
     },
-
+    modalDisable() {
+      this.modal = false
+    },
+    modalActive() {
+      this.modal = true
+    },
     saveFile() {
       let state = {
         head1: `Расчетная глубина промерзания для города ${this.city.text} Глина и суглинок 0⁰C: `,

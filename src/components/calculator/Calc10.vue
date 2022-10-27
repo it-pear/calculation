@@ -60,7 +60,7 @@
     </div>
 
     <div class="row-section-sidebar">
-      <BlockSectionResult :gorisontalResult2="true" @saveFile="saveFile">
+      <BlockSectionResult :gorisontalResult2="true" @saveFile="saveFile" @modalActive="modalActive">
         <template v-slot:head>
           <div class="column col-50">
             <div class="title">Общий расчет материалов для изготовлния бетона</div>
@@ -145,7 +145,7 @@
               <button class="calculation_blockButton m-40" @click="saveFile()">
                 скачать результаты
               </button>
-              <button class="calculation_blockButton Orange">
+              <button class="calculation_blockButton Orange" @click="modalActive()">
                 Оформить заказ
               </button>
             </div>
@@ -162,6 +162,11 @@
     <readme
       text="Бесплатный онлайн калькулятор цемента поможет посчитать, какое количество вяжущего понадобится для изготовления 1 кубометра бетонной смеси выбранной марки. Инструмент вычисления покажет применяемые пропорции для указанной марки бетона и марки используемого цемента. Калькулятор также подскажет, сколько потребуется щебня, песка и воды, а также укажет объем каждого компонента."
     />
+    <modal
+      :modal="modal"
+      @modalDisable="modalDisable"
+      titlePage="РАСЧЕТ МАТЕРИАЛОВ ДЛЯ ИЗГОТОВЛЕНИЯ БЕТОНА"
+    />
   </div>
 </template>
 
@@ -174,6 +179,7 @@ import readme from "./readme.vue";
 import axios from 'axios'
 import FormQuetions from '../newComponents/FormQuetions.vue';
 import QrCode from '../newComponents/QrCode.vue';
+import modal from "../newComponents/modal.vue";
 
 export default defineComponent({
   data() {
@@ -498,7 +504,12 @@ export default defineComponent({
   },
   methods: {
     
-
+    modalDisable() {
+      this.modal = false
+    },
+    modalActive() {
+      this.modal = true
+    },
     saveFile() {
       let state = {
         head1: 'Пропорзия (Ц-Щ-П-В) ',
@@ -542,7 +553,8 @@ export default defineComponent({
     HelpBetter,
     readme,
     FormQuetions,
-    QrCode
+    QrCode,
+    modal
   }
 });
 </script>

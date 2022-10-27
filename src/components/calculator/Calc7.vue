@@ -40,7 +40,7 @@
     </div>
 
     <div class="row-section-sidebar">
-      <BlockSectionResult @saveFile="saveFile">
+      <BlockSectionResult @saveFile="saveFile" @modalActive="modalActive">
         <template v-slot:head>
           <div class="column col-50">
             <div class="title">Общая  характеристика твердения бетона</div>
@@ -86,7 +86,7 @@
               <button class="calculation_blockButton m-40" @click="saveFile()">
                 скачать результаты
               </button>
-              <button class="calculation_blockButton Orange">
+              <button class="calculation_blockButton Orange" @click="modalActive()">
                 Оформить заказ
               </button>
             </div>
@@ -103,6 +103,11 @@
     <readme
       text="Процесс, при котором бетонный раствор набирает прочность, называется твердением. Он продолжается с заливки смеси и до полного ее затвердевания. 28 дней - это тот период, за который бетонный раствор становится монолитом. Однако на срок набора прочности влияет температура, в зависимости от показателя столбика термометра продолжительность твердения может уменьшаться или увеличиваться. Так, если температура окружающей среды падает ниже +5 градусов, то процесс гидратации значительно замедляется, а при температуре ниже 0 - прекращается. При высокой температуре скорость твердения наоборот увеличивается. Бесплатный онлайн калькулятор скорости застывания бетона подскажет вам, сколько времени понадобится конструкции для набора прочности при текущей среднесуточной температуре. "
     />
+    <modal
+      :modal="modal"
+      @modalDisable="modalDisable"
+      titlePage="КАЛЬКУЛЯТОР ТВЕРДЕНИЯ БЕТОНА"
+    />
   </div>
 </template>
 
@@ -114,6 +119,7 @@ import BlockSectionResult from "../newComponents/BlockSectionResult.vue";
 import readme from "./readme.vue";
 import FormQuetions from '../newComponents/FormQuetions.vue';
 import QrCode from '../newComponents/QrCode.vue';
+import modal from "../newComponents/modal.vue";
 import axios from 'axios'
 
 export default defineComponent({
@@ -416,7 +422,8 @@ export default defineComponent({
     HelpBetter,
     readme,
     FormQuetions,
-    QrCode
+    QrCode,
+    modal
   },
   methods: {
     saveFile() {
@@ -436,6 +443,12 @@ export default defineComponent({
         link.click();
         return alert('Файл сохранен');
       });
+    },
+    modalDisable() {
+      this.modal = false
+    },
+    modalActive() {
+      this.modal = true
     },
   },
   computed: {

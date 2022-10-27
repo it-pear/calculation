@@ -228,7 +228,7 @@
       <button class="calculation_blockButton">скачать результа</button> -->
     </div>
 
-    <BlockSectionResult @saveFile="saveFile">
+    <BlockSectionResult @saveFile="saveFile" @modalActive="modalActive">
       <template v-slot:head>
         <div class="column col-4">
           <div class="title">Общий  рассчет отмостки</div>
@@ -368,7 +368,7 @@
             <button class="calculation_blockButton m-40" @click="saveFile()">
               скачать результаты
             </button>
-            <button class="calculation_blockButton Orange">
+            <button class="calculation_blockButton Orange" @click="modalActive()">
               Оформить заказ
             </button>
           </div>
@@ -383,6 +383,11 @@
     <readme
       text="Бесплатный онлайн калькулятор поможет рассчитать отмостку вокруг вашего дома. С его помощью вы узнаете точное количество материалов, которые понадобятся для строительства. Все результаты расчетов можно скачать на ваш компьютер или смартфон. Калькулятор отмостки вычислит, какой объем материалов понадобится для строительства сложной прямоугольной конструкции, учитывая внутренние и внешние углы по периметру. Также в результатах вычислений вы увидите, сколько потребуется брусчатки, утеплителя, гидроизоляционного материала, геотекстиля, опалубки, бордюра, арматурной сетки, щебня, песка и бетона. Показатели рассчитываются, исходя из периметра, площади и объема. Обратите внимание на рекомендуемые размеры отмостки - ее ширина должна составлять от 80 до 120 см, а на участках со сложными геологическими условиями, как карсты - от 150 до 300 см."
     />
+    <modal
+      :modal="modal"
+      @modalDisable="modalDisable"
+      titlePage="КАЛЬКУЛЯТОР ОТМОСТКИ"
+    />
   </div>
 </template>
 
@@ -394,6 +399,7 @@ import BlockSectionResult from "../newComponents/BlockSectionResult.vue";
 import readme from "./readme.vue";
 import FormQuetions from '../newComponents/FormQuetions.vue';
 import QrCode from '../newComponents/QrCode.vue';
+import modal from "../newComponents/modal.vue";
 import axios from 'axios'
 
 export default defineComponent({
@@ -448,6 +454,12 @@ export default defineComponent({
         value: ''
       }
       this.sides.push(newElem)
+    },
+    modalDisable() {
+      this.modal = false
+    },
+    modalActive() {
+      this.modal = true
     },
     saveFile() {
       let state = {
@@ -557,7 +569,8 @@ export default defineComponent({
     HelpBetter,
     readme,
     FormQuetions,
-    QrCode
+    QrCode,
+    modal
     // "readme": readme,
     // "modal": modal,
     // HelpBetter

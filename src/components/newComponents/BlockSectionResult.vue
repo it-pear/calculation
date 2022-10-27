@@ -38,6 +38,9 @@ export default defineComponent({
   saveFile() {
     this.$emit('saveFile');
   },
+  modalActive() {
+    this.$emit('modalActive', this.totalModalPrice);
+  },
 })
 </script>
 

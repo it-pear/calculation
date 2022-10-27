@@ -107,7 +107,7 @@
     <div class="calculation_blockButtonContainer"> 
       <div class="zagolovok">Результат</div>
     </div>
-    <BlockSectionResult :gorisontalResult="true" @saveFile="saveFile">
+    <BlockSectionResult :gorisontalResult="true" @saveFile="saveFile" @modalActive="modalActive">
       <template v-slot:head>
         <div class="column column-fields-00100 col-50">
           <div class="title">Общий расчет глубины промерзания грунта</div>
@@ -245,7 +245,7 @@
             <button class="calculation_blockButton m-40" @click="saveFile()">
               скачать результаты
             </button>
-            <button class="calculation_blockButton Orange">
+            <button class="calculation_blockButton Orange" @click="modalActive()">
               Оформить заказ
             </button>
           </div>
@@ -264,7 +264,7 @@
           <button class="calculation_blockButton m-40" @click="saveFile()">
             скачать результаты
           </button>
-          <button class="calculation_blockButton Orange">
+          <button class="calculation_blockButton Orange" @click="modalActive()">
             Оформить заказ
           </button>
         </div>
@@ -278,6 +278,11 @@
     <readme
       text="Бесплатный онлайн калькулятор рассчитает глубину промерзания грунта, основываясь на информации, изложенной в строительных нормах и правилах «Строительная климатология». Требуется только корректно указать регион России и город, а также тип сооружения. Результаты вычисления включают нормативную и расчетную глубину промерзания грунта на выбранной территории. Эта информация поможет определить глубину заложения фундамента."
     />
+    <modal
+      :modal="modal"
+      @modalDisable="modalDisable"
+      titlePage="РАСЧЁТ ГЛУБИНЫ ЗАЛОЖЕНИЯ ФУНДАМЕНТА"
+    />
   </div>
 </template>
 
@@ -289,6 +294,7 @@ import BlockSectionResult from "../newComponents/BlockSectionResult.vue";
 import readme from "./readme.vue";
 import FormQuetions from '../newComponents/FormQuetions.vue';
 import QrCode from '../newComponents/QrCode.vue';
+import modal from "../newComponents/modal.vue";
 import axios from 'axios'
 import countryData from '../../data/CountryFreezing.js'
 
@@ -318,7 +324,8 @@ export default defineComponent({
     HelpBetter,
     readme,
     FormQuetions,
-    QrCode
+    QrCode,
+    modal
     // "readme": readme,
     // "modal": modal,
     // HelpBetter
@@ -371,6 +378,12 @@ export default defineComponent({
         this.noneData = false
       }
 
+    },
+    modalDisable() {
+      this.modal = false
+    },
+    modalActive() {
+      this.modal = true
     },
     saveFile() {
       let state = {
