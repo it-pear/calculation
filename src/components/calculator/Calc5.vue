@@ -57,7 +57,9 @@
     <template v-slot:image><img src="./tempContact.png" alt=""></template>
   </slotResultBlock>
   <HelpBetter />
-  <readme />
+  <readme
+    text=""
+  />
   <modal
     :modal="modal"
     @modalDisable="modalDisable"

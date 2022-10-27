@@ -17,7 +17,7 @@
             </p>
             <div class="calc_block_inline">
               <div class="calc_block_inputResult">
-                <div class="calc_block_inputResult__title">Выбрать Вид бетона</div>  
+                <div class="calc_block_inputResult__title">Выбрать вид бетона</div>  
                 <select v-model="typeBeton" @change="typeBeton2" class="calc__select">
                   <option
                     v-for="option in typeBetonOptions"

@@ -294,12 +294,12 @@
           </div> -->
           <div class="field mb-20">
             <div class="text opacity">площадь геотекстиля:</div>
-            <div class="itog" v-if="checKgeotextile">{{result}} м<sup>3</sup></div>
+            <div class="itog" v-if="checKgeotextile">{{result}} м<sup>2</sup></div>
             <div class="itog" v-if="!checKgeotextile">не выбрано</div>
           </div>
           <div class="field mb-20">
             <div class="text opacity">площадь арм.сетки:</div>
-            <div class="itog" v-if="checKreinforcing">{{result}} м<sup>3</sup></div>
+            <div class="itog" v-if="checKreinforcing">{{result}} м<sup>2</sup></div>
             <div class="itog" v-if="!checKreinforcing">не выбрано</div>
           </div>
           <div class="field mb-20">
@@ -309,7 +309,7 @@
           </div>
           <div class="field mb-20">
             <div class="text opacity">длина опалубки:</div>
-            <div class="itog" v-if="checKformwork">{{perimeter}} м<sup>3</sup></div>
+            <div class="itog" v-if="checKformwork">{{perimeter}} м.п.</div>
             <div class="itog" v-if="!checKformwork">не выбрано</div>
           </div>
           <div class="field mb-20">

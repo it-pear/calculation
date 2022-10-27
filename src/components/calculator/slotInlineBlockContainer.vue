@@ -25,7 +25,7 @@
 
       <div class="calc_leftBlock">
         <div class="calc_block_inputResult">
-          <div class="calc_block_inputResult__title">Выбрать Вид бетона</div>  
+          <div class="calc_block_inputResult__title">выбрать вид бетона</div>  
           <select v-model="typeBeton" @change="typeBeton2" class="calc__select">
             <option
               v-for="option in typeBetonOptions"
@@ -39,7 +39,7 @@
         </div>
 
         <div class="calc_block_inputResult">
-          <div class="calc_block_inputResult__title">Выбрать Марку</div>  
+          <div class="calc_block_inputResult__title">выбрать Марку</div>  
           <select v-model="markaBeton" @change="markaBeton2" class="calc__select">
             <option
               v-for="option in typeBeton.price"
@@ -271,7 +271,7 @@ export default defineComponent({
         max-width: 360px
       .calc_leftBlock__info
         font-weight: 600
-        font-size: 20px
+        font-size: 18px
         line-height: 140%
         color: #FFA92E
         margin-left: 10px

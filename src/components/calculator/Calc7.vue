@@ -64,15 +64,15 @@
           <div class="field">
             <div class="text">По прошествию {{time}} дней, при температуре {{temp}} градусов, процент прочности бетона будет равен:</div>
             <div class="info mt-10" v-if="time === 0">Null</div>
-            <div class="info mt-10" v-else-if="result > 100">100%</div>
+            <div class="info mt-10" v-else-if="result > 100 || isNaN(result)">100%</div>
             <div class="info mt-10" v-else>{{result}}%</div>
           </div>
-          <div class="field-total">
+          <!-- <div class="field-total">
             <div class="text">Стоимость твердения бетона:</div>
             <div class="info" v-if="time === 0">Null</div>
             <div class="info" v-else-if="result > 100">100%</div>
             <div class="info" v-else>{{result}}%</div>
-          </div>
+          </div> -->
         </template>
         <template v-slot:resultInfo>
           <div class="result-info pl-30 max-410">
