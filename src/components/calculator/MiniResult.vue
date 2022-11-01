@@ -56,7 +56,7 @@
                 <span v-else>{{markaBeton.title}}</span>
               </li>
             </ul>
-            <p class="calc_result__title">Стоимость бетона: {{markaBeton == '' ? 0 : totalModalPrice}} руб.</p>
+            <p class="calc_result__title">Стоимость бетона: <span>{{markaBeton == '' ? 0 : totalModalPrice}} руб.</span></p>
           </div>
           <div class="calc_result-btn">
             <div class="calc_blockButtonContainer">
@@ -86,84 +86,32 @@ export default defineComponent({
     return {
       typeBeton: '',
       markaBeton: '',
-      typeBetonOptions:[
-        {
-          title:'бетон товарный',
-          price: [
-            {title:'М 100', price:3250},
-            {title:'М 150', price:3350},
-            {title:'М 200', price:3450},
-            {title:'М 250', price:3550},
-            {title:'М 300', price:3750},
-            {title:'М 350', price:3850},
-            {title:'М 400', price:4000},
-            {title:'М 450', price:4150},
-            {title:'М 500', price:4300}
-          ]
-        },
-        {
-          title:'Керамзитобетон',
-          price: [
-            {title:'М 100', price:3500},
-            {title:'М 150', price:3600},
-            {title:'М 200', price:3700},
-            {title:'М 250', price:3800},
-            {title:'М 300', price:4000},
-            {title:'М 350', price:4100},
-            {title:'М 400', price:4250},
-            {title:'М 450', price:4400},
-            {title:'М 500', price:4550}
-          ]
-        },
-        {
-          title:'Фибробетон',
-          price: [
-            {title:'М 100', price:3650},
-            {title:'М 150', price:3750},
-            {title:'М 200', price:3850},
-            {title:'М 250', price:3950},
-            {title:'М 300', price:4150},
-            {title:'М 350', price:4250},
-            {title:'М 400', price:4400},
-            {title:'М 450', price:4550},
-            {title:'М 500', price:4700}
-          ]
-        },
-        {
-          title:'Бездобавочный беон',
-          price: [
-            {title:'М 100', price:3450},
-            {title:'М 150', price:3550},
-            {title:'М 200', price:3650},
-            {title:'М 250', price:3750},
-            {title:'М 300', price:3950},
-            {title:'М 350', price:4050},
-            {title:'М 400', price:4200},
-            {title:'М 450', price:4350},
-            {title:'М 500', price:4500}
-          ]
-        },
-        {
-          title:'Бетон противоморзный', 
-          price: [
-            {title:'М 100', price:100},
-            {title:'М 150', price:200},
-            {title:'М 200', price:300},
-            {title:'М 250', price:300},
-            {title:'М 300', price:300},
-            {title:'М 350', price:300},
-            {title:'М 400', price:300},
-            {title:'М 450', price:300},
-            {title:'М 500', price:300}
-          ]
-        } 
-      ]
+      typeBetonOptions:[]
     }
   },
   methods: {
     scrollResult() {
       this.$emit('scrollResult')
     },
+    async getData() {
+      let url = '/wp-json/myplugin/v1/getprice'
+      let response = await fetch(url)
+      this.betonchik =  await response.json();
+      this.getget()
+      this.typeBeton = this.typeBetonOptions[0]
+      this.markaBeton = this.typeBeton.price[0]
+    },
+    getget() {
+      this.betonchik.map((item) => {
+        item.conteiner.forEach((el) => {
+          let arr = el.title.split(' ')
+          el.title = el.title.split(' ')[arr.length - 1]
+        })
+        item.price = item.conteiner
+      })
+      console.log(this.betonchik)
+      this.typeBetonOptions = this.betonchik
+    }
   },
   computed: {
     calculationConcrete() {
@@ -174,8 +122,8 @@ export default defineComponent({
     }
   },
   mounted() {
-    this.typeBeton = this.typeBetonOptions[0]
-    this.markaBeton = this.typeBeton.price[0]
+    this.getData()
+
   }
 })
 </script>

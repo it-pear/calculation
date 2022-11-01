@@ -104,7 +104,7 @@ export default defineComponent({
       typeBeton: '',
       markaBeton: '',
       podvigBeton: '',
-      totalModalPrice: 0 
+      totalModalPrice: 0
     }
   },
   computed: {
@@ -165,7 +165,8 @@ export default defineComponent({
         link.click();
         return alert('Файл сохранен');
       });
-    }
+    },
+    
   },
   watch: {
     pile: {
@@ -191,7 +192,8 @@ export default defineComponent({
     "modal": modal,
     "readme": readme,
     HelpBetter
-  }
+  },
+
 
 })
 </script>

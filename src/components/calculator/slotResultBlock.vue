@@ -71,7 +71,7 @@
               class="calc_result__title"
               style="margin-top: 32px;"
             >
-              Стоимость бетона: {{markaBeton == '' ? 0 : totalModalPrice}} руб.
+              Стоимость бетона: <span>{{markaBeton == '' ? 0 : totalModalPrice}} руб.</span>
             </p>
           </div>
           <div class="calc_warning">
@@ -131,78 +131,8 @@ export default defineComponent({
     return {
       typeBeton: '',
       markaBeton: '',
-      typeBetonOptions:[
-        {
-          title:'бетон товарный',
-          price: [
-            {title:'М 100', price:3250},
-            {title:'М 150', price:3350},
-            {title:'М 200', price:3450},
-            {title:'М 250', price:3550},
-            {title:'М 300', price:3750},
-            {title:'М 350', price:3850},
-            {title:'М 400', price:4000},
-            {title:'М 450', price:4150},
-            {title:'М 500', price:4300}
-          ]
-        },
-        {
-          title:'Керамзитобетон',
-          price: [
-            {title:'М 100', price:3500},
-            {title:'М 150', price:3600},
-            {title:'М 200', price:3700},
-            {title:'М 250', price:3800},
-            {title:'М 300', price:4000},
-            {title:'М 350', price:4100},
-            {title:'М 400', price:4250},
-            {title:'М 450', price:4400},
-            {title:'М 500', price:4550}
-          ]
-        },
-        {
-          title:'Фибробетон',
-          price: [
-            {title:'М 100', price:3650},
-            {title:'М 150', price:3750},
-            {title:'М 200', price:3850},
-            {title:'М 250', price:3950},
-            {title:'М 300', price:4150},
-            {title:'М 350', price:4250},
-            {title:'М 400', price:4400},
-            {title:'М 450', price:4550},
-            {title:'М 500', price:4700}
-          ]
-        },
-        {
-          title:'Бездобавочный беон',
-          price: [
-            {title:'М 100', price:3450},
-            {title:'М 150', price:3550},
-            {title:'М 200', price:3650},
-            {title:'М 250', price:3750},
-            {title:'М 300', price:3950},
-            {title:'М 350', price:4050},
-            {title:'М 400', price:4200},
-            {title:'М 450', price:4350},
-            {title:'М 500', price:4500}
-          ]
-        },
-        {
-          title:'Бетон противоморзный', 
-          price: [
-            {title:'М 100', price:100},
-            {title:'М 150', price:200},
-            {title:'М 200', price:300},
-            {title:'М 250', price:300},
-            {title:'М 300', price:300},
-            {title:'М 350', price:300},
-            {title:'М 400', price:300},
-            {title:'М 450', price:300},
-            {title:'М 500', price:300}
-          ]
-        } 
-      ],
+      typeBetonOptions:[],
+      betonchik: [],
       reultScrollData: ''
     }
   },
@@ -227,12 +157,30 @@ export default defineComponent({
     saveFile() {
       this.$emit('saveFile');
     },
+    async getData() {
+      let url = '/wp-json/myplugin/v1/getprice'
+      let response = await fetch(url)
+      this.betonchik =  await response.json();
+      this.getget()
+      this.typeBeton = this.typeBetonOptions[0]
+      this.markaBeton = this.typeBeton.price[0]
+    },
+    getget() {
+      this.betonchik.map((item) => {
+        item.conteiner.forEach((el) => {
+          let arr = el.title.split(' ')
+          el.title = el.title.split(' ')[arr.length - 1]
+        })
+        item.price = item.conteiner
+      })
+      console.log(this.betonchik)
+      this.typeBetonOptions = this.betonchik
+    }
   },
   mounted() {
-    this.typeBeton = this.typeBetonOptions[0]
-    this.markaBeton = this.typeBeton.price[0]
-
+    this.getData()
     this.getScrollResult()
+    
   },
   components: {
     FormQuetions,
@@ -271,7 +219,7 @@ export default defineComponent({
   @media (max-width: 780px)
     display: block
 .calc_warning 
-  padding-left: 58px
+  padding-left: 20px
   padding-top: 32px
   flex: 1 1 100%
   @media (max-width: 780px)
@@ -298,7 +246,7 @@ export default defineComponent({
     margin-left: 29px
 
 .calc_result
-  flex: 0 0 245px
+  flex: 0 0 289px
   ul
     padding-left: 0
     li
@@ -311,11 +259,14 @@ export default defineComponent({
         font-size: 16px
         line-height: 19px
         color: #696969
+        
   .calc_result__title
     font-weight: 600
     font-size: 18px
     line-height: 24px
     color: #2B2B2B
+    display: flex
+    justify-content: space-between
 .calc_block_result
   display: flex
   align-items: stretch

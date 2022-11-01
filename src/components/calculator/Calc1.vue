@@ -115,8 +115,8 @@
           <span class="calc_section_title">Радиусный сектор {{ index + 1 }}:</span>
           <input type="number" v-model.number="rad.values[index].r" placeholder="Радиус R"><span class="metr">м</span>
           <span class="calc_section_spread">&#215;</span>
-          <input class="additionalLine" type="number" v-model.number="rad.values[index].h"
-                 placeholder="Высота&#x00A; опалубки"><span class="metr">м</span>
+          <input class="" type="number" v-model.number="rad.values[index].h"
+                 placeholder="Высота"><span class="metr">м</span>
           <span class="close" @click="removeField(index, rad)">&#215;</span>
         </div>
       </template>
@@ -230,7 +230,8 @@ export default defineComponent({
       markaBeton: '',
       podvigBeton: '',
       totalModalPrice: 0,
-      positionResult: 0
+      positionResult: 0,
+      datik: null
     }
   },
   computed: {

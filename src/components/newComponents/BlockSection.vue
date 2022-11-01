@@ -54,6 +54,7 @@ export default defineComponent({
         align-items: flex-end;
         padding-bottom: 10px;
         position: relative;    
+
         span {
           min-width: 195px;
         }    
@@ -140,6 +141,7 @@ export default defineComponent({
           color: #696969;
           min-width: 178px;
           width: 178px;
+          text-transform: lowercase !important;
           b {
             color: #3C3C3C;
           }
@@ -157,6 +159,7 @@ export default defineComponent({
             line-height: 19px;
             width: 190px;
             box-sizing: border-box;
+            text-transform: lowercase !important;
             &::placeholder {
               color: #C5C5C5;
             }

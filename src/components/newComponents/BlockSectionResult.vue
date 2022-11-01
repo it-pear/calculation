@@ -95,6 +95,7 @@ export default defineComponent({
             line-height: 19px;
             color: #2B2B2B;
             white-space: nowrap;
+            text-transform: lowercase;
             &.opacity {
               color: #696969;
             }
@@ -324,7 +325,7 @@ export default defineComponent({
       }
       .result-info {
         &.max-410 {
-          max-width: 410px;
+          max-width: 528px;
         }
         &.pl-30 {
           padding-left: 30px;

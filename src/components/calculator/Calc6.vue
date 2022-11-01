@@ -326,7 +326,7 @@
       </template>
       <template v-slot:result>
         <div class="field">
-          <div class="text">Размер отмостки:</div>
+          <div class="text">Общая площадь отмостки:</div>
           <div class="info mt-10">
             {{result || 0}} м<sup>3</sup>
           </div>
@@ -337,24 +337,7 @@
             {{external + internal}} шт
           </div>
         </div>
-        <div class="field">
-          <div class="text">Рассчет материалов:</div>
-          <div class="info mt-10">
-            {{pcirsResult}} м<sup>3</sup>
-          </div>
-        </div>
-        <div class="field">
-          <div class="text">Рассчет материалов:</div>
-          <div class="info mt-10">
-            0 м<sup>3</sup>
-          </div>
-        </div>
-        <div class="field-total">
-          <div class="text">Размер отмостки:</div>
-          <div class="info">
-            {{result || 0}} м<sup>3</sup>
-          </div>
-        </div>
+        
       </template>
       <template v-slot:resultInfo>
         <div class="result-info pl-30 max-410">
