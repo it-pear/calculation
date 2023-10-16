@@ -160,6 +160,7 @@
 
     <HelpBetter />
     <readme
+      title="Онлайн калькулятор расчета материалов для изготовления бетона"
       text="Бесплатный онлайн калькулятор цемента поможет посчитать, какое количество вяжущего понадобится для изготовления 1 кубометра бетонной смеси выбранной марки. Инструмент вычисления покажет применяемые пропорции для указанной марки бетона и марки используемого цемента. Калькулятор также подскажет, сколько потребуется щебня, песка и воды, а также укажет объем каждого компонента."
     />
     <modal
@@ -179,7 +180,7 @@ import readme from "./readme.vue";
 import axios from 'axios'
 import FormQuetions from '../newComponents/FormQuetions.vue';
 import QrCode from '../newComponents/QrCode.vue';
-import modal from "../newComponents/modal.vue";
+import modal from "./modal.vue";
 
 export default defineComponent({
   data() {

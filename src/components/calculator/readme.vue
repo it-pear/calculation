@@ -2,7 +2,7 @@
   <div class="calc_readme">
     <div class="pdd">
       <div class="head" style="padding-bottom: 0;">
-        <h3 style="color: black;">Онлайн калькулятор расчета объема бетона</h3>
+        <h3 style="color: black;">{{ title }}</h3>
         <div class="title"></div>
         <button @click="readme = !readme">
           <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg" :class="{ rotate180: readme }">
@@ -37,6 +37,7 @@ import {defineComponent} from "vue";
 
 export default defineComponent({
   props: {
+    title: String,
     text: String
   },
   data() {

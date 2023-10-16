@@ -248,7 +248,7 @@
       right: 0;
       margin: auto;
       .calc_contact {
-        width: 255px;
+        width: 300px;
         height: 388px;
       }
       .calc_block {

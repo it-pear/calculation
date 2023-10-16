@@ -187,4 +187,8 @@ export default defineComponent({
         line-height: 13px
         color: #696969
         margin-left: 6px
+.modal 
+  .calc_contact
+    @media (min-width: 772px)
+      background-size: cover
 </style>

@@ -290,7 +290,6 @@ export default defineComponent({
       max-width: calc(74.3%)
     .calc_block_title
       padding-right: 60px
-      text-transform: capitalize
     .calc_leftBlock
       flex: 1 1 100%
 

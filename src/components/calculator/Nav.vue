@@ -64,7 +64,7 @@ export default defineComponent({
         font-size: 16px;
         line-height: 19px;
         text-align: center;
-        text-transform: uppercase;
+        // text-transform: uppercase;
         color: #7A7A7A;
         padding: 16px 5px 0 5px;
         &-mobile {
