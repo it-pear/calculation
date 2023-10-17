@@ -249,7 +249,7 @@ export default defineComponent({
           font-size: 18px;
           line-height: 22px;
           color: #2B2B2B;
-          padding: 8px 0;
+          padding: 8px 12px;
           text-align: center;
           margin-left: 10px;
           min-width: 68px;
@@ -409,6 +409,7 @@ export default defineComponent({
 
         .field-section-itog {
           display: flex;
+          flex-wrap: nowrap;
           align-items: center;
           background: #F5F5F5;
           border-radius: 2px;

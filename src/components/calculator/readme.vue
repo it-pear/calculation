@@ -57,9 +57,7 @@ export default defineComponent({
     padding: 15px;
     margin-bottom: 32px;
     margin-top: 94px;
-    @media (max-width: 992px) {
-      display: none;
-    }
+    
     .pdd {
       background: #FAFAFA;
       border-radius: 2px;
@@ -111,6 +109,27 @@ export default defineComponent({
     }
     .rotate180 {
       transform: rotate(180deg);
+    }
+    @media (max-width: 992px) {
+      // display: none;
+      margin-top: 0px;
+      padding: 4px;
+      .pdd {
+        padding: 16px 16px !important;
+        .head {
+          h3 {
+            margin-top: 0;
+          }
+          button {
+            margin-top: 16px;
+            margin-right: 8px;
+          }
+        }
+        .content {
+          font-size: 16px;
+          line-height: 1.4;
+        }
+      }
     }
   }
 </style>

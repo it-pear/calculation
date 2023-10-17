@@ -143,8 +143,8 @@
 
       <template v-slot:fieldItog>
         <div class="field-section-itog">
-          <div class="title">Общий объем материалов:</div>
-          <div class="inp-itog">0 м<sup>3</sup></div>
+          <div class="title">Общий объем материалов: </div>
+          <div class="inp-itog">{{pcirsResult}} м<sup>3</sup></div>
         </div>
       </template>
 
