@@ -52,7 +52,7 @@
             <ul>
               <li>
                 <span>Общий объем:</span>
-                <span>{{totalData.toFixed()}} м³</span> 
+                <span>{{formatNumber(totalData.toFixed())}} м³</span> 
               </li>
               <li>
                 <span>Вид бетона:</span>
@@ -71,7 +71,7 @@
               class="calc_result__title"
               style="margin-top: 32px;"
             >
-              Стоимость бетона: <span>{{markaBeton == '' ? 0 : totalModalPrice}} руб.</span>
+              Стоимость бетона: <span>{{markaBeton == '' ? 0 : formatNumber(totalModalPrice)}} руб.</span>
             </p>
           </div>
           <div class="calc_warning">
@@ -113,8 +113,14 @@ import axios from 'axios'
 import Inputmask from 'inputmask';
 import FormQuetions from '../newComponents/FormQuetions.vue';
 import QrCode from '../newComponents/QrCode.vue';
+import { formatNumber } from '@/numbers.js'
 
 export default defineComponent({
+  setup() {
+    return {
+      formatNumber
+    }
+  },
   props: {
     title: String,
     simple: [String, Number],

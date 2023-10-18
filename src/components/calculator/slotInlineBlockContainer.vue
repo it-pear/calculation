@@ -64,7 +64,7 @@
             <ul>
                <li>
                 <span>Общий объем:</span>
-                <span>{{concrete}}</span>
+                <span>{{formatNumber(concrete)}}</span>
               </li> 
               <li>
                 <span>Вид бетона:</span>
@@ -77,7 +77,7 @@
                 <span v-else>{{markaBeton.title}}</span>
               </li>
             </ul>
-            <p class="calc_result__title">Стоимость бетона: <span>{{markaBeton == '' ? 0 : totalModalPrice}} руб.</span></p>
+            <p class="calc_result__title">Стоимость бетона: <span>{{markaBeton == '' ? 0 : formatNumber(totalModalPrice)}} руб.</span></p>
           </div>
           <div class="calc_result-btn">
             <div class="calc_blockButtonContainer">
@@ -95,8 +95,14 @@
 
 <script>
 import { defineComponent } from 'vue'
+import { formatNumber } from '@/numbers.js'
 
 export default defineComponent({
+  setup() {
+    return {
+      formatNumber
+    }
+  },
   props: {
     title: String,
     tip: [String, undefined],
