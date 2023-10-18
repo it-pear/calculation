@@ -25,16 +25,25 @@
         </div>
         <div class="field-section field-section-select">
           <div class="field-section__title">Регион:</div>
-          <div class="field">
-            <select v-model="region">
-              <option
-                v-for="option in country.region"
-                :value="option"
-                :key="option"
+          <div class="field field-search">
+            <input 
+              v-model="inputValue"
+              @input="filterOptions"
+              @focus="showAllOptions"
+              @blur="updateRegion"
+              placeholder="Выберите регион"
+              class="inp"
+            >
+            <ul v-if="filteredOptions.length">
+              <li 
+                v-for="option in filteredOptions" 
+                :key="option.text"
+                @click="selectOption(option)"
               >
                 {{ option.text }}
-              </option>
-            </select>
+              </li>
+            </ul>
+
             <span class="meas">
               <img src="/images/arrow-select.svg" alt="">
             </span>
@@ -42,16 +51,24 @@
         </div>
         <div class="field-section field-section-select">
           <div class="field-section__title">Город:</div>
-          <div class="field">
-            <select v-model="city" @change="result">
-              <option
-                v-for="option in region.city"
-                :value="option"
-                :key="option"
+          <div class="field field-search">
+            <input 
+              v-model="inputCityValue"
+              @input="filterCities"
+              @focus="showAllCities"
+              @blur="updateCity"
+              class="inp"
+              placeholder="Выберите город"
+            >
+            <ul v-if="filteredCities.length">
+              <li 
+                v-for="city in filteredCities" 
+                :key="city.text"
+                @click="selectCity(city)"
               >
-                {{ option.text }}
-              </option>
-            </select>
+                {{ city.text }}
+              </li>
+            </ul>
             <span class="meas">
               <img src="/images/arrow-select.svg" alt="">
             </span>
@@ -301,7 +318,7 @@ export default defineComponent({
   data() {
     return {
       country: '',
-      region: '',
+      region: [],
       modal: false,
       city: {
         text: 'Майкоп',
@@ -312,8 +329,13 @@ export default defineComponent({
       depth: '',
       freezing: '',
       building: '',
+      inputValue: '',
+      filteredOptions: [],
+      inputCityValue: '',
+      filteredCities: [],
     };
   },
+
   components: {
     BlockSection,
     BlockSectionResult,
@@ -327,6 +349,55 @@ export default defineComponent({
     // HelpBetter
   },
   methods: {
+    showAllOptions() {
+      this.filteredOptions = this.country.region;
+    },
+    filterOptions() {
+      if (!this.inputValue) {
+        this.showAllOptions();
+        return;
+      }
+      this.filteredOptions = this.country.region.filter(option =>
+        option.text.toLowerCase().includes(this.inputValue.toLowerCase())
+      );
+    },
+    selectOption(option) {
+      this.inputValue = option.text;
+      this.region = option;
+      this.filteredOptions = [];
+      this.city = ''
+      this.inputCityValue = ''
+    },
+    updateRegion() {
+      setTimeout(() => {
+        this.filteredOptions = [];
+      }, 150);
+    },
+
+    showAllCities() {
+      this.filteredCities = this.region.city;
+    },
+    filterCities() {
+      if (!this.inputCityValue) {
+        this.showAllCities();
+        return;
+      }
+      this.filteredCities = this.region.city.filter(city =>
+        city.text.toLowerCase().includes(this.inputCityValue.toLowerCase())
+      );
+    },
+    selectCity(city) {
+      this.inputCityValue = city.text;
+      this.city = city;
+      this.filteredCities = [];
+      this.result();
+    },
+    updateCity() {
+      setTimeout(() => {
+        this.filteredCities = [];
+      }, 150);
+    },
+
     result() {
       let buildingData = this.building.value
       let regionData = this.region.value

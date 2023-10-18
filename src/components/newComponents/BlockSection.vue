@@ -178,6 +178,29 @@ export default defineComponent({
             display: flex;
             align-items: center;
           }
+          &-search {
+            position: relative;
+            ul {
+              position: absolute;
+              width: calc(100% - 2px);
+              border: 1px solid #E8E8E8;
+              z-index: 3;
+              margin-top: 1px;
+              margin-bottom: 0;
+              padding-left: 0;
+              background: white;
+              border-radius: 4px;
+              li {
+                list-style: none;
+                padding-left: 0;
+                padding: 8px 14px;
+                cursor: pointer;
+                &:hover {
+                  background: rgba(0,0,0,0.05);
+                }
+              }
+            }
+          }
         }
         &-select,
         &-select-2 {
