@@ -101,33 +101,35 @@ export default defineComponent({
           .calc_block_tip {
             cursor: help;
           }
-          .calc_block_tip > div {
-            visibility: hidden;
-            height: 0;
-            width: 0;
-            color: #696969;
-          }
-
-          .calc_block_tip:hover {
-            position: relative;
-            & > div {
-              visibility: visible;
-              transition: .2s;
-              height: unset;
-              width: max-content;
-              text-transform: none;
-              position: absolute;
-              max-width: 372px;
-              background: #F8F8F8;
-              bottom: 100%;
-              box-shadow: 0 4px 13px rgba(112, 111, 111, 0.1);
-              padding: 10px 16px;
-              border-radius: 2px;
-              transform: translate(20px, -10px);
-              font-size: 14px;
-              line-height: 130%;
+          @media (min-width: 772px) {
+            .calc_block_tip > div {
+              visibility: hidden;
+              height: 0;
+              width: 0;
+              color: #696969;
             }
-          } 
+
+            .calc_block_tip:hover {
+              position: relative;
+              & > div {
+                visibility: visible;
+                transition: .2s;
+                height: unset;
+                width: max-content;
+                text-transform: none;
+                position: absolute;
+                max-width: 372px;
+                background: #F8F8F8;
+                bottom: 100%;
+                box-shadow: 0 4px 13px rgba(112, 111, 111, 0.1);
+                padding: 10px 16px;
+                border-radius: 2px;
+                transform: translate(20px, -10px);
+                font-size: 14px;
+                line-height: 130%;
+              }
+            } 
+          }
         }
       }     
       .field-section {
@@ -183,6 +185,8 @@ export default defineComponent({
             ul {
               position: absolute;
               width: calc(100% - 2px);
+              height: 40vh;
+              overflow-y: scroll;
               border: 1px solid #E8E8E8;
               z-index: 3;
               margin-top: 1px;
