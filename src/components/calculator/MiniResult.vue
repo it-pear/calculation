@@ -56,7 +56,7 @@
                 <span v-else>{{markaBeton.title}}</span>
               </li>
             </ul>
-            <p class="calc_result__title">Стоимость бетона: <span>{{markaBeton == '' ? 0 : formatNumber(totalModalPrice)}} руб.</span></p>
+            <p class="calc_result__title">Стоимость бетона: <span>{{markaBeton === null || '' ? 0 : formatNumber(totalModalPrice)}} руб.</span></p>
           </div>
           <div class="calc_result-btn">
             <div class="calc_blockButtonContainer">
@@ -91,7 +91,7 @@ export default defineComponent({
   data() {
     return {
       typeBeton: '',
-      markaBeton: '',
+      markaBeton: null,
       typeBetonOptions:[]
     }
   },
@@ -124,7 +124,8 @@ export default defineComponent({
       return ''
     },
     totalModalPrice()  {
-      return (this.totalData * this.markaBeton.price).toFixed() 
+      let totalData = Number(this.totalData.replace(/\s+/g, ''))
+      return (totalData * this.markaBeton.price).toFixed()
     }
   },
   mounted() {
