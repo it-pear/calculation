@@ -178,7 +178,7 @@ export default defineComponent({
             return acc
           } else {
             return Number(acc) + values.reduce((acc: Number, value) => {
-              return Math.pow((Number(obj.r) * 3.14), 2) * Number(obj.h) * Number(obj.c) 
+              return (Number(obj.r) * (Number(obj.r)) * 3.14) * Number(obj.h) * Number(obj.c)
             }, 1)
           }
         }, 0)  

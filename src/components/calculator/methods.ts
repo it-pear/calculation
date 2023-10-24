@@ -9,11 +9,11 @@ function formatTotal(total: Number | String): string {
 
 function printResult(total: Number | String): string {
   if (total === "") {
-      return "";
+    return "";
   }
   const formattedTotal = formatTotal(total);
   if (Number(formattedTotal.replace(/\s/g, '')) < 10000) {
-      return formattedTotal.split('.')[0];
+    return formattedTotal.split('.')[0];
   }
   return formattedTotal;
 }
@@ -34,7 +34,7 @@ function removeField(i: Number, data: CalcSimpleType) {
 }
 
 export {
-    printResult,
-    printResultBlock,
-    removeField
+  printResult,
+  printResultBlock,
+  removeField
 }

@@ -297,7 +297,7 @@
       @modalDisable="modalDisable"
       titlePage="РАСЧЕТ ГЛУБИНЫ ПРОМЕРЗАНИЯ ГРУНТА"
     />
-   {{depth[0].ClayLoam[0].value}}
+
   </div>
 </template>
 

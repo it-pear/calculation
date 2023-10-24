@@ -144,7 +144,7 @@ export default defineComponent({
   },
   computed: {
     totalModalPrice()  {
-      return (this.totalData * this.markaBeton.price).toFixed() 
+      return (this.totalData * this.markaBeton.price) 
     }
   },
   methods: {
