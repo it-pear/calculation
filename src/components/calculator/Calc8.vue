@@ -91,8 +91,15 @@
             </span>
           </div>
         </div>
+        <a 
+          href="#result" 
+          class="calc_blockButtonContainer w-100 mb-0 lg-none"
+          v-if="inputCityValue"
+        >
+          <div class="calc_blockButton Orange w-100 mr-0" style="color: white;">Результаты</div>
+        </a>
       </template>
-
+      
       <template v-slot:image>
         <img src="/images/freezing-image.svg" />
       </template>
@@ -102,7 +109,7 @@
       <div class="zagolovok">Результат</div>
     </div>
 
-    <BlockSectionResult :gorisontalResult="true" @saveFile="saveFile" @modalActive="modalActive">
+    <BlockSectionResult :gorisontalResult="true" @saveFile="saveFile" @modalActive="modalActive" >
       <template v-slot:head>
         <div class="column column-fields-00100 col-50">
           <div class="title">Общий расчет глубины промерзания грунта</div>
@@ -132,7 +139,7 @@
       </template>
 
       <template v-slot:information>
-        <div class="sec-1">
+        <div class="sec-1" id="result">
           <div class="title">Результат расчетной глубины промерзания для города {{city.text}}:</div>
           <table cols="6">
             <thead>

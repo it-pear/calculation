@@ -19,10 +19,10 @@
           <input type="number" placeholder="Высота" v-model.number="simple.h"><span class="metr">м</span></div>
         <div class="calc_block_inputResult">Объем плиты: <span>{{ printResult(simple.result) }}</span></div>
       </div>
+      
       <div class="calc_rightBlock">
         <img class="calc_rightBlock_Image" src="https://gorizontbeton.ru/wp-content/uploads/2021/10/1_1.png" alt="" srcset="">
       </div>
-      
     </div>
     <MiniResult
       title="Простая плита"

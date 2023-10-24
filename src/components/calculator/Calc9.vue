@@ -114,6 +114,13 @@
             </span>
           </div>
         </div>
+        <a 
+          href="#result" 
+          class="calc_blockButtonContainer w-100 mb-0 lg-none"
+          v-if="inputCityValue"
+        >
+          <div class="calc_blockButton Orange w-100 mr-0" style="color: white;">Результаты</div>
+        </a>
       </template>
 
       <template v-slot:image>
@@ -165,7 +172,7 @@
       </template>
 
       <template v-slot:information>
-        <div class="sec-2 sec-3">
+        <div class="sec-2 sec-3" id="result">
           <div class="title">Глубина заложения фундамента для города {{city.text}}</div>
           <table>
             <thead>
