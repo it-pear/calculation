@@ -31,6 +31,8 @@
       :concrete="simple.result"
       :totalData="printResult(simple.result)"
       @scrollResult="onscrollResult"
+      @saveFile="saveFile"
+      @modalActive="modalActive"
     />
 
     <slotInlineBlockContainer
@@ -40,6 +42,8 @@
       v-if="true"
       :totalData="printResult(complex.result)"
       @scrollResult="onscrollResult"
+      @saveFile="saveFile"
+      @modalActive="modalActive"
     >
       <template v-slot:inlineBlock>
         <div class="calc_block_inlineContainer" v-for="(undefined, index) in complex.values" :key="index">
@@ -74,6 +78,8 @@
       :concrete="triangle.result"
       :totalData="printResult(triangle.result)"
       @scrollResult="onscrollResult"
+      @saveFile="saveFile"
+      @modalActive="modalActive"
     >
       <template v-slot:inlineBlock>
         <div class="calc_block_inlineContainer calc_block_triangle" v-for="(undefined_, index) in triangle.values" :key="index">
@@ -110,6 +116,8 @@
       :concrete="rad.result"
       :totalData="printResult(rad.result)"
       @scrollResult="onscrollResult"
+      @saveFile="saveFile"
+      @modalActive="modalActive"
     >
       <template v-slot:inlineBlock>
         <div class="calc_block_inlineContainer" v-for="(undefined__, index) in rad.values" :key="index">

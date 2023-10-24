@@ -42,6 +42,8 @@
       :concrete="simple.result"
       :totalData="printResult(simple.result)"
       @scrollResult="onscrollResult"
+      @saveFile="saveFile"
+      @modalActive="modalActive"
     />
 
     <slotInlineBlockContainer
@@ -50,6 +52,8 @@
       :concrete="complex.result"
       :totalData="printResult(complex.result)"
       @scrollResult="onscrollResult"
+      @saveFile="saveFile"
+      @modalActive="modalActive"
     >
       <template v-slot:inlineBlock>
         <template v-for="(undefined, index) in complex.valuesOfFundament" :key="index">
@@ -106,6 +110,8 @@
       :concrete="pile.result"
       :totalData="printResult(pile.result)"
       @scrollResult="onscrollResult"
+      @saveFile="saveFile"
+      @modalActive="modalActive"
     >
       <template v-slot:addContainer>
         <div class="calc_block_addField" @click="addPile()">

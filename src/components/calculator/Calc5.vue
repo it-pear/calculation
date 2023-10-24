@@ -4,6 +4,8 @@
     tip="Если требуется залить отдельно стоящие сваи, можно внести их геометрические размеры и количество"
     :concrete="pile.result"
       :totalData="printResult(pile.result)"
+      @saveFile="saveFile"
+      @modalActive="modalActive"
   >
     <template v-slot:addContainer>
       <div class="calc_block_addField" @click="addPile()">

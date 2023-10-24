@@ -84,8 +84,8 @@
           </div>
           <div class="calc_result-btn">
             <div class="calc_blockButtonContainer">
-              <div class="calc_blockButton">Скачать данные </div>
-              <div class="calc_blockButton Orange">Оформить заказ</div>
+              <div class="calc_blockButton" @click="$emit('saveFile')">Скачать данные </div>
+              <div class="calc_blockButton Orange" @click="$emit('modalActive')">Оформить заказ</div>
             </div>
           </div>
         </div>
