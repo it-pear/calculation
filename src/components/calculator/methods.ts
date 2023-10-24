@@ -20,11 +20,11 @@ function printResult(total: Number | String): string {
 
 function printResultBlock(total: Number | String): string {
   if (total === "") {
-      return "0";
+    return "0";
   }
   const formattedTotal = formatTotal(total);
   if (Number(formattedTotal.replace(/\s/g, '')) < 10000) {
-      return formattedTotal.split('.')[0];
+    return formattedTotal.split('.')[0];
   }
   return formattedTotal;
 }
