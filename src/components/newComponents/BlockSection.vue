@@ -5,10 +5,13 @@
         <span>{{ title }}</span>
         <span class="block-section_tip"><span>подсказка</span> <div v-if="tip">{{ tip }}</div></span>
       </h3>
+      <div class="block-section-image lg-none">
+        <slot name="image"></slot>
+      </div>
       <slot name="inputFields"/>
       <slot name="fieldItog"/>
     </div>
-    <div class="block-section-image">
+    <div class="block-section-image mb-none">
       <slot name="image"></slot>
     </div>
   </div>
