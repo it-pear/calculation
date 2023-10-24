@@ -194,7 +194,7 @@
   width: 100% !important;
 }
 .mt-0 {
-  margin-top: 0;
+  margin-top: 0 !important;
 }
 .mr-0 {
   margin-right: 0 !important;
@@ -218,5 +218,26 @@
 @media (max-width: 772px) {
   .mb-none {
     display: none !important;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+@media (max-width: 772px) {
+  .calc_block .calc_rightBlock {
+    .calc_rightBlock_Image {
+      display: none !important;
+    }
+  }
+  .calc_leftBlock .calc_block_title {
+    margin-bottom: 0;
+  }
+  .calc_block_title + .calc_rightBlock_Image {
+    margin-bottom: 15px;
+  }
+  .calc_block {
+    padding-bottom: 0 !important;
   }
 }

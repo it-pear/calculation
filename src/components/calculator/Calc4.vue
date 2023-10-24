@@ -10,6 +10,7 @@
             <div>Простая УШП плита состоит из внешнего «контура» - ростверка и из внутреннего обогреваемого. Как правило они имеют разные геометрические размеры. Лучшим методом будет посчитать их объемы отдельно и суммировать полученный результат.</div>
           </span>
         </h3>
+        <img class="calc_rightBlock_Image lg-none" src="https://gorizontbeton.ru/wp-content/uploads/2021/10/4_1.png" alt="" srcset="">
         <div class="calc_block_inputContainer">Общая длина ростверка, L:
           <input type="number" v-model.number="simple.valueOfFundament.l" placeholder="Длина"><span class="metr">м</span>
         </div>

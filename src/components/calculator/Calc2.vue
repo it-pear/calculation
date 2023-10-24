@@ -10,6 +10,7 @@
             <div>Данные калькулятора будут верны только в том случае, если высота не меняется на участках опалубки и не нарушена геометрия самой опалубочной системы</div>
           </span>
         </h3>
+        <img class="calc_rightBlock_Image lg-none" src="https://gorizontbeton.ru/wp-content/uploads/2021/10/2_1.png" alt="" srcset="">
         <div class="calc_block_inputContainer">Общая длина, L:
           <input type="number" placeholder="Длина" v-model.number="simple.l"><span class="metr">м</span>
         </div>

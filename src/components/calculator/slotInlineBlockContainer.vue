@@ -5,6 +5,9 @@
         {{ title }}
         <span class="calc_block_tip">подсказка <div v-if="tip">{{ tip }}</div></span>
       </h3>
+      <div class="lg-none w-100 text-center">
+        <slot name="image"></slot>
+      </div>
       <div class="calc_block_inline">
         <slot name="inlineBlock"/>
       </div>
@@ -15,7 +18,7 @@
       <slot name="addContainer2"/>
       <slot name="resultBlocks"/>
     </div>
-    <div class="calc_rightBlock">
+    <div class="calc_rightBlock lg-visible">
       <slot name="image"></slot>
     </div>
   </div>
