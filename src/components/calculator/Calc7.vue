@@ -503,6 +503,31 @@ export default defineComponent({
     .block-section-result .information {
       display: none;
     }
+    .block-section-result .result {
+      flex-direction: column;
+      @media (min-width: 772px) {
+        .field {
+          margin-top: 0;
+          .info.mt-10 {
+            margin-right: 16px;
+            padding-left: 8px;
+          }
+        }
+        .total {
+          widows: 100% !important;
+          max-width: 100% !important;
+          flex: 0 0 100%;
+          .title  {
+            margin-bottom: 0;
+          }
+        }
+        .result-info {
+          padding-left: 0;
+          margin-left: 0;
+          margin-top: 16px;
+        }
+      }
+    }
     .calc_readme {
       margin-top: 63px;
     }

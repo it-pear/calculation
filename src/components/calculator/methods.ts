@@ -12,9 +12,7 @@ function printResult(total: Number | String): string {
     return "";
   }
   const formattedTotal = formatTotal(total);
-  if (Number(formattedTotal.replace(/\s/g, '')) < 10000) {
-    return formattedTotal.split('.')[0];
-  }
+  console.log(formattedTotal)
   return formattedTotal;
 }
 
@@ -23,9 +21,6 @@ function printResultBlock(total: Number | String): string {
     return "0";
   }
   const formattedTotal = formatTotal(total);
-  if (Number(formattedTotal.replace(/\s/g, '')) < 10000) {
-    return formattedTotal.split('.')[0];
-  }
   return formattedTotal;
 }
 
