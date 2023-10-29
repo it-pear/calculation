@@ -24,7 +24,7 @@
           </div>
         </div>
         <div class="field-section field-section-select-2">
-          <div class="field-section__title">Укажите данные:</div>
+          <div class="field-section__title">Марка цемента:</div>
           <div class="field">
             <select name="" id="" v-model="dataBetonModel"> 
               <option
@@ -69,7 +69,7 @@
               <div class="itog">{{typeBetonModel.title}}</div>
             </div>
             <div class="field mb-20">
-              <div class="text">Данные бетона:</div>
+              <div class="text">Марка цемента:</div>
               <div class="itog">{{dataBetonModel.title}}</div>
             </div>
           </div>

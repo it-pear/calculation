@@ -12,7 +12,6 @@ function printResult(total: Number | String): string {
     return "";
   }
   const formattedTotal = formatTotal(total);
-  console.log(formattedTotal)
   return formattedTotal;
 }
 

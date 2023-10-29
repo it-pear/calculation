@@ -52,7 +52,7 @@
             <ul>
               <li>
                 <span>Общий объем:</span>
-                <span>{{formatNumber(totalData.toFixed())}} м³</span> 
+                <span>{{formatNumber(totalData)}} м³</span> 
               </li>
               <li>
                 <span>Вид бетона:</span>
